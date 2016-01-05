@@ -1,9 +1,9 @@
 === The Events Calendar Shortcode ===
-Contributors:  dandelionweb, ankitpokhrel,sujin2f
+Contributors:  dandelionweb, brianhogg, ankitpokhrel, sujin2f
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JEMTB4U8SYFL6
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 3.0
-Tested up to: 4.2.2
+Tested up to: 4.4
 Stable tag: trunk
 Version: 1.0.11
 License: GPLv2 or later
@@ -23,7 +23,7 @@ I appreciate all donations, no matter the size. Further development of this plug
 
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
-* cat - Represents single event category. [ecs-list-events cat='festival’]
+* cat - Represents single event category. [ecs-list-events cat='festival']
 * cats - Use plural when you want multiple categories [ecs-list-events cats='festival, workshops']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
