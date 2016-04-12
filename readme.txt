@@ -2,7 +2,7 @@
 Contributors:  dandelionweb, brianhogg, ankitpokhrel, sujin2f
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 3.0
-Tested up to: 4.4
+Tested up to: 4.5
 Stable tag: trunk
 Version: 1.0.11
 License: GPLv2 or later
@@ -35,11 +35,15 @@ Example shortcode to show next 8 events in the category festival in ASC order wi
 * past - Show Outdated Events. [ecs-list-events cat='festival' past='yes']
 * key - Order with Start Date [ecs-list-events cat='festival' key='start date']
 
-If you like this plugin please rate it on WordPress.org
+
+Want to include your upcoming events in your newsletters?
+
+>**[Check out Event Calendar Newsletter](https://eventcalendarnewsletter.com/?utm_source=wordpress.org&utm_medium=link&utm_campaign=event-cal-shortcode-readme&utm_content=tecs-description)**
+
 
 == Installation ==
 
-1. Install The Events Calendar Shortcode Plugin from the WordPress.og repository or by uploading the-events-calendar-shortcode folder to the /wp-content/plugins directory. You must also install The Event Calendar Plugin by Modern Tribe and add your events to the calendar.
+1. Install The Events Calendar Shortcode Plugin from the WordPress.org repository or by uploading the-events-calendar-shortcode folder to the /wp-content/plugins directory. You must also install The Event Calendar Plugin by Modern Tribe and add your events to the calendar.
 
 2. Activate the plugin through the Plugins menu in WordPress
 
