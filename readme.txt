@@ -1,6 +1,5 @@
 === The Events Calendar Shortcode ===
 Contributors:  dandelionweb, brianhogg, ankitpokhrel, sujin2f
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JEMTB4U8SYFL6
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 3.0
 Tested up to: 4.4
@@ -18,13 +17,9 @@ This plugin adds a shortcode for use with The Events Calendar Plugin (by Modern 
 The shortcode displays lists of your events.  You can control the event display with the shortcode options.
 Example shortcode to show next 8 events in the category festival in ASC order with date showing [ecs-list-events cat='festival' limit='8']
 
-= Donations: =
-I appreciate all donations, no matter the size. Further development of this plugin is not contingent on donations, but they are a nice incentive. To donate click on the "donate to this plugin" link in the sidebar below the Authors.
-
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
-* cat - Represents single event category. [ecs-list-events cat='festival']
-* cats - Use plural when you want multiple categories [ecs-list-events cats='festival, workshops']
+* cat - Represents single event category. [ecs-list-events cat='festival'].  Use commas when you want multiple categories [ecs-list-events cat='festival, workshops']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
@@ -54,8 +49,7 @@ If you like this plugin please rate it on WordPress.org
 = What are the shortcode Options: =
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
-* cat - Represents event category. [ecs-list-events cat='festival']
-* cats - Use plural when you want multiple categories [ecs-list-events cats='festival, workshops']
+* cat - Represents event category [ecs-list-events cat='festival'] or specify multiple categories [ecs-list-events cat='festival, workshops']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
