@@ -2,7 +2,7 @@
 Contributors:  dandelionweb, brianhogg, ankitpokhrel, sujin2f
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 3.0
-Tested up to: 4.5
+Tested up to: 4.5.2
 Stable tag: trunk
 Version: 1.0.11
 License: GPLv2 or later
