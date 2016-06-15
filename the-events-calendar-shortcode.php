@@ -140,12 +140,11 @@ class Events_Calendar_Shortcode
 		}
 		if ($atts['month']) {
 			$month_array = explode("-", $atts['month']);
-
+			
 			$month_yearstr = $month_array[0];
 			$month_monthstr = $month_array[1];
-
-			$month_startdate = date($month_yearstr . "-" . $month_monthstr . "-1");
-			$month_enddate = date($month_yearstr . "-" . $month_monthstr . "-t");
+			$month_startdate = date( "Y-m-d", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
+			$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
 
 			$atts['meta_date'] = array(
 				array(
