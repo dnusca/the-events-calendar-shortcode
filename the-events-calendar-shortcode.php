@@ -3,9 +3,9 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: http://dandelionwebdesign.com/downloads/shortcode-modern-tribe/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.0.11
- Author: Dandelion Web Design Inc.
- Author URI: http://dandelionwebdesign.com
+ Version: 1.2-beta
+ Author: Brian Hogg
+ Author URI: https://brianhogg.com
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
  Contributor URL: http://brainchildmediagroup.com, http://www.reddit.com/user/miahelf
  License: GPL2 or later
