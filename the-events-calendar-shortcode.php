@@ -4,8 +4,8 @@
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
  Version: 1.2
- Author: Brian Hogg
- Author URI: https://brianhogg.com
+ Author: Event Calendar Newsletter (Brian Hogg)
+ Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
  Contributor URL: http://brainchildmediagroup.com, http://www.reddit.com/user/miahelf
  License: GPL2 or later
