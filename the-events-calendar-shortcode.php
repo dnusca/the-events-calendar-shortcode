@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: http://dandelionwebdesign.com/downloads/shortcode-modern-tribe/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.2-beta
+ Version: 1.2
  Author: Brian Hogg
  Author URI: https://brianhogg.com
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
@@ -156,8 +156,8 @@ class Events_Calendar_Shortcode
 			);
 		}
 
-		$posts = get_posts( array(
-			'post_type' => 'tribe_events',
+		$posts = tribe_get_events( array(
+			'post_status' => 'publish',
 			'posts_per_page' => $atts['limit'],
 			'tax_query'=> $atts['event_tax'],
 			'meta_key' => $atts['key'],
@@ -224,6 +224,13 @@ class Events_Calendar_Shortcode
 								$output .= '<span class="duration venue"><em> at </em>' . apply_filters( 'ecs_event_list_venue', tribe_get_venue(), $atts ) . '</span>';
 							}
 							break;
+						case 'date_thumb':
+							if ( self::isValid($atts['eventdetails']) ) {
+								$output .= '<div class="date_thumb"><div class="month">' . tribe_get_start_date( null, false, 'M' ) . '</div><div class="day">' . tribe_get_start_date( null, false, 'j' ) . '</div></div>';
+							}
+							break;
+						default:
+							$output .= apply_filters( 'ecs_event_list_output_custom', '', trim( $contentorder ) );
 					}
 				}
 				$output .= '</li>';
