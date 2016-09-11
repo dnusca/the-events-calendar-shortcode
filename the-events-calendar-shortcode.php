@@ -112,7 +112,7 @@ class Events_Calendar_Shortcode
 
 		// Past Event
 		$meta_date_compare = '>=';
-		$meta_date_date = date( 'Y-m-d' );
+		$meta_date_date = current_time( 'Y-m-d H:i:s' );
 
 		if ( $atts['time'] == 'past' || !empty( $atts['past'] ) ) {
 			$meta_date_compare = '<';
