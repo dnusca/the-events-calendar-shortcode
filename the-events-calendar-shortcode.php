@@ -158,6 +158,7 @@ class Events_Calendar_Shortcode
 
 		$posts = tribe_get_events( array(
 			'post_status' => 'publish',
+			'hide_upcoming' => true,
 			'posts_per_page' => $atts['limit'],
 			'tax_query'=> $atts['event_tax'],
 			'meta_key' => $atts['key'],
