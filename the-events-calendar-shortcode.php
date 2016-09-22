@@ -165,7 +165,7 @@ class Events_Calendar_Shortcode
 			'orderby' => 'meta_value',
 			'author' => $atts['author'],
 			'order' => $atts['order'],
-			'meta_query' => array( $atts['meta_date'] )
+			'meta_query' => array( $atts['meta_date'] ),
 		) );
 
 		if ($posts) {
@@ -279,11 +279,13 @@ class Events_Calendar_Shortcode
 			$excerpt = get_the_content();
 		}
 
-		$excerpt = preg_replace(" (\[.*?\])", '', $excerpt);
+		$excerpt = preg_replace( " (\[.*?\])", '', $excerpt );
 		$excerpt = strip_tags( strip_shortcodes($excerpt) );
-		$excerpt = substr($excerpt, 0, $limit);
-		$excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
-		$excerpt .= '...';
+		$excerpt = trim( preg_replace( '/\s+/', ' ', $excerpt ) );
+		if ( strlen( $excerpt ) > $limit ) {
+			$excerpt = substr( $excerpt, 0, $limit );
+			$excerpt .= '...';
+		}
 
 		return $excerpt;
 	}
