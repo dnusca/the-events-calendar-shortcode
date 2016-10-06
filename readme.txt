@@ -24,7 +24,7 @@ Example shortcode to show next 8 events in the category festival in ASC order wi
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
 * venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. [ecs-list-events venue='true']
 * excerpt - To show or hide the excerpt and set excerpt length. Default is false. [ecs-list-events excerpt='true'] //displays excerpt with length 100
- excerpt='300' //displays excerpt with length 300
+  * excerpt='300' //displays excerpt with length 300
 * thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings.
 * You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size [ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
@@ -34,11 +34,13 @@ Example shortcode to show next 8 events in the category festival in ASC order wi
 * past - Show Outdated Events. [ecs-list-events cat='festival' past='yes']
 * key - Order with Start Date [ecs-list-events cat='festival' key='start date']
 
+= Pro Version Options: =
+* hiderecurring - To only show the first instance of a recurring event, set to 'true'
+* design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing
 
-Want to include your upcoming events in your newsletters?
+[Get the Pro Version](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description)
 
->**[Check out Event Calendar Newsletter](https://eventcalendarnewsletter.com/?utm_source=wordpress.org&utm_medium=link&utm_campaign=event-cal-shortcode-readme&utm_content=tecs-description)**
-
+This plugin is not developed by or affiliated with The Events Calendar or Modern Tribe in any way.
 
 == Installation ==
 
@@ -74,7 +76,8 @@ Want to include your upcoming events in your newsletters?
 * Not all themes support use of a shortcode in a widget. If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
 
 = What are the classes for styling the list of events? =
-The plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling.
+By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling.
+
 * ul class="ecs-event-list"
 * li class="ecs-event"
 * event title link is H4 class="entry-title summary"
@@ -83,10 +86,25 @@ The plugin does not include styling. Events are listed in ul li tags with approp
 * span .ecs-all-events
 * p .ecs-excerpt
 
+Want a better looking design?  Check out [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq&utm_content=description)
+
 = How do I include a list of events in a page template? =
 include echo do_shortcode("[ecs-list-events]"); in the template where you want the events list to display.
 
 == Upgrade Notice ==
+
+= 1.3 =
+* Fixes issue with "viewall" showing the events twice
+* Fixes time zone issue by using current_time() instead of date()
+* Hides events that are marked 'hide from listing'
+* Switches to tribe_get_events() to get the events
+* Removes the ... from the end of the excerpt if less than the excerpt length
+* Adds date_thumb option
+* Adds additional filters
+
+= 1.2 =
+* Updates author/description (Event Calendar Newsletter / Brian Hogg Consulting)
+
 = 1.0.11 =
 Add Link to Thumbnail
 merge pull request from d4mation -Replaced extracted variables with $atts as using extract was deprecated

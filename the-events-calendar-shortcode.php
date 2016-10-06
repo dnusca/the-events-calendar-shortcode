@@ -3,11 +3,10 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.2
- Author: Event Calendar Newsletter (Brian Hogg)
+ Version: 1.3
+ Author: Event Calendar Newsletter / Brian Hogg Consulting
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
- Contributor URL: http://brainchildmediagroup.com, http://www.reddit.com/user/miahelf
  License: GPL2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -26,6 +25,9 @@ if ( !defined( 'ABSPATH' ) ) {
  * @author Brian Hogg
  * @version 1.0.10
  */
+
+if ( ! class_exists( 'Events_Calendar_Shortcode' ) ) {
+
 class Events_Calendar_Shortcode
 {
 	/**
@@ -33,7 +35,11 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.0.11';
+	const VERSION = '1.3';
+
+	private $admin_page = null;
+
+	const MENU_SLUG = 'ecs-admin';
 
 	/**
 	 * Constructor. Hooks all interactions to initialize the class.
@@ -43,18 +49,59 @@ class Events_Calendar_Shortcode
 	 *
 	 * @see	 add_shortcode()
 	 */
-	public function __construct()
-	{
-		add_shortcode('ecs-list-events', array($this, 'ecs_fetch_events') ); // link new function to shortcode name
+	public function __construct() {
+		add_action( 'admin_menu', array( $this, 'add_menu_page' ), 1000 );
+		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
+		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
 	} // END __construct()
+
+	public function add_menu_page() {
+		if ( ! class_exists( 'Tribe__Settings' ) or ! method_exists( Tribe__Settings::instance(), 'should_setup_pages' ) or ! Tribe__Settings::instance()->should_setup_pages() ) {
+			return;
+		}
+
+		$page_title = esc_html__( 'Shortcode', 'ecs' );
+		$menu_title = esc_html__( 'Shortcode', 'tribe-common' );
+		$capability = apply_filters( 'ecs_admin_page_capability', 'install_plugins' );
+
+		$where = Tribe__Settings::instance()->get_parent_slug();
+
+		$this->admin_page = add_submenu_page( $where, $page_title, $menu_title, $capability, self::MENU_SLUG, array( $this, 'do_menu_page' ) );
+
+		add_action( 'admin_print_styles-' . $this->admin_page, array( $this, 'enqueue' ) );
+		add_action( 'admin_print_styles', array( $this, 'enqueue_submenu_style' ) );
+	}
+
+	public function enqueue() {
+		wp_enqueue_style( 'ecs-admin-css', plugins_url( 'static/ecs-admin.css', __FILE__ ), array(), self::VERSION );
+		wp_enqueue_script( 'ecs-admin-js', plugins_url( 'static/ecs-admin.js', __FILE__ ), array(), self::VERSION );
+	}
+
+	/**
+	 * Function to add a small CSS file to add some colour to the Shortcode submenu item
+	 */
+	public function enqueue_submenu_style() {
+		wp_enqueue_style( 'ecs-submenu-css', plugins_url( 'static/ecs-submenu.css', __FILE__ ), array(), self::VERSION );
+	}
+
+	public function do_menu_page() {
+		include dirname( __FILE__ ) . '/templates/admin-page.php';
+	}
+
+	public function add_action_links( $links ) {
+		$mylinks = array(
+			'<a href="' . admin_url( 'edit.php?post_type=tribe_events&page=ecs-admin' ) . '">Settings</a>',
+			'<a target="_blank" style="color:#3db634; font-weight: bold;" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin-list&utm_medium=upgrade-link&utm_campaign=plugin-list&utm_content=action-link">Upgrade</a>',
+		);
+		return array_merge( $links, $mylinks );
+	}
 
 	/**
 	 * Fetch and return required events.
 	 * @param  array $atts 	shortcode attributes
 	 * @return string 	shortcode output
 	 */
-	public function ecs_fetch_events( $atts )
-	{
+	public function ecs_fetch_events( $atts ) {
 		/**
 		 * Check if events calendar plugin method exists
 		 */
@@ -295,6 +342,8 @@ class Events_Calendar_Shortcode
 
 		return $excerpt;
 	}
+}
+
 }
 
 /**
