@@ -23,6 +23,9 @@
 					<p>Represents single event category.  Use commas when you want multiple categories
 						<blockquote>[ecs-list-events cat='festival']</blockquote>
 						<blockquote>[ecs-list-events cat='festival, workshops']</blockquote>
+
+					<?php do_action( 'ecs_admin_page_options_after_cat' ); ?>
+
 					<h4>limit</h4>
 					<p>Total number of events to show. Default is 5.</p>
 						<blockquote>[ecs-list-events limit='3']</blockquote>
@@ -86,7 +89,7 @@
 						<li>p .ecs-excerpt</li>
 					</ul>
 
-					<p><em>Want a better looking design?  Check out <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq&utm_content=description">The Events Calendar Shortcode PRO</a></em></p>
+					<p><em>Want a better looking design without adding any CSS?  Check out <a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq&utm_content=description">The Events Calendar Shortcode PRO</a></em></p>
 				<?php endif; ?>
 			</td>
 		</tr>
