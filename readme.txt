@@ -3,7 +3,7 @@ Contributors: brianhogg, dandelionweb, ankitpokhrel, sujin2f
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.0
 Tested up to: 4.6.1
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,8 +13,9 @@ Adds shortcode functionality to The Events Calendar Plugin (Free Version) by Mod
 
 This plugin adds a shortcode for use with The Events Calendar Plugin (by Modern Tribe).
 
-The shortcode displays lists of your events.  You can control the event display with the shortcode options.
-Example shortcode to show next 8 events in the category festival in ASC order with date showing [ecs-list-events cat='festival' limit='8']
+With this plugin, just add the shortcode on a page to display a list of your events. For example to show next 8 events in the category festival:
+
+[ecs-list-events cat="festival" limit="8"]
 
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
@@ -36,6 +37,7 @@ Example shortcode to show next 8 events in the category festival in ASC order wi
 
 = Pro Version Options: =
 * hiderecurring - To only show the first instance of a recurring event, set to 'true'
+* tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
 * design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing
 
 [Get the Pro Version](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description)
