@@ -128,24 +128,37 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.3 =
+* Fixes issue with "viewall" showing the events twice
+* Fixes time zone issue by using current_time() instead of date()
+* Hides events that are marked 'hide from listing'
+* Switches to tribe_get_events() to get the events
+* Removes the ... from the end of the excerpt if less than the excerpt length
+* Adds date_thumb option
+* Adds additional filters
+
+= 1.2 =
+* Updates author/description (Event Calendar Newsletter / Brian Hogg Consulting)
+
 = 1.0.11 =
 Add Link to Thumbnail
 merge pull request from d4mation -Replaced extracted variables with $atts as using extract was deprecated
-= 1.0.10 =
-Minor Error Change - fix name and slug
+=1.0.10 =
+Minor Error Change - fix  name and slug
 = 1.0.9 =
 Minor Error Change - Multiple Categories
 = 1.0.8 =
 Add options : multi-categories - Thanks to sujin2f
 = 1.0.7 =
-* Add options : contentorder, month, past, key - Thanks to sujin2f
+Add options : contentorder, month, past, key  - Thanks to sujin2f
 = 1.0.6 =
 Fix missing ul
 = 1.0.5 =
 * Add excerpt and thumbnail - Thanks to ankitpokhrel
 = 1.0.2 =
-* Add venue to shortcode  - Thanks to ankitpokhrel
+* Add venue to shortcode - Thanks to ankitpokhrel
 = 1.0.1 =
 * Fix Firefox browser compatibility issue
 = 1 =
-* Initial release
+* Initial Release
