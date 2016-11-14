@@ -56,7 +56,7 @@ This plugin is not developed by or affiliated with The Events Calendar or Modern
 = What are the shortcode Options: =
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
-* cat - Represents event category [ecs-list-events cat='festival'] or specify multiple categories [ecs-list-events cat='festival, workshops']
+* cat - Show events from an event category [ecs-list-events cat='festival'] or specify multiple categories [ecs-list-events cat='festival, workshops']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
@@ -71,6 +71,12 @@ This plugin is not developed by or affiliated with The Events Calendar or Modern
 * month - Show only specific Month. Type 'current' for displaying current month only. [ecs-list-events cat='festival' month='2015-06']
 * past - Show Outdated Events. [ecs-list-events cat='festival' past='yes']
 * key - Order with Start Date [ecs-list-events cat='festival' key='start date']
+
+With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options&utm_content=description) you also get the following options:
+
+* days - Number of days to show events for ie. [ecs-list-events days='7'] (for a week)
+* hiderecurring - Show only the first instance of a recurring event
+* tag - Show events with a tag [ecs-list-events tag='music'] or specify multiple tags [ecs-list-events tag='music,art']
 
 = How do I use this shortcode in a widget? =
 
@@ -88,12 +94,17 @@ By default the plugin does not include styling. Events are listed in ul li tags 
 * span .ecs-all-events
 * p .ecs-excerpt
 
-Want a better looking design?  Check out [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq&utm_content=description)
+Want a better looking design without knowing any CSS?  Check out [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-design&utm_content=description)
 
 = How do I include a list of events in a page template? =
 include echo do_shortcode("[ecs-list-events]"); in the template where you want the events list to display.
 
 == Upgrade Notice ==
+
+= 1.4 =
+* Checks for whether The Events Calendar is installed
+* Additional filters
+* Improved design of shortcode help page
 
 = 1.3 =
 * Fixes issue with "viewall" showing the events twice
