@@ -66,7 +66,7 @@ class Events_Calendar_Shortcode
 		if ( current_user_can( 'activate_plugins' ) ) {
 			$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 			$title = __( 'The Events Calendar', 'tribe-events-ical-importer' );
-			echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Shortcode, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'tec-shortcode' ), esc_url( $url ), esc_attr( $title ) ) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Shortcode, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a> and add an event.', 'tec-shortcode' ), esc_url( $url ), esc_attr( $title ) ) . '</p></div>';
 		}
 	}
 
