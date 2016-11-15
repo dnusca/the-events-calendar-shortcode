@@ -99,6 +99,12 @@ Want a better looking design without knowing any CSS?  Check out [The Events Cal
 = How do I include a list of events in a page template? =
 include echo do_shortcode("[ecs-list-events]"); in the template where you want the events list to display.
 
+== Screenshots ==
+
+1. After adding the plugin, add the shortcode where you want the list of events to appear in the page
+2. Events will appear in a list
+3. Many settings you can use in the shortcode to change what details appear in the events listing
+
 == Upgrade Notice ==
 
 = 1.4 =
