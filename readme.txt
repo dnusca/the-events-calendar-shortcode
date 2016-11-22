@@ -36,11 +36,12 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 * key - Order with Start Date [ecs-list-events cat='festival' key='start date']
 
 = Pro Version Options: =
-* hiderecurring - To only show the first instance of a recurring event, set to 'true'
-* tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
 * design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing
+* days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week
+* tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
+* hiderecurring - To only show the first instance of a recurring event, set to 'true'
 
-[Get the Pro Version](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description)
+[View Details and Get the Pro Version](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description)
 
 This plugin is not developed by or affiliated with The Events Calendar or Modern Tribe in any way.
 
@@ -74,6 +75,7 @@ This plugin is not developed by or affiliated with The Events Calendar or Modern
 
 With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options&utm_content=description) you also get the following options:
 
+* design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing
 * days - Number of days to show events for ie. [ecs-list-events days='7'] (for a week)
 * hiderecurring - Show only the first instance of a recurring event
 * tag - Show events with a tag [ecs-list-events tag='music'] or specify multiple tags [ecs-list-events tag='music,art']
@@ -84,7 +86,7 @@ With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the
 * Not all themes support use of a shortcode in a widget. If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
 
 = What are the classes for styling the list of events? =
-By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling.
+By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling with a bit of CSS.
 
 * ul class="ecs-event-list"
 * li class="ecs-event"

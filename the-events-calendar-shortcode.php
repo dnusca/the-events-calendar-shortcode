@@ -18,6 +18,8 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit();
 }
 
+define( 'TECS_CORE_PLUGIN_FILE', __FILE__ );
+
 /**
  * Events calendar shortcode addon main class
  *
