@@ -2,8 +2,8 @@
 Contributors: brianhogg, dandelionweb, ankitpokhrel, sujin2f
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 1.4
+Tested up to: 4.7.1
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,9 @@ include echo do_shortcode("[ecs-list-events]"); in the template where you want t
 
 == Upgrade Notice ==
 
+= 1.4.1 =
+* Additional filters for formatting a single event
+
 = 1.4 =
 * Checks for whether The Events Calendar is installed
 * Additional filters
@@ -149,6 +152,14 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.4.1 =
+* Additional filters for formatting a single event
+
+= 1.4 =
+* Checks for whether The Events Calendar is installed
+* Additional filters
+* Improved design of shortcode help page
 
 = 1.3 =
 * Fixes issue with "viewall" showing the events twice
