@@ -247,7 +247,7 @@ class Events_Calendar_Shortcode
 					switch ( trim( $contentorder ) ) {
 						case 'title':
 							$event_output .= apply_filters( 'ecs_event_title_tag_start', '<h4 class="entry-title summary">', $atts, $post ) .
-											'<a href="' . tribe_get_event_link() . '" rel="bookmark">' . apply_filters( 'ecs_event_list_title', get_the_title(), $atts, $post ) . '</a>' .
+											apply_filters( 'ecs_event_list_title_link_start', '<a href="' . tribe_get_event_link() . '" rel="bookmark">', $atts, $post ) . apply_filters( 'ecs_event_list_title', get_the_title(), $atts, $post ) . apply_filters( 'ecs_event_list_title_link_end', '</a>', $atts, $post ) .
 							           apply_filters( 'ecs_event_title_tag_end', '</h4>', $atts, $post );
 							break;
 
