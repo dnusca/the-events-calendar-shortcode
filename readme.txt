@@ -1,5 +1,5 @@
 === The Events Calendar Shortcode ===
-Contributors: brianhogg, dandelionweb, ankitpokhrel, sujin2f
+Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.0
 Tested up to: 4.7.2
