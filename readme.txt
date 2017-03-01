@@ -2,7 +2,7 @@
 Contributors: brianhogg, dandelionweb, ankitpokhrel, sujin2f
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.0
-Tested up to: 4.7.1
+Tested up to: 4.7.2
 Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,8 +24,9 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
 * venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. [ecs-list-events venue='true']
-* excerpt - To show or hide the excerpt and set excerpt length. Default is false. [ecs-list-events excerpt='true'] //displays excerpt with length 100
-  * excerpt='300' //displays excerpt with length 300
+* excerpt - To show or hide the excerpt and set excerpt length. Default is false. 
+  * [ecs-list-events excerpt='true'] //displays excerpt with length 100
+  * [ecs-list-events excerpt='300'] //displays excerpt with length 300
 * thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings.
 * You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size [ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
@@ -35,10 +36,18 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 * past - Show Outdated Events. [ecs-list-events cat='festival' past='yes']
 * key - Order with Start Date [ecs-list-events cat='festival' key='start date']
 
-= Pro Version Options: =
+**Additional options in the [pro version](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-top&utm_content=description):**
+
 * design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing
 * days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week
 * tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
+* id - Show a single event, useful for displaying details of the event on a blog post or page
+* description - Use the full description instead of the excerpt of an event in the listing
+* raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description
+* raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt
+* year - Show only events for a specific year
+* offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns
+* custom design - Create one or more of your own templates for use with the shortcode
 * hiderecurring - To only show the first instance of a recurring event, set to 'true'
 
 [View Details and Get the Pro Version](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description)
