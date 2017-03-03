@@ -240,7 +240,14 @@ class Events_Calendar_Shortcode
 			foreach( $posts as $post ) {
 				setup_postdata( $post );
 				$event_output = '';
-				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event">', $atts, $post );
+				$category_slugs = array();
+				$category_list = get_the_terms( $post, 'tribe_events_cat' );
+				if ( is_array( $category_list ) ) {
+					foreach ( (array) $category_list as $category ) {
+						$category_slugs[] = ' ' . $category->slug . '_ecs_category';
+					}
+				}
+				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event' . implode( '', $category_slugs ) . '">', $atts, $post );
 
 				// Put Values into $event_output
 				foreach ( apply_filters( 'ecs_event_contentorder', $atts['contentorder'], $atts, $post ) as $contentorder ) {
