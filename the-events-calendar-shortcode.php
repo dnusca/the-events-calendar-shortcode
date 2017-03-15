@@ -9,6 +9,7 @@
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
  License: GPL2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain: tecshortcode
 */
 
 // Avoid direct calls to this file
@@ -37,7 +38,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.3';
+	const VERSION = '1.4.2';
 
 	private $admin_page = null;
 
@@ -295,7 +296,7 @@ class Events_Calendar_Shortcode
 							if ( self::isValid( $atts['venue'] ) ) {
 								$event_output .= apply_filters( 'ecs_event_venue_tag_start', '<span class="duration venue">', $atts, $post ) .
 								           apply_filters( 'ecs_event_venue_at_tag_start', '<em> ', $atts, $post ) .
-								           apply_filters( 'ecs_event_venue_at_text', __( 'at', 'the-events-calendar-shortcode' ), $atts, $post ) .
+								           apply_filters( 'ecs_event_venue_at_text', __( 'at', 'tecshortcode' ), $atts, $post ) .
 								           apply_filters( 'ecs_event_venue_at_tag_end', ' </em>', $atts, $post ) .
 								           apply_filters( 'ecs_event_list_venue', tribe_get_venue(), $atts, $post ) .
 								           apply_filters( 'ecs_event_venue_tag_end', '</span>', $atts, $post );
