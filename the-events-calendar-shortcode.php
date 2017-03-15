@@ -69,7 +69,7 @@ class Events_Calendar_Shortcode
 		if ( current_user_can( 'activate_plugins' ) ) {
 			$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 			$title = __( 'The Events Calendar', 'tribe-events-ical-importer' );
-			echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Shortcode, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a> and add an event.', 'tec-shortcode' ), esc_url( $url ), esc_attr( $title ) ) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf( esc_html( __( 'To begin using The Events Calendar Shortcode, please install the latest version of %sThe Events Calendar%s and add an event.', 'tecshortcode' ) ), '<a href="' . esc_url( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">', '</a>' ) . '</p></div>';
 		}
 	}
 
@@ -78,7 +78,7 @@ class Events_Calendar_Shortcode
 			return;
 		}
 
-		$page_title = esc_html__( 'Shortcode', 'ecs' );
+		$page_title = esc_html__( 'Shortcode', 'tecshortcode' );
 		$menu_title = esc_html__( 'Shortcode', 'tribe-common' );
 		$capability = apply_filters( 'ecs_admin_page_capability', 'install_plugins' );
 
@@ -109,8 +109,8 @@ class Events_Calendar_Shortcode
 	public function add_action_links( $links ) {
 		$mylinks = array();
 		if ( class_exists( 'Tribe__Settings' ) and method_exists( Tribe__Settings::instance(), 'should_setup_pages' ) and Tribe__Settings::instance()->should_setup_pages() )
-			$mylinks[] = '<a href="' . admin_url( 'edit.php?post_type=tribe_events&page=ecs-admin' ) . '">Settings</a>';
-		$mylinks[] = '<a target="_blank" style="color:#3db634; font-weight: bold;" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin-list&utm_medium=upgrade-link&utm_campaign=plugin-list&utm_content=action-link">Upgrade</a>';
+			$mylinks[] = '<a href="' . admin_url( 'edit.php?post_type=tribe_events&page=ecs-admin' ) . '">' . esc_html__( 'Settings', 'tecshortcode' ) . '</a>';
+		$mylinks[] = '<a target="_blank" style="color:#3db634; font-weight: bold;" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin-list&utm_medium=upgrade-link&utm_campaign=plugin-list&utm_content=action-link">' . esc_html__( 'Upgrade', 'tecshortcode' ) . '</a>';
 
 		return array_merge( $links, $mylinks );
 	}

@@ -90,8 +90,8 @@
 					</ul>
 
 					<p><em><?php echo wp_kses( sprintf( __( 'Want a better looking design without adding any CSS?  Check out <a target="_blank" href="%s">The Events Calendar Shortcode PRO</a>', 'tecshortcode' ), 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design&utm_content=description' ), array( 'a' => array( 'href' => array(), 'target' => array() ) ) ); ?></em></p>
-					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/shortcode-default-design-2.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo __( 'Pro version default design', 'tecshortcode' ); ?></a></p>
-					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo __( 'Pro version compact design', 'tecshortcode' ); ?></a></p>
+					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/shortcode-default-design-2.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version default design', 'tecshortcode' ) ); ?></a></p>
+					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version compact design', 'tecshortcode' ) ); ?></a></p>
 
 				<?php endif; ?>
 			</td>
@@ -99,5 +99,5 @@
 		</tbody>
 	</table>
 
-	<p><small><?php echo __( 'This plugin is not developed by or affiliated with The Events Calendar or Modern Tribe in any way.', 'tecshortcode' ) ?></small></p>
+	<p><small><?php echo esc_html( __( 'This plugin is not developed by or affiliated with The Events Calendar or Modern Tribe in any way.', 'tecshortcode' ) ); ?></small></p>
 </div>
