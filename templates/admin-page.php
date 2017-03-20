@@ -87,7 +87,7 @@
 						<li>p .ecs-excerpt</li>
 					</ul>
 
-					<p><em><?php echo wp_kses( sprintf( __( 'Want a better looking design without adding any CSS?  Check out <a target="_blank" href="%s">The Events Calendar Shortcode PRO</a>', 'the-events-calendar-shortcode' ), 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design&utm_content=description' ), array( 'a' => array( 'href' => array(), 'target' => array() ) ) ); ?></em></p>
+					<p><em><?php echo sprintf( esc_html__( 'Want a better looking design without adding any CSS?  Check out %sThe Events Calendar Shortcode PRO%s', 'the-events-calendar-shortcode' ), '<a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design&utm_content=description">', '</a>' ); ?></em></p>
 					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/shortcode-default-design-2.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version default design', 'the-events-calendar-shortcode' ) ); ?></a></p>
 					<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version compact design', 'the-events-calendar-shortcode' ) ); ?></a></p>
 
