@@ -1,7 +1,7 @@
 <div class="wrap">
 	<h2><?php _e( 'The Events Calendar Shortcode' ); ?></h2>
 
-	<p><?php echo sprintf( esc_html__( 'The shortcode displays lists of your events. For example to shortcode to show next 8 events in the category "%s" in ASC order with date showing:', 'the-events-calendar-shortcode' ), 'festival' ); ?></p>
+	<p><?php echo sprintf( esc_html__( 'The shortcode displays lists of your events. For example the shortcode to show next 8 events in the category "%s" in ASC order with date showing:', 'the-events-calendar-shortcode' ), 'festival' ); ?></p>
 
 	<pre>[ecs-list-events cat='festival' limit='8']</pre>
 

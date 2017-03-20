@@ -57,7 +57,15 @@ class Events_Calendar_Shortcode
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ), 1000 );
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
+
 	} // END __construct()
+
+	public function load_languages() {
+		if ( function_exists( 'tecsp_load_textdomain' ) )
+			return;
+		load_plugin_textdomain( 'the-events-calendar-shortcode', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+	}
 
 	public function verify_tec_installed() {
 		if ( ! class_exists( 'Tribe__Events__Main' ) or ! defined( 'Tribe__Events__Main::VERSION' )) {
