@@ -65,7 +65,7 @@ This plugin is not developed by or affiliated with The Events Calendar or Modern
 
 3. If you don't already have The Events Calendar (the calendar you add your events to) you will be prompted to install it
 
-You can then add the [ecs-list-events] shortcode to the page or post you want to list events on.  [Full list of options available in the documentation](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-install-docs&utm_content=description).
+You can then add the [ecs-list-events] shortcode to the page or post you want to list events on.  [Full list of options available in the documentation](https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-install-docs&utm_content=description).
 
 
 == Frequently Asked Questions ==
