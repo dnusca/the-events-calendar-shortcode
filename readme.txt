@@ -1,5 +1,5 @@
 === The Events Calendar Shortcode ===
-Contributors: brianhogg, dandelionweb, ankitpokhrel, sujin2f
+Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 4.7.3
@@ -36,21 +36,24 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 * past - Show Outdated Events. [ecs-list-events cat='festival' past='yes']
 * key - Order with Start Date [ecs-list-events cat='festival' key='start date']
 
->**[Additional options in the pro version](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-top&utm_content=description)**
 
-* design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing
-* days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week
-* tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
-* id - Show a single event, useful for displaying details of the event on a blog post or page
-* description - Use the full description instead of the excerpt of an event in the listing
-* raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description
-* raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt
-* year - Show only events for a specific year
-* offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns
-* custom design - Create one or more of your own templates for use with the shortcode
-* hiderecurring - To only show the first instance of a recurring event, set to 'true'
-
-[View Details and Get the Pro Version](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description)
+<blockquote>
+<h4>Additional options and benefits in the pro version</h4>
+<ul>
+<li>design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing</li>
+<li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
+<li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
+<li>id - Show a single event, useful for displaying details of the event on a blog post or page</li>
+<li>description - Use the full description instead of the excerpt of an event in the listing</li>
+<li>raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description</li>
+<li>raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt</li>
+<li>year - Show only events for a specific year</li>
+<li>offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns</li>
+<li>custom design - Create one or more of your own templates for use with the shortcode</li>
+<li>hiderecurring - To only show the first instance of a recurring event, set to 'true'</li>
+</ul>
+<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">View more Pro features</a></p>
+</blockquote>
 
 This plugin is not developed by or affiliated with The Events Calendar or Modern Tribe in any way.
 
