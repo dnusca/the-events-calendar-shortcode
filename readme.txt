@@ -15,7 +15,7 @@ This plugin adds a shortcode for use with The Events Calendar Plugin (by Modern 
 
 With this plugin, just add the shortcode on a page to display a list of your events. For example to show next 8 events in the category festival:
 
-[ecs-list-events cat="festival" limit="8"]
+`[ecs-list-events cat="festival" limit="8"]`
 
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
