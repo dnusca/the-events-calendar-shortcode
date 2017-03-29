@@ -41,7 +41,7 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 <h4>Additional options and benefits in the pro version</h4>
 <ul>
 <li>design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing</li>
-<li>days - Specify how many days in the future, for example `[ecs-list-events days="1"]` for one day or `[ecs-list-events days="7"]` for one week</li>
+<li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
 <li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
 <li>id - Show a single event, useful for displaying details of the event on a blog post or page</li>
 <li>description - Use the full description instead of the excerpt of an event in the listing</li>
