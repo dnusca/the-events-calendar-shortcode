@@ -20,28 +20,28 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 = Shortcode Options: =
 * Basic shortcode: `[ecs-list-events]`
 * cat - Represents single event category. `[ecs-list-events cat='festival']`  Use commas when you want multiple categories [ecs-list-events cat='festival, workshops']
-* limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
-* order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
-* date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
-* venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. [ecs-list-events venue='true']
+* limit - Total number of events to show. Default is 5. `[ecs-list-events limit='3']`
+* order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. `[ecs-list-events order='DESC']`
+* date - To show or hide date. Value can be 'true' or 'false'. Default is true. `[ecs-list-events eventdetails='false']`
+* venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. `[ecs-list-events venue='true']`
 * excerpt - To show or hide the excerpt and set excerpt length. Default is false. 
-  * [ecs-list-events excerpt='true'] //displays excerpt with length 100
-  * [ecs-list-events excerpt='300'] //displays excerpt with length 300
-* thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings.
-* You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size [ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']
+  * `[ecs-list-events excerpt='true']` //displays excerpt with length 100
+  * `[ecs-list-events excerpt='300']` //displays excerpt with length 300
+* thumb - To show or hide thumbnail image. Default is false. `[ecs-list-events thumb='true']` //displays post thumbnail in default thumbnail dimension from media settings.
+* You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size `[ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']`
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
-* viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']
-* contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']
+* viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']`
+* contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
 * month - Show only specific Month. Type 'current' for displaying current month only [ecs-list-events cat='festival' month='2015-06']
-* past - Show Outdated Events. [ecs-list-events cat='festival' past='yes']
-* key - Order with Start Date [ecs-list-events cat='festival' key='start date']
+* past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
+* key - Order with Start Date `[ecs-list-events cat='festival' key='start date']`
 
 
 <blockquote>
 <h4>Additional options and benefits in the pro version</h4>
 <ul>
 <li>design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing</li>
-<li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
+<li>days - Specify how many days in the future, for example `[ecs-list-events days="1"]` for one day or `[ecs-list-events days="7"]` for one week</li>
 <li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
 <li>id - Show a single event, useful for displaying details of the event on a blog post or page</li>
 <li>description - Use the full description instead of the excerpt of an event in the listing</li>
@@ -65,34 +65,34 @@ This plugin is not developed by or affiliated with The Events Calendar or Modern
 
 3. If you don't already have The Events Calendar (the calendar you add your events to) you will be prompted to install it
 
-You can then add the [ecs-list-events] shortcode to the page or post you want to list events on.  [Full list of options available in the documentation](https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-install-docs&utm_content=description).
+You can then add the `[ecs-list-events]` shortcode to the page or post you want to list events on.  [Full list of options available in the documentation](https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-install-docs&utm_content=description).
 
 
 == Frequently Asked Questions ==
 
 = What are the shortcode options? =
 
-* Basic shortcode: [ecs-list-events]
-* cat - Show events from an event category [ecs-list-events cat='festival'] or specify multiple categories [ecs-list-events cat='festival, workshops']
-* limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
-* order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
-* date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
-* venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. [ecs-list-events venue='true']
-* excerpt - To show or hide the excerpt and set excerpt length. Default is false. [ecs-list-events excerpt='true'] //displays excerpt with length 100
+* Basic shortcode: `[ecs-list-events]`
+* cat - Show events from an event category `[ecs-list-events cat='festival']` or specify multiple categories `[ecs-list-events cat='festival, workshops']`
+* limit - Total number of events to show. Default is 5. `[ecs-list-events limit='3']`
+* order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. `[ecs-list-events order='DESC']`
+* date - To show or hide date. Value can be 'true' or 'false'. Default is true. `[ecs-list-events eventdetails='false']`
+* venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. `[ecs-list-events venue='true']`
+* excerpt - To show or hide the excerpt and set excerpt length. Default is false. `[ecs-list-events excerpt='true']` //displays excerpt with length 100
  excerpt='300' //displays excerpt with length 300
-* thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings.
-* You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size [ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']
+* thumb - To show or hide thumbnail image. Default is false. `[ecs-list-events thumb='true']` //displays post thumbnail in default thumbnail dimension from media settings.
+* You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size `[ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']`
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
-* viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']
-* contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']
-* month - Show only specific Month. Type 'current' for displaying current month only. [ecs-list-events cat='festival' month='2015-06']
-* past - Show Outdated Events. [ecs-list-events cat='festival' past='yes']
-* key - Order with Start Date [ecs-list-events cat='festival' key='start date']
+* viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']`
+* contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
+* month - Show only specific Month. Type 'current' for displaying current month only. `[ecs-list-events cat='festival' month='2015-06']`
+* past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
+* key - Order with Start Date `[ecs-list-events cat='festival' key='start date']`
 
 With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options&utm_content=description) you also get the following options:
 
 * design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing
-* days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week
+* days - Specify how many days in the future, for example `[ecs-list-events days="1"]` for one day or `[ecs-list-events days="7"]` for one week
 * tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
 * id - Show a single event, useful for displaying details of the event on a blog post or page
 * description - Use the full description instead of the excerpt of an event in the listing
@@ -124,7 +124,10 @@ By default the plugin does not include styling. Events are listed in ul li tags 
 Want a better looking design without knowing any CSS?  Check out [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-design&utm_content=description)
 
 = How do I include a list of events in a page template? =
-include echo do_shortcode("[ecs-list-events]"); in the template where you want the events list to display.
+
+`include echo do_shortcode("[ecs-list-events]");`
+
+Put this in the template where you want the events list to display.
 
 == Screenshots ==
 
