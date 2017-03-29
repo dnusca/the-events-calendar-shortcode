@@ -18,8 +18,8 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 `[ecs-list-events cat="festival" limit="8"]`
 
 = Shortcode Options: =
-* Basic shortcode: [ecs-list-events]
-* cat - Represents single event category. [ecs-list-events cat='festival'].  Use commas when you want multiple categories [ecs-list-events cat='festival, workshops']
+* Basic shortcode: `[ecs-list-events]`
+* cat - Represents single event category. `[ecs-list-events cat='festival']`  Use commas when you want multiple categories [ecs-list-events cat='festival, workshops']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
