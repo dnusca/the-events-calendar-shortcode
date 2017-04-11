@@ -91,14 +91,16 @@ You can then add the `[ecs-list-events]` shortcode to the page or post you want 
 
 With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options&utm_content=description) you also get the following options:
 
-* design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing
+* design - Shows improved design by default. Set to 'standard' for the regular one, 'compact' for a more compact listing, or 'grouped' to group events by day
 * days - Specify how many days in the future, for example `[ecs-list-events days="1"]` for one day or `[ecs-list-events days="7"]` for one week
 * tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
 * id - Show a single event, useful for displaying details of the event on a blog post or page
 * description - Use the full description instead of the excerpt of an event in the listing
 * raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description
 * raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt
-* year - Show only events for a specific year
+* date - Show only events for a specific day `[ecs-list-events date='2017-04-16']`
+* year - Show only events for a specific year `[ecs-list-events year='2017']`
+* timeonly - To show the start time of the event. `[ecs-list-events timeonly='true']`
 * offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns
 * custom design - Create one or more of your own templates for use with the shortcode
 * hiderecurring - To only show the first instance of a recurring event, set to 'true'
