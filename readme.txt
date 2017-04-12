@@ -19,7 +19,7 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 
 = Shortcode Options: =
 * Basic shortcode: `[ecs-list-events]`
-* cat - Represents single event category. `[ecs-list-events cat='festival']`  Use commas when you want multiple categories [ecs-list-events cat='festival, workshops']
+* cat - Represents single event category. `[ecs-list-events cat='festival']`  Use commas when you want multiple categories `[ecs-list-events cat='festival, workshops']`
 * limit - Total number of events to show. Default is 5. `[ecs-list-events limit='3']`
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. `[ecs-list-events order='DESC']`
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. `[ecs-list-events eventdetails='false']`
@@ -32,7 +32,7 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
 * viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']`
 * contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
-* month - Show only specific Month. Type 'current' for displaying current month only [ecs-list-events cat='festival' month='2015-06']
+* month - Show only specific Month. Type 'current' for displaying current month only `[ecs-list-events cat='festival' month='2015-06']`
 * past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
 * key - Order with Start Date `[ecs-list-events cat='festival' key='start date']`
 
@@ -42,14 +42,14 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 <ul>
 <li>design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing</li>
 <li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
-<li>date - Show only events for a specific day `[ecs-list-events date='2017-04-16']`</li>
+<li>date - Show only events for a specific day [ecs-list-events date='2017-04-16']</li>
 <li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
 <li>id - Show a single event, useful for displaying details of the event on a blog post or page</li>
 <li>description - Use the full description instead of the excerpt of an event in the listing</li>
 <li>raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description</li>
 <li>raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt</li>
 <li>year - Show only events for a specific year</li>
-<li>timeonly - To show just the start time of the event. `[ecs-list-events timeonly='true']`</li>
+<li>timeonly - To show just the start time of the event. [ecs-list-events timeonly='true']</li>
 <li>offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns</li>
 <li>custom design - Create one or more of your own templates for use with the shortcode</li>
 <li>hiderecurring - To only show the first instance of a recurring event, set to 'true'</li>
