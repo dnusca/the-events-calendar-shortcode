@@ -81,7 +81,8 @@ You can then add the `[ecs-list-events]` shortcode to the page or post you want 
 * excerpt - To show or hide the excerpt and set excerpt length. Default is false. `[ecs-list-events excerpt='true']` //displays excerpt with length 100
  excerpt='300' //displays excerpt with length 300
 * thumb - To show or hide thumbnail image. Default is false. `[ecs-list-events thumb='true']` //displays post thumbnail in default thumbnail dimension from media settings.
-* You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size `[ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']`
+* thumbsize - Specify the size of the thumbnail. `[ecs-list-events thumb='true' thumbsize='large']`
+* thumbwidth / thumbheight - Customize the thumbnail size in pixels `[ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']`
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
 * viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']`
 * contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
@@ -109,8 +110,9 @@ With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the
 
 = How do I use this shortcode in a widget? =
 
-* You can put the shortcode in a text widget.
-* Not all themes support use of a shortcode in a widget. If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
+You can put the shortcode in a text widget, though not all themes support use of a shortcode in a widget.
+
+If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
 
 = What are the classes for styling the list of events? =
 By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling with a bit of CSS.
@@ -138,6 +140,9 @@ Put this in the template where you want the events list to display.
 3. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
+
+= 1.5.1 =
+* Adds thumbsize option (ie. medium, large, thumbnail, full)
 
 = 1.5 =
 * Adds ability to translate the plugin into local languages
@@ -190,6 +195,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.5.1 =
+* Adds thumbsize option (ie. medium, large, thumbnail, full)
 
 = 1.5 =
 * Adds ability to translate the plugin into local languages

@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.5
+ Version: 1.5.1
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
@@ -38,7 +38,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.5';
+	const VERSION = '1.5.1';
 
 	private $admin_page = null;
 
@@ -154,6 +154,7 @@ class Events_Calendar_Shortcode
 			'viewall' => 'false',
 			'excerpt' => 'false',
 			'thumb' => 'false',
+			'thumbsize' => '',
 			'thumbwidth' => '',
 			'thumbheight' => '',
 			'contentorder' => apply_filters( 'ecs_default_contentorder', 'title, thumbnail, excerpt, date, venue', $atts ),
@@ -274,7 +275,7 @@ class Events_Calendar_Shortcode
 								if( !empty( $thumbWidth ) && !empty( $thumbHeight ) ) {
 									$event_output .= apply_filters( 'ecs_event_thumbnail', get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', array( $thumbWidth, $thumbHeight ), $atts, $post ) ), $atts, $post );
 								} else {
-									if ( $thumb = get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', 'medium', $atts, $post ) ) ) {
+									if ( $thumb = get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', ( trim( $atts['thumbsize'] ) ? trim( $atts['thumbsize'] ) : 'medium' ), $atts, $post ) ) ) {
 										$event_output .= apply_filters( 'ecs_event_thumbnail_link_start', '<a href="' . tribe_get_event_link() . '">', $atts, $post );
 										$event_output .= apply_filters( 'ecs_event_thumbnail', $thumb, $atts, $post );
 										$event_output .= apply_filters( 'ecs_event_thumbnail_link_end', '</a>', $atts, $post );
