@@ -7,7 +7,7 @@ Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds shortcode functionality to The Events Calendar Plugin (Free Version) by Modern Tribe.
+Adds shortcode functionality to The Events Calendar Plugin (Free Version) by Modern Tribe, so you can list your events anywhere.
 
 == Description ==
 
