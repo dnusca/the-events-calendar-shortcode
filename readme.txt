@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 4.7.3
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,7 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
 * viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']`
 * contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
-* month - Show only specific Month. Type 'current' for displaying current month only `[ecs-list-events cat='festival' month='2015-06']`
+* month - Show only specific Month. Type `'current'` for displaying current month only or `'next'` for next month `[ecs-list-events cat='festival' month='2015-06']`
 * past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
 * key - Order with Start Date `[ecs-list-events cat='festival' key='start date']`
 
@@ -88,7 +88,7 @@ You can then add the `[ecs-list-events]` shortcode to the page or post you want 
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
 * viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']`
 * contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
-* month - Show only specific Month. Type 'current' for displaying current month only. `[ecs-list-events cat='festival' month='2015-06']`
+* month - Show only specific month (in YYYY-MM format). Type `'current'` for displaying current month only or `'next'` for next month. `[ecs-list-events cat='festival' month='2015-06']`
 * past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
 * key - Order with Start Date `[ecs-list-events cat='festival' key='start date']`
 
