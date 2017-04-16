@@ -210,8 +210,11 @@ class Events_Calendar_Shortcode
 		);
 
 		// Specific Month
-		if ( $atts['month'] == 'current' ) {
+		if ( 'current' == $atts['month'] ) {
 			$atts['month'] = current_time( 'Y-m' );
+		}
+		if ( 'next' == $atts['month'] ) {
+			$atts['month'] = date( 'Y-m', strtotime( '+1 months', current_time( 'timestamp' ) ) );
 		}
 		if ($atts['month']) {
 			$month_array = explode("-", $atts['month']);
