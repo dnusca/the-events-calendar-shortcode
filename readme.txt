@@ -143,6 +143,9 @@ Put this in the template where you want the events list to display.
 
 == Upgrade Notice ==
 
+= 1.5.2 =
+* Adds 'next' option for showing the next month of events
+
 = 1.5.1 =
 * Adds thumbsize option (ie. medium, large, thumbnail, full)
 
@@ -197,6 +200,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.5.2 =
+* Adds 'next' option for showing the next month of events
 
 = 1.5.1 =
 * Adds thumbsize option (ie. medium, large, thumbnail, full)
