@@ -40,7 +40,7 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 <blockquote>
 <h4>Additional options and benefits in the pro version</h4>
 <ul>
-<li>design - Shows improved design by default, or set to 'standard' for the regular one and 'compact' for a more compact listing</li>
+<li>design - Shows <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode#designs?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-design&utm_content=description" target="_blank">improved design by default</a>, 'compact' for a more compact listing, or 'grouped' to group events by day</li>
 <li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
 <li>date - Show only events for a specific day [ecs-list-events date='2017-04-16']</li>
 <li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
