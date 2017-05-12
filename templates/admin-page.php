@@ -65,9 +65,11 @@
 					<p><?php echo esc_html( __( 'Show outdated events (ie. events that have already happened)', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events cat='festival' past='yes']</blockquote>
 					<h3>key</h3>
-					<p><?php echo esc_html( __( 'Use to order by the start date instead of the end date', 'the-events-calendar-shortcode' ) ); ?></p>
+					<p><?php echo esc_html( __( 'Use to hide events when the start date has passed, rather than the end date.  Will also change the order of events by start date instead of end date.', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events cat='festival' key='start date']</blockquote>
-
+					<h3>orderby</h3>
+					<p><?php echo esc_html( __( 'Override the ordering (end date by default).  Useful when you have multi-day events or you don\'t want to hide the event until the full event time has passed.', 'the-events-calendar-shortcode' ) ); ?></p>
+						<blockquote>[ecs-list-events orderby='start date']</blockquote>
 					<?php do_action( 'ecs_admin_page_options_after' ); ?>
 
 				</div>
