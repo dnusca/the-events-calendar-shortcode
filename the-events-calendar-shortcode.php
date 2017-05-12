@@ -151,6 +151,7 @@ class Events_Calendar_Shortcode
 			'message' => 'There are no upcoming events at this time.',
 			'key' => 'End Date',
 			'order' => 'ASC',
+			'orderby' => '',
 			'viewall' => 'false',
 			'excerpt' => 'false',
 			'thumb' => 'false',
@@ -199,6 +200,16 @@ class Events_Calendar_Shortcode
 		} else {
 			$atts['key'] = '_EventEndDate';
 		}
+
+		// Orderby
+		if ( trim( $atts['orderby'] ) ) {
+			if ( str_replace( ' ', '', trim( strtolower( $atts['orderby'] ) ) ) == 'startdate' ) {
+				$atts['orderby'] = '_EventStartDate';
+			} else {
+				$atts['orderby'] = '_EventEndDate';
+			}
+		}
+
 		// Date
 		$atts['meta_date'] = array(
 			array(
@@ -239,7 +250,7 @@ class Events_Calendar_Shortcode
 			'hide_upcoming' => true,
 			'posts_per_page' => $atts['limit'],
 			'tax_query'=> $atts['event_tax'],
-			'meta_key' => $atts['key'],
+			'meta_key' => ( trim( $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
 			'orderby' => 'meta_value',
 			'author' => $atts['author'],
 			'order' => $atts['order'],
