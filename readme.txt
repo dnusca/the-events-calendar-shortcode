@@ -147,6 +147,7 @@ Put this in the template where you want the events list to display.
 == Upgrade Notice ==
 
 = 1.5.3 =
+* Fixes translation of the "View all events" link into other languages
 * Adds orderby parameter to order by start date, but still show events until the end date has passed
 
 = 1.5.2 =
@@ -208,6 +209,7 @@ Fix missing ul
 == Changelog ==
 
 = 1.5.3 =
+* Fixes translation of the "View all events" link into other languages
 * Adds orderby parameter to order by start date, but still show events until the end date has passed
 
 = 1.5.2 =

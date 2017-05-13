@@ -123,6 +123,8 @@
 						<p><?php echo esc_html__( 'Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page or splitting into columns.', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Full Description', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'Use the full description instead of the excerpt (short description) of an event in the listing', 'the-events-calendar-shortcode' ) ?></p>
+						<h4><?php echo esc_html__( 'Future Only', 'the-events-calendar-shortcode' ) ?></h4>
+						<p><?php echo esc_html__( 'Only show events in the future even when using the month or year option.', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Custom Design', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'Use the new default or compact designs, or create your own using one or more templates in your theme folder', 'the-events-calendar-shortcode' ) ?></p>
 						<p><?php echo sprintf( esc_html__( '%sGet The Events Calendar Shortcode PRO%s', 'the-events-calendar-shortcode' ), '<a class="ecs-button" target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-after-options&utm_content=description">', '</a>' ); ?></p>
