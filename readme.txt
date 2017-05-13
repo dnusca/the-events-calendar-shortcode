@@ -2,8 +2,8 @@
 Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
-Tested up to: 4.7.3
-Stable tag: 1.5.2
+Tested up to: 4.7.4
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,8 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 * contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
 * month - Show only specific Month. Type `'current'` for displaying current month only or `'next'` for next month `[ecs-list-events cat='festival' month='2015-06']`
 * past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
-* key - Order with Start Date `[ecs-list-events cat='festival' key='start date']`
+* key - Hide the event when the start date/time has passed `[ecs-list-events cat='festival' key='start date']`
+* orderby - Order by start date `[ecs-list-events orderby='start date']`
 
 
 <blockquote>
@@ -145,6 +146,9 @@ Put this in the template where you want the events list to display.
 
 == Upgrade Notice ==
 
+= 1.5.3 =
+* Adds orderby parameter to order by start date, but still show events until the end date has passed
+
 = 1.5.2 =
 * Adds 'next' option for showing the next month of events
 
@@ -202,6 +206,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.5.3 =
+* Adds orderby parameter to order by start date, but still show events until the end date has passed
 
 = 1.5.2 =
 * Adds 'next' option for showing the next month of events
