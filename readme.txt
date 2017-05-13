@@ -44,6 +44,7 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 <li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
 <li>date - Show only events for a specific day [ecs-list-events date='2017-04-16']</li>
 <li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
+<li>city, state, country - Display events by location.</li>
 <li>id - Show a single event, useful for displaying details of the event on a blog post or page</li>
 <li>description - Use the full description instead of the excerpt of an event in the listing</li>
 <li>raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description</li>
@@ -98,6 +99,7 @@ With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the
 * days - Specify how many days in the future, for example `[ecs-list-events days="1"]` for one day or `[ecs-list-events days="7"]` for one week
 * tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
 * id - Show a single event, useful for displaying details of the event on a blog post or page
+* location (city, state/province, country) - Display events by location.  Use commas when you want to include events from multiple (ie. country='United States, Canada')
 * description - Use the full description instead of the excerpt of an event in the listing
 * raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description
 * raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt

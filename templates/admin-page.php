@@ -68,7 +68,7 @@
 					<p><?php echo esc_html( __( 'Use to hide events when the start date has passed, rather than the end date.  Will also change the order of events by start date instead of end date.', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events cat='festival' key='start date']</blockquote>
 					<h3>orderby</h3>
-					<p><?php echo esc_html( __( 'Override the ordering (end date by default).  Useful when you have multi-day events or you don\'t want to hide the event until the full event time has passed.', 'the-events-calendar-shortcode' ) ); ?></p>
+					<p><?php echo esc_html( __( 'Override the ordering.  Useful when you have multi-day events or you don\'t want to hide the event until the full event time has passed.', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events orderby='start date']</blockquote>
 					<?php do_action( 'ecs_admin_page_options_after' ); ?>
 
@@ -109,6 +109,8 @@
 						<p><?php echo esc_html__( 'Choose how many days to show events from, ie. 1 day or a week', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Tag', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'Filter events listed by one or more tags', 'the-events-calendar-shortcode' ) ?></p>
+						<h4><?php echo esc_html__( 'Location', 'the-events-calendar-shortcode' ) ?></h4>
+						<p><?php echo esc_html__( 'Display events by city, state/province, or country', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Single Event', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'List the details of a single event by ID, for example on a blog post', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Button', 'the-events-calendar-shortcode' ) ?></h4>
