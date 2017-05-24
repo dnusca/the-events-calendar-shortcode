@@ -2,8 +2,8 @@
 Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
-Tested up to: 4.7.4
-Stable tag: 1.5.3
+Tested up to: 4.7.5
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,13 +35,12 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 * month - Show only specific Month. Type `'current'` for displaying current month only or `'next'` for next month `[ecs-list-events cat='festival' month='2015-06']`
 * past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
 * key - Hide the event when the start date/time has passed `[ecs-list-events cat='festival' key='start date']`
-* orderby - Order by start date `[ecs-list-events orderby='start date']`
-
+* orderby - Order by end date `[ecs-list-events orderby='enddate']`
 
 <blockquote>
 <h4>Additional options and benefits in the pro version</h4>
 <ul>
-<li>design - Shows <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode#designs?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-design&utm_content=description" target="_blank">improved design by default</a>, 'compact' for a more compact listing, or 'grouped' to group events by day</li>
+<li>design - Shows <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode#designs?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-design&utm_content=description" target="_blank">improved design by default</a>, 'compact' for a more compact listing, 'calendar' for a monthly calendar view, or 'grouped' to group events by day</li>
 <li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
 <li>date - Show only events for a specific day [ecs-list-events date='2017-04-16']</li>
 <li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
@@ -92,11 +91,12 @@ You can then add the `[ecs-list-events]` shortcode to the page or post you want 
 * contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
 * month - Show only specific month (in YYYY-MM format). Type `'current'` for displaying current month only or `'next'` for next month. `[ecs-list-events cat='festival' month='2015-06']`
 * past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
-* key - Order with Start Date `[ecs-list-events cat='festival' key='start date']`
+* key - Hide events when the start date has passed `[ecs-list-events cat='festival' key='start date']`
+* orderby - Change the ordering to the end date `[ecs-list-events orderby="enddate"]`
 
 With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options&utm_content=description) you also get the following options:
 
-* design - Shows improved design by default. Set to 'standard' for the regular one, 'compact' for a more compact listing, or 'grouped' to group events by day
+* design - Shows improved design by default. Set to 'standard' for the regular one, 'compact' for a more compact listing, 'calendar' for a monthly calendar view, or 'grouped' to group events by day
 * days - Specify how many days in the future, for example `[ecs-list-events days="1"]` for one day or `[ecs-list-events days="7"]` for one week
 * tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
 * id - Show a single event, useful for displaying details of the event on a blog post or page
@@ -138,6 +138,10 @@ Want a better looking design without knowing any CSS?  Check out [The Events Cal
 
 Put this in the template where you want the events list to display.
 
+= How do I include a monthly calendar view instead of a list? =
+
+The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-calendar&utm_content=description) has the option to put `design="calendar"` in the shortcode to show a calendar view of the events you want.
+
 == Screenshots ==
 
 1. After adding the plugin, add the shortcode where you want the list of events to appear in the page
@@ -145,6 +149,9 @@ Put this in the template where you want the events list to display.
 3. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
+
+= 1.6 =
+* Changes default ordering by the start date, use orderby="enddate" for previous default ordering
 
 = 1.5.3 =
 * Fixes translation of the "View all events" link into other languages
@@ -207,6 +214,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.6 =
+* Changes default ordering by the start date, use orderby="enddate" for previous default ordering
 
 = 1.5.3 =
 * Fixes translation of the "View all events" link into other languages
