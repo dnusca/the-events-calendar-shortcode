@@ -68,8 +68,8 @@
 					<p><?php echo esc_html( __( 'Use to hide events when the start date has passed, rather than the end date.  Will also change the order of events by start date instead of end date.', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events cat='festival' key='start date']</blockquote>
 					<h3>orderby</h3>
-					<p><?php echo esc_html( __( 'Override the ordering.  Useful when you have multi-day events or you don\'t want to hide the event until the full event time has passed.', 'the-events-calendar-shortcode' ) ); ?></p>
-						<blockquote>[ecs-list-events orderby='start date']</blockquote>
+					<p><?php echo esc_html( __( 'Used to order by the end date instead of the start date.', 'the-events-calendar-shortcode' ) ); ?></p>
+						<blockquote>[ecs-list-events orderby='enddate']</blockquote>
 					<?php do_action( 'ecs_admin_page_options_after' ); ?>
 
 				</div>
