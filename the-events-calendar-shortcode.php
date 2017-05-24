@@ -151,7 +151,7 @@ class Events_Calendar_Shortcode
 			'message' => 'There are no upcoming events at this time.',
 			'key' => 'End Date',
 			'order' => 'ASC',
-			'orderby' => '',
+			'orderby' => 'startdate',
 			'viewall' => 'false',
 			'excerpt' => 'false',
 			'thumb' => 'false',
@@ -202,12 +202,10 @@ class Events_Calendar_Shortcode
 		}
 
 		// Orderby
-		if ( trim( $atts['orderby'] ) ) {
-			if ( str_replace( ' ', '', trim( strtolower( $atts['orderby'] ) ) ) == 'startdate' ) {
-				$atts['orderby'] = '_EventStartDate';
-			} else {
-				$atts['orderby'] = '_EventEndDate';
-			}
+		if ( str_replace( ' ', '', trim( strtolower( $atts['orderby'] ) ) ) == 'enddate' ) {
+			$atts['orderby'] = '_EventEndDate';
+		} else {
+			$atts['orderby'] = '_EventStartDate';
 		}
 
 		// Date
