@@ -168,22 +168,25 @@ class Events_Calendar_Shortcode
 				$atts['cats'] = explode( ",", $atts['cat'] );
 				$atts['cats'] = array_map( 'trim', $atts['cats'] );
 			} else {
-				$atts['cats'] = $atts['cat'];
+				$atts['cats'] = array( trim( $atts['cat'] ) );
 			}
 
 			$atts['event_tax'] = array(
 				'relation' => 'OR',
-				array(
+			);
+
+			foreach ( $atts['cats'] as $cat ) {
+				$atts['event_tax'][] = array(
 					'taxonomy' => 'tribe_events_cat',
 					'field' => 'name',
-					'terms' => $atts['cats'],
-				),
-				array(
+					'terms' => $cat,
+				);
+				$atts['event_tax'][] = array(
 					'taxonomy' => 'tribe_events_cat',
 					'field' => 'slug',
-					'terms' => $atts['cats'],
-				)
-			);
+					'terms' => $cat,
+				);
+			}
 		}
 
 		// Past Event
