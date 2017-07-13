@@ -156,6 +156,7 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 = 1.6.1 =
 * Added ecs-featured-event class if event is featured
+* Internal changes to filtering by one or more categories
 
 = 1.6 =
 * Changes default ordering by the start date, use orderby="enddate" for previous default ordering
@@ -224,6 +225,7 @@ Fix missing ul
 
 = 1.6.1 =
 * Added ecs-featured-event class if event is featured
+* Internal changes to filtering by one or more categories
 
 = 1.6 =
 * Changes default ordering by the start date, use orderby="enddate" for previous default ordering
