@@ -124,6 +124,7 @@ You can put the shortcode in a text widget, though not all themes support use of
 If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
 
 = What are the classes for styling the list of events? =
+
 By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling with a bit of CSS.
 
 * ul class="ecs-event-list"

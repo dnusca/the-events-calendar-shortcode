@@ -2,11 +2,11 @@
 /***
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
- Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
+ Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin by Modern Tribe</a>.
  Version: 1.6.1
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
- Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
+ Contributors: brianhogg
  License: GPL2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain: the-events-calendar-shortcode
@@ -77,7 +77,7 @@ class Events_Calendar_Shortcode
 		if ( current_user_can( 'activate_plugins' ) ) {
 			$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 			$title = __( 'The Events Calendar', 'tribe-events-ical-importer' );
-			echo '<div class="error"><p>' . sprintf( esc_html( __( 'To begin using The Events Calendar Shortcode, please install the latest version of %sThe Events Calendar%s and add an event.', 'the-events-calendar-shortcode' ) ), '<a href="' . esc_url( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">', '</a>' ) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf( esc_html( __( 'To begin using %s, please install the latest version of %s%s%s and add an event.', 'the-events-calendar-shortcode' ) ), 'The Events Calendar Shortcode', '<a href="' . esc_url( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">', 'The Events Calendar', '</a>' ) . '</p></div>';
 		}
 	}
 
@@ -258,11 +258,11 @@ class Events_Calendar_Shortcode
 			'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
 		), $atts, $meta_date_date, $meta_date_compare ) );
 
-		if ( $posts ) {
+		if ( $posts or apply_filters( 'ecs_always_show', false, $atts ) ) {
 			$output .= apply_filters( 'ecs_start_tag', '<ul class="ecs-event-list">', $atts );
 			$atts['contentorder'] = explode( ',', $atts['contentorder'] );
 
-			foreach( $posts as $post ) {
+			foreach( (array) $posts as $post ) {
 				setup_postdata( $post );
 				$event_output = '';
 				$category_slugs = array();

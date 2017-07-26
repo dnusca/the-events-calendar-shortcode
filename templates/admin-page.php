@@ -43,9 +43,9 @@
 					<h3>thumb</h3>
 					<p><?php echo esc_html( __( 'To show or hide thumbnail/featured image. Default is false.', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events thumb='true']</blockquote>
-					<p><?php echo esc_html( __( 'You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size', 'the-events-calendar-shortcode' ) ); ?></p>
+					<p><?php echo sprintf( esc_html( __( 'You can use 2 other attributes: %s and %s to customize the thumbnail size', 'the-events-calendar-shortcode' ) ), 'thumbwidth', 'thumbheight' ); ?></p>
 						<blockquote>[ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']</blockquote>
-					<p><?php echo esc_html( __( 'or use thumbsize to specify the pre-set size to use, for example:', 'the-events-calendar-shortcode' ) ); ?></p>
+					<p><?php echo sprintf( esc_html( __( 'or use %s to specify the pre-set size to use, for example:', 'the-events-calendar-shortcode' ) ), 'thumbsize' ); ?></p>
 						<blockquote>[ecs-list-events thumb='true' thumbsize='large']</blockquote>
 
 					<h3>message</h3>
