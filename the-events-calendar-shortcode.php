@@ -57,7 +57,7 @@ class Events_Calendar_Shortcode
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ), 1000 );
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
-		add_filter( 'ecs_beginning_output', array( $this, 'add_event_schema_json' ), 10, 3 );
+		add_filter( 'ecs_ending_output', array( $this, 'add_event_schema_json' ), 10, 3 );
 		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
 
 	} // END __construct()
@@ -342,6 +342,7 @@ class Events_Calendar_Shortcode
 				$output .= apply_filters( 'ecs_single_event_output', $event_output, $atts, $post );
 			}
 			$output .= apply_filters( 'ecs_end_tag', '</ul>', $atts );
+			$output = apply_filters( 'ecs_ending_output', $output, $posts, $atts );
 
 			if( self::isValid( $atts['viewall'] ) ) {
 				$output .= apply_filters( 'ecs_view_all_events_tag_start', '<span class="ecs-all-events">', $atts ) .
