@@ -5,7 +5,7 @@
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin by Modern Tribe</a>.
  Version: 1.6.1
  Author: Event Calendar Newsletter
- Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
+ Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode
  Contributors: brianhogg
  License: GPL2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,7 @@ class Events_Calendar_Shortcode
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ), 1000 );
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
+		add_filter( 'ecs_beginning_output', array( $this, 'add_event_schema_json' ), 10, 3 );
 		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
 
 	} // END __construct()
@@ -259,6 +260,7 @@ class Events_Calendar_Shortcode
 		), $atts, $meta_date_date, $meta_date_compare ) );
 
 		if ( $posts or apply_filters( 'ecs_always_show', false, $atts ) ) {
+			$output = apply_filters( 'ecs_beginning_output', $output, $posts, $atts );
 			$output .= apply_filters( 'ecs_start_tag', '<ul class="ecs-event-list">', $atts );
 			$atts['contentorder'] = explode( ',', $atts['contentorder'] );
 
@@ -353,6 +355,12 @@ class Events_Calendar_Shortcode
 
 		wp_reset_query();
 
+		return $output;
+	}
+
+	public function add_event_schema_json( $output, $posts, $atts ) {
+		if ( $posts and class_exists( 'Tribe__Events__JSON_LD__Event' ) )
+			$output .= Tribe__Events__JSON_LD__Event::instance()->get_markup( $posts );
 		return $output;
 	}
 
