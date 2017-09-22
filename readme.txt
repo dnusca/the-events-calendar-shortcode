@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 1.6.1
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,6 +155,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 1.7 =
+* Adds structured data to the shortcode output (great for SEO and people finding your events)
+
 = 1.6.1 =
 * Added ecs-featured-event class if event is featured
 * Internal changes to filtering by one or more categories
@@ -223,6 +226,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.7 =
+* Adds structured data to the shortcode output (great for SEO and people finding your events)
 
 = 1.6.1 =
 * Added ecs-featured-event class if event is featured
