@@ -360,7 +360,7 @@ class Events_Calendar_Shortcode
 	}
 
 	public function add_event_schema_json( $output, $posts, $atts ) {
-		if ( $posts and class_exists( 'Tribe__Events__JSON_LD__Event' ) )
+		if ( $posts and class_exists( 'Tribe__Events__JSON_LD__Event' ) and ( ! defined( 'DOING_AJAX' ) or ! DOING_AJAX ) )
 			$output .= Tribe__Events__JSON_LD__Event::instance()->get_markup( $posts );
 		return $output;
 	}
