@@ -351,7 +351,7 @@ class Events_Calendar_Shortcode
 			}
 
 		} else { //No Events were Found
-			$output .= apply_filters( 'ecs_no_events_found_message', sprintf( translate( $atts['message'], 'tribe-events-calendar' ), tribe_get_event_label_plural_lowercase() ), $atts );
+			$output .= apply_filters( 'ecs_no_events_found_message', sprintf( translate( $atts['message'], 'the-events-calendar' ), tribe_get_event_label_plural_lowercase() ), $atts );
 		} // endif
 
 		wp_reset_query();
