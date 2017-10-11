@@ -149,7 +149,7 @@ class Events_Calendar_Shortcode
 			'past' => null,
 			'venue' => 'false',
 			'author' => null,
-			'message' => 'There are no upcoming events at this time.',
+			'message' => 'There are no upcoming %s at this time.',
 			'key' => 'End Date',
 			'order' => 'ASC',
 			'orderby' => 'startdate',
@@ -351,7 +351,7 @@ class Events_Calendar_Shortcode
 			}
 
 		} else { //No Events were Found
-			$output .= apply_filters( 'ecs_no_events_found_message', translate( $atts['message'], 'tribe-events-calendar' ), $atts );
+			$output .= apply_filters( 'ecs_no_events_found_message', sprintf( translate( $atts['message'], 'tribe-events-calendar' ), tribe_get_event_label_plural_lowercase() ), $atts );
 		} // endif
 
 		wp_reset_query();
