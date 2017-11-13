@@ -231,6 +231,10 @@ Fix missing ul
 
 == Changelog ==
 
+= 1.7.1 =
+* Fix for month option where there's an all-day event the first day of the next month
+* Fix for "There are no events" string not being translated automatically into other languages
+
 = 1.7 =
 * Adds structured data to the shortcode output (great for SEO and people finding your events)
 
