@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 4.9
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,6 +155,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 1.7.2 =
+* Adds the ability to use schema='false' in the shortcode to hide the schema output
+
 = 1.7.1 =
 * Fix for month option where there's an all-day event the first day of the next month
 * Fix for "There are no events" string not being translated automatically into other languages
@@ -230,6 +233,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.7.2 =
+* Adds the ability to use schema='false' in the shortcode to hide the schema output
 
 = 1.7.1 =
 * Fix for month option where there's an all-day event the first day of the next month
