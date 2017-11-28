@@ -149,6 +149,7 @@ class Events_Calendar_Shortcode
 			'past' => null,
 			'venue' => 'false',
 			'author' => null,
+			'schema' => 'true',
 			'message' => 'There are no upcoming %s at this time.',
 			'key' => 'End Date',
 			'order' => 'ASC',
@@ -367,7 +368,7 @@ class Events_Calendar_Shortcode
 	}
 
 	public function add_event_schema_json( $output, $posts, $atts ) {
-		if ( $posts and class_exists( 'Tribe__Events__JSON_LD__Event' ) and ( ! defined( 'DOING_AJAX' ) or ! DOING_AJAX ) )
+		if ( self::isValid( $atts['schema'] ) and $posts and class_exists( 'Tribe__Events__JSON_LD__Event' ) and ( ! defined( 'DOING_AJAX' ) or ! DOING_AJAX ) )
 			$output .= Tribe__Events__JSON_LD__Event::instance()->get_markup( $posts );
 		return $output;
 	}
