@@ -266,6 +266,7 @@ class Events_Calendar_Shortcode
 			'order' => $atts['order'],
 			'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
 		), $atts, $meta_date_date, $meta_date_compare ) );
+        $posts = apply_filters( 'ecs_filter_events_after_get', $posts, $atts );
 
 		if ( $posts or apply_filters( 'ecs_always_show', false, $atts ) ) {
 			$output = apply_filters( 'ecs_beginning_output', $output, $posts, $atts );
@@ -275,6 +276,8 @@ class Events_Calendar_Shortcode
 			foreach( (array) $posts as $post_index => $post ) {
 				setup_postdata( $post );
 				$event_output = '';
+				if ( apply_filters( 'ecs_skip_event', false, $atts, $post ) )
+				    continue;
 				$category_slugs = array();
 				$category_list = get_the_terms( $post, 'tribe_events_cat' );
 				$featured_class = ( get_post_meta( get_the_ID(), '_tribe_featured', true ) ? ' ecs-featured-event' : '' );
@@ -283,7 +286,7 @@ class Events_Calendar_Shortcode
 						$category_slugs[] = ' ' . $category->slug . '_ecs_category';
 					}
 				}
-				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event' . implode( '', $category_slugs ) . $featured_class . '">', $atts, $post );
+				$event_output .= apply_filters( 'ecs_event_start_tag', '<li class="ecs-event' . implode( '', $category_slugs ) . $featured_class . apply_filters( 'ecs_event_classes', '', $atts, $post ) . '">', $atts, $post );
 
 				// Put Values into $event_output
 				foreach ( apply_filters( 'ecs_event_contentorder', $atts['contentorder'], $atts, $post ) as $contentorder ) {
