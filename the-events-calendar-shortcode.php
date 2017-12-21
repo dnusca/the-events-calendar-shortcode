@@ -331,7 +331,7 @@ class Events_Calendar_Shortcode
 							break;
 
 						case 'venue':
-							if ( self::isValid( $atts['venue'] ) ) {
+							if ( self::isValid( $atts['venue'] ) and function_exists( 'tribe_has_venue' ) and tribe_has_venue() ) {
 								$event_output .= apply_filters( 'ecs_event_venue_tag_start', '<span class="duration venue">', $atts, $post ) .
 								           apply_filters( 'ecs_event_venue_at_tag_start', '<em> ', $atts, $post ) .
 								           apply_filters( 'ecs_event_venue_at_text', __( 'at', 'the-events-calendar-shortcode' ), $atts, $post ) .
