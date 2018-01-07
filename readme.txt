@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 4.9
-Stable tag: 1.7.3
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,6 +155,10 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 1.8 =
+* Adds new orderby='title' option
+* Fixes resetting the WordPress global query instead of just the post data
+
 = 1.7.3 =
 * Hide the "at" when using venue='true' and an event has no venue
 * Adds additional WordPress filters to hide certain events
@@ -237,6 +241,10 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.8 =
+* Adds new orderby='title' option
+* Fixes resetting the WordPress global query instead of just the post data
 
 = 1.7.3 =
 * Hide the "at" when using venue='true' and an event has no venue
