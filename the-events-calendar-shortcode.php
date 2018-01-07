@@ -137,7 +137,7 @@ class Events_Calendar_Shortcode
 			return;
 		}
 
-		global $wp_query, $post;
+		global $post;
 		$output = '';
 
 		$atts = shortcode_atts( apply_filters( 'ecs_shortcode_atts', array(
@@ -367,7 +367,7 @@ class Events_Calendar_Shortcode
 			$output .= apply_filters( 'ecs_no_events_found_message', sprintf( translate( $atts['message'], 'the-events-calendar' ), tribe_get_event_label_plural_lowercase() ), $atts );
 		} // endif
 
-		wp_reset_query();
+		wp_reset_postdata();
 
 		return $output;
 	}
