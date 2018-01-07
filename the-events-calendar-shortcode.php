@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin by Modern Tribe</a>.
- Version: 1.7.3
+ Version: 1.8
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode
  Contributors: brianhogg
@@ -38,7 +38,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.7.3';
+	const VERSION = '1.8';
 
 	private $admin_page = null;
 
@@ -134,7 +134,7 @@ class Events_Calendar_Shortcode
 		 * Check if events calendar plugin method exists
 		 */
 		if ( !function_exists( 'tribe_get_events' ) ) {
-			return;
+			return '';
 		}
 
 		global $post;
