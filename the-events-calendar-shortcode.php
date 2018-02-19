@@ -257,6 +257,7 @@ class Events_Calendar_Shortcode
 			);
 		}
 
+		$atts = apply_filters( 'ecs_atts_pre_query', $atts, $meta_date_date, $meta_date_compare );
 		$posts = tribe_get_events( apply_filters( 'ecs_get_events_args', array(
 			'post_status' => 'publish',
 			'hide_upcoming' => true,
