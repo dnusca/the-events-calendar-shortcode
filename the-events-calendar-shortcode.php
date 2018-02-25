@@ -21,6 +21,20 @@ if ( !defined( 'ABSPATH' ) ) {
 
 define( 'TECS_CORE_PLUGIN_FILE', __FILE__ );
 
+include_once dirname( TECS_CORE_PLUGIN_FILE ) . '/includes/wp-requirements.php';
+
+// Check plugin requirements before loading plugin.
+$this_plugin_checks = new TECS_WP_Requirements( 'The Events Calendar Shortcode', plugin_basename( TECS_CORE_PLUGIN_FILE ), array(
+    'PHP'        => '5.3.3',
+    'WordPress'  => '4.1',
+    'Extensions' => array(
+    ),
+) );
+if ( $this_plugin_checks->pass() === false ) {
+    $this_plugin_checks->halt();
+    return;
+}
+
 /**
  * Events calendar shortcode addon main class
  *
@@ -59,7 +73,6 @@ class Events_Calendar_Shortcode
 		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
 		add_filter( 'ecs_ending_output', array( $this, 'add_event_schema_json' ), 10, 3 );
 		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
-
 	} // END __construct()
 
 	public function load_languages() {
