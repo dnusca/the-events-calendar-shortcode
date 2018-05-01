@@ -5,6 +5,8 @@
 
 	<pre>[ecs-list-events cat='festival' limit='8']</pre>
 
+    <p><a href="https://youtu.be/0okrUs-xOq4" target="_blank">Watch a Short Walk Through Video</a></p>
+
 	<table>
 		<tbody>
 		<tr valign="top">
