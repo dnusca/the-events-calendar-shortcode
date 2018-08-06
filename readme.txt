@@ -17,6 +17,8 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 
 `[ecs-list-events cat="festival" limit="8"]`
 
+[youtube https://www.youtube.com/watch?v=0okrUs-xOq4]
+
 = Shortcode Options: =
 * Basic shortcode: `[ecs-list-events]`
 * cat - Represents single event category. `[ecs-list-events cat='festival']`  Use commas when you want multiple categories `[ecs-list-events cat='festival, workshops']`
