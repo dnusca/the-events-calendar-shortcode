@@ -192,15 +192,18 @@ class Events_Calendar_Shortcode
 
 			foreach ( $atts['cats'] as $cat ) {
 				$atts['event_tax'][] = array(
-					'taxonomy' => 'tribe_events_cat',
-					'field' => 'name',
-					'terms' => $cat,
-				);
-				$atts['event_tax'][] = array(
-					'taxonomy' => 'tribe_events_cat',
-					'field' => 'slug',
-					'terms' => $cat,
-				);
+				    'relation' => 'OR',
+				    array(
+                        'taxonomy' => 'tribe_events_cat',
+                        'field' => 'name',
+                        'terms' => $cat,
+                    ),
+                    array(
+                        'taxonomy' => 'tribe_events_cat',
+                        'field' => 'slug',
+                        'terms' => $cat,
+                    )
+                );
 			}
 		}
 
