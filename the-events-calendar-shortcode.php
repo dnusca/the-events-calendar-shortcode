@@ -274,17 +274,18 @@ class Events_Calendar_Shortcode
 		}
 
 		$atts = apply_filters( 'ecs_atts_pre_query', $atts, $meta_date_date, $meta_date_compare );
-		$posts = tribe_get_events( apply_filters( 'ecs_get_events_args', array(
-			'post_status' => 'publish',
-			'hide_upcoming' => true,
-			'posts_per_page' => $atts['limit'],
-			'tax_query'=> $atts['event_tax'],
-			'meta_key' => ( ( trim( $atts['orderby'] ) and 'title' != $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
-			'orderby' => ( $atts['orderby'] == 'title' ? 'title' : 'meta_value' ),
-			'author' => $atts['author'],
-			'order' => $atts['order'],
-			'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
-		), $atts, $meta_date_date, $meta_date_compare ) );
+		$args = apply_filters( 'ecs_get_events_args', array(
+            'post_status' => 'publish',
+            'hide_upcoming' => true,
+            'posts_per_page' => $atts['limit'],
+            'tax_query'=> $atts['event_tax'],
+            'meta_key' => ( ( trim( $atts['orderby'] ) and 'title' != $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
+            'orderby' => ( $atts['orderby'] == 'title' ? 'title' : 'meta_value' ),
+            'author' => $atts['author'],
+            'order' => $atts['order'],
+            'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
+        ), $atts, $meta_date_date, $meta_date_compare );
+		$posts = tribe_get_events( $args );
         $posts = apply_filters( 'ecs_filter_events_after_get', $posts, $atts );
 
 		if ( $posts or apply_filters( 'ecs_always_show', false, $atts ) ) {
