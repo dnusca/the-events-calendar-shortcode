@@ -1,7 +1,7 @@
 {
   "name": "the-events-calendar-shortcode",
   "version": "1.9.0",
-  "description": "=== The Events Calendar Shortcode === Contributors: brianhogg Tags: event, events, calendar, shortcode, modern tribe Requires at least: 4.1 Tested up to: 4.9 Stable tag: 1.9 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,24 @@
   "bugs": {
     "url": "https://github.com/dnusca/the-events-calendar-shortcode/issues"
   },
-  "homepage": "https://github.com/dnusca/the-events-calendar-shortcode#readme"
+  "homepage": "https://github.com/dnusca/the-events-calendar-shortcode#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@wordpress/babel-plugin-import-jsx-pragma": "^1.1.2",
+    "@wordpress/browserslist-config": "^2.2.2",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.8.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-wordpress": "^0.1.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {}
 }
