@@ -1,0 +1,19 @@
+{
+  "name": "the-events-calendar-shortcode",
+  "version": "1.9.0",
+  "description": "=== The Events Calendar Shortcode === Contributors: brianhogg Tags: event, events, calendar, shortcode, modern tribe Requires at least: 4.1 Tested up to: 4.9 Stable tag: 1.9 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dnusca@github.com/dnusca/the-events-calendar-shortcode.git"
+  },
+  "author": "Event Calendar Newsletter",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/dnusca/the-events-calendar-shortcode/issues"
+  },
+  "homepage": "https://github.com/dnusca/the-events-calendar-shortcode#readme"
+}
