@@ -12,7 +12,7 @@ function ecs_register_block() {
 	wp_register_script(
 		'ecs-block',
 		plugins_url( 'block.js', __FILE__ ),
-		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
+		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'block.js' )
     );
 
@@ -33,7 +33,7 @@ add_action( 'init', 'ecs_register_block' );
 
 
 /**
- * Maps the saved attributes to the existing shortcode for front-end render
+ * Maps the saved bloock attributes to the existing shortcode for front-end render
  *
  * @param array $attributes
  *
