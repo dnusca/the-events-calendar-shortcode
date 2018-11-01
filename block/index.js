@@ -1,4 +1,4 @@
-const { __, setLocaleData } = wp.i18n;
+const { __ } = wp.i18n;
 const {	registerBlockType } = wp.blocks;
 
 registerBlockType( 'events-calendar-shortcode/block', {
@@ -6,7 +6,7 @@ registerBlockType( 'events-calendar-shortcode/block', {
 	icon: 'cal',
 	category: 'tribe-events',
 	attributes: {
-    },
+	},
 
 	edit: ( props ) => { },
 
