@@ -3,8 +3,8 @@ const {	registerBlockType } = wp.blocks;
 
 registerBlockType( 'events-calendar-shortcode/block', {
 	title: __( 'Events Calendar Shortcode', 'events-calendar-shortcode' ),
-	icon: 'cal',
-	category: 'tribe-events',
+	icon: 'calendar',
+	category: 'common',
 	attributes: {
 	},
 

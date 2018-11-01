@@ -22,6 +22,7 @@ if ( !defined( 'ABSPATH' ) ) {
 define( 'TECS_CORE_PLUGIN_FILE', __FILE__ );
 
 include_once dirname( TECS_CORE_PLUGIN_FILE ) . '/includes/wp-requirements.php';
+include_once dirname( TECS_CORE_PLUGIN_FILE ) . '/block/init.php';
 
 // Check plugin requirements before loading plugin.
 $this_plugin_checks = new TECS_WP_Requirements( 'The Events Calendar Shortcode', plugin_basename( TECS_CORE_PLUGIN_FILE ), array(
