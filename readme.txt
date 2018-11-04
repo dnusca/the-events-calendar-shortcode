@@ -2,8 +2,8 @@
 Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
-Tested up to: 4.9
-Stable tag: 1.9
+Tested up to: 5.0
+Stable tag: 1.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -157,6 +157,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 1.9.1 =
+* Fix for multi-word category names not working with the "cat" option
+
 = 1.9 =
 * Adds check for minimum WordPress and PHP version
 * Adds a link to a short tutorial video
@@ -248,6 +251,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.9.1 =
+* Fix for multi-word category names not working with the "cat" option
 
 = 1.9 =
 * Adds check for minimum WordPress and PHP version
