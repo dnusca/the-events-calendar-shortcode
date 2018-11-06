@@ -98,7 +98,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BlockContainer; });
 /* harmony import */ var _blockPreview__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blockPreview */ "./block/components/blockPreview.js");
 /* harmony import */ var _blockEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blockEdit */ "./block/components/blockEdit.js");
-/*eslint camelcase: ["error", {allow: ["edit_mode"]}]*/
 
 
 const {
@@ -125,19 +124,19 @@ class BlockContainer extends Component {
       setAttributes
     } = this.props;
     const {
-      edit_mode
+      settingsMode
     } = attributes;
-    const editButton = [{
-      icon: 'edit',
-      title: __('Edit'),
+    const settingsButton = [{
+      icon: 'calendar',
+      title: __('Configure Settings'),
       onClick: () => setAttributes({
-        edit_mode: !edit_mode
+        settingsMode: !settingsMode
       }),
-      isActive: edit_mode
+      isActive: settingsMode
     }];
     return React.createElement(Fragment, null, React.createElement(BlockControls, null, React.createElement(Toolbar, {
-      controls: editButton
-    })), edit_mode ? React.createElement(_blockEdit__WEBPACK_IMPORTED_MODULE_1__["default"], this.props) : React.createElement(_blockPreview__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
+      controls: settingsButton
+    })), settingsMode ? React.createElement(_blockEdit__WEBPACK_IMPORTED_MODULE_1__["default"], this.props) : React.createElement(_blockPreview__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
   }
 
 }

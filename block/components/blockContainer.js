@@ -1,5 +1,3 @@
-/*eslint camelcase: ["error", {allow: ["edit_mode"]}]*/
-
 import BlockPreview from './blockPreview';
 import BlockEdit from './blockEdit';
 
@@ -14,23 +12,23 @@ const { __ } = wp.i18n;
 export default class BlockContainer extends Component {
 	render() {
 		const { attributes, setAttributes } = this.props;
-		const { edit_mode } = attributes;
+		const { settingsMode } = attributes;
 
-		const editButton = [
+		const settingsButton = [
 			{
-				icon: 'edit',
-				title: __( 'Edit' ),
-				onClick: () => setAttributes( { edit_mode: ! edit_mode } ),
-				isActive: edit_mode,
+				icon: 'calendar',
+				title: __( 'Configure Settings' ),
+				onClick: () => setAttributes( { settingsMode: ! settingsMode } ),
+				isActive: settingsMode,
 			},
 		];
 
 		return (
 			<Fragment>
 				<BlockControls>
-					<Toolbar controls={ editButton } />
+					<Toolbar controls={ settingsButton } />
 				</BlockControls>
-				{ edit_mode ? (
+				{ settingsMode ? (
 					<BlockEdit { ...this.props } />
 				) : (
 					<BlockPreview { ...this.props } />
