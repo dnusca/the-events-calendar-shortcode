@@ -6,7 +6,6 @@ const { __ } = wp.i18n;
 * Outputs the edit settings mode of the block
 */
 export default class BlockEdit extends Component {
-
 	render() {
 		const { attributes, setAttributes } = this.props;
 

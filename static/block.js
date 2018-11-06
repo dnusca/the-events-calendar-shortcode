@@ -98,6 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BlockContainer; });
 /* harmony import */ var _blockPreview__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blockPreview */ "./block/components/blockPreview.js");
 /* harmony import */ var _blockEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blockEdit */ "./block/components/blockEdit.js");
+/*eslint camelcase: ["error", {allow: ["edit_mode"]}]*/
 
 
 const {
@@ -118,16 +119,6 @@ const {
  */
 
 class BlockContainer extends Component {
-  /**
-   * Constructor.
-   *
-   * @param {object} props All props from the edit handler in registerBlockType
-   *
-   */
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       attributes,
@@ -222,12 +213,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 const {
-  Component,
-  Fragment
+  Component
 } = wp.element;
-const {
-  __
-} = wp.i18n;
 /**
  * Outputs the preview mode of the block
  */

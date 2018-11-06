@@ -42,5 +42,5 @@ add_action( 'init', 'ecs_register_block' );
  */
 function ecs_render_block( $attributes ) {
 	// TODO: Map attributes to content
-	return '<h1>hello</h1>';
+	var_dump( $attributes ); die();
 }

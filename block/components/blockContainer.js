@@ -1,3 +1,5 @@
+/*eslint camelcase: ["error", {allow: ["edit_mode"]}]*/
+
 import BlockPreview from './blockPreview';
 import BlockEdit from './blockEdit';
 
@@ -10,16 +12,6 @@ const { __ } = wp.i18n;
  * The block Edit container component
  */
 export default class BlockContainer extends Component {
-	/**
-	 * Constructor.
-	 *
-	 * @param {object} props All props from the edit handler in registerBlockType
-	 *
-	 */
-	constructor( props ) {
-		super( props );
-	}
-
 	render() {
 		const { attributes, setAttributes } = this.props;
 		const { edit_mode } = attributes;
