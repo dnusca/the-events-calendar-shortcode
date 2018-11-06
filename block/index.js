@@ -6,7 +6,12 @@ registerBlockType( 'events-calendar-shortcode/block', {
 	title: __( 'Events Calendar Shortcode', 'events-calendar-shortcode' ),
 	icon: 'calendar',
 	category: 'common',
-	attributes: {},
+	attributes: {
+		design: {
+			type: 'string',
+			default: 'standard',
+		},
+	},
 
 	edit: ( props ) => {
 		return <BlockContainer { ...props } />;

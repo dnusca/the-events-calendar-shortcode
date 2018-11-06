@@ -146,7 +146,7 @@ class BlockContainer extends Component {
     }];
     return React.createElement(Fragment, null, React.createElement(BlockControls, null, React.createElement(Toolbar, {
       controls: editButton
-    })), edit_mode ? React.createElement(_blockEdit__WEBPACK_IMPORTED_MODULE_1__["default"], null) : React.createElement(_blockPreview__WEBPACK_IMPORTED_MODULE_0__["default"], null));
+    })), edit_mode ? React.createElement(_blockEdit__WEBPACK_IMPORTED_MODULE_1__["default"], this.props) : React.createElement(_blockPreview__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
   }
 
 }
@@ -171,7 +171,6 @@ const {
   Fragment
 } = wp.element;
 const {
-  TextControl,
   SelectControl
 } = wp.components;
 const {
@@ -183,12 +182,23 @@ const {
 
 class BlockEdit extends Component {
   render() {
+    const {
+      attributes,
+      setAttributes
+    } = this.props;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SelectControl, {
       label: 'Design Option',
       options: [{
-        label: 'Standard',
+        label: __('Standard'),
         value: 'standard'
-      }]
+      }, {
+        label: __('Pro'),
+        value: 'pro'
+      }],
+      value: attributes.design,
+      onChange: value => setAttributes({
+        design: value
+      })
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/'
     }, 'Upgrade'), ' to Pro for more designs!'));
@@ -252,7 +262,12 @@ registerBlockType('events-calendar-shortcode/block', {
   title: __('Events Calendar Shortcode', 'events-calendar-shortcode'),
   icon: 'calendar',
   category: 'common',
-  attributes: {},
+  attributes: {
+    design: {
+      type: 'string',
+      default: 'standard'
+    }
+  },
   edit: props => {
     return React.createElement(_components_blockContainer__WEBPACK_IMPORTED_MODULE_0__["default"], props);
   },

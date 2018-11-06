@@ -39,9 +39,9 @@ export default class BlockContainer extends Component {
 					<Toolbar controls={ editButton } />
 				</BlockControls>
 				{ edit_mode ? (
-					<BlockEdit />
+					<BlockEdit { ...this.props } />
 				) : (
-					<BlockPreview />
+					<BlockPreview { ...this.props } />
 				) }
 			</Fragment>
 		);

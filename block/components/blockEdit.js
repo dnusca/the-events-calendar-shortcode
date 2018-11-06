@@ -1,5 +1,5 @@
 const { Component, Fragment } = wp.element;
-const { TextControl, SelectControl } = wp.components
+const { SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
 /**
@@ -8,13 +8,18 @@ const { __ } = wp.i18n;
 export default class BlockEdit extends Component {
 
 	render() {
+		const { attributes, setAttributes } = this.props;
+
 		return (
 			<Fragment>
 				<SelectControl
 					label={ 'Design Option' }
 					options={ [
-						{ label: 'Standard', value: 'standard' },
+						{ label: __( 'Standard' ), value: 'standard' },
+						{ label: __( 'Pro' ), value: 'pro' },
 					] }
+					value={ attributes.design }
+					onChange={ ( value ) => setAttributes( { design: value } ) }
 				/>
 				<span>
 					<a href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }>{ 'Upgrade' }</a>
