@@ -171,15 +171,27 @@ const {
   Fragment
 } = wp.element;
 const {
+  TextControl,
+  SelectControl
+} = wp.components;
+const {
   __
 } = wp.i18n;
 /**
- * Outputs the edit settings mode of the block
- */
+* Outputs the edit settings mode of the block
+*/
 
 class BlockEdit extends Component {
   render() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Edit Mode");
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SelectControl, {
+      label: 'Design Option',
+      options: [{
+        label: 'Standard',
+        value: 'standard'
+      }]
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/'
+    }, 'Upgrade'), ' to Pro for more designs!'));
   }
 
 }
