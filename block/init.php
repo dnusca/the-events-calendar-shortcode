@@ -12,7 +12,7 @@ function ecs_register_block() {
 	wp_register_script(
 		'ecs-block',
 		plugins_url( 'static/block.js', dirname( __FILE__ ) ),
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
+		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
 		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'static/block.js' )
     );
 
@@ -23,6 +23,7 @@ function ecs_register_block() {
 	// 	filemtime( plugin_dir_path( __FILE__ ) . 'style.css' )
     // );
 
+	// TODO: check if Gutenberg exists
 	register_block_type( 'events-calendar-shortcode/block', array(
 		'style'             => 'ecs-block',
         'script'            => 'ecs-block',
@@ -40,5 +41,6 @@ add_action( 'init', 'ecs_register_block' );
  * @since 1.9.0
  */
 function ecs_render_block( $attributes ) {
-    // TODO: Map attributes to content
+	// TODO: Map attributes to content
+	return '<h1>hello</h1>';
 }

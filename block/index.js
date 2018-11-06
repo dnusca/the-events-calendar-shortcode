@@ -1,3 +1,4 @@
+import BlockContainer from './components/blockContainer';
 const { __ } = wp.i18n;
 const {	registerBlockType } = wp.blocks;
 
@@ -5,10 +6,13 @@ registerBlockType( 'events-calendar-shortcode/block', {
 	title: __( 'Events Calendar Shortcode', 'events-calendar-shortcode' ),
 	icon: 'calendar',
 	category: 'common',
-	attributes: {
+	attributes: {},
+
+	edit: ( props ) => {
+		return <BlockContainer { ...props } />;
 	},
 
-	edit: ( props ) => { },
-
-	save: ( props ) => { },
+	save: () => {
+		return null;
+	},
 } );
