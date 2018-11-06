@@ -14,11 +14,43 @@ export default class SettingsRepeater extends Component {
 		};
 	}
 
+	/**
+	 * Returns the correct sub settings based on the repeater option
+	 *
+	 * @return {ReactElement} subSettingsComponent
+	 */
+	generateSubSettings = () => {
+		let subSettingsComponent;
+
+		switch ( this.state.repeaterOption ) {
+			// case 'category':
+			// 	subSettingsComponent = <CategorySetting />;
+			// 	break;
+			// case 'limit':
+			// 	subSettingsComponent = <LimitSetting />;
+			// 	break;
+			// case 'month':
+			// 	subSettingsComponent = <MonthSetting />;
+			// 	break;
+			// case 'past':
+			// 	subSettingsComponent = <PastSetting />;
+			// 	break;
+			// case 'other':
+			// 	subSettingsComponent = <KeyValueSetting />;
+			// 	break;
+			default:
+				subSettingsComponent = <p>Invalid Selection</p>;
+				break;
+		}
+
+		return subSettingsComponent;
+	}
+
 	render() {
 		return (
 			<Fragment>
 				<SelectControl
-					label={ 'Design Option' }
+					label={ __( 'Choose an option' ) }
 					options={ [
 						{ label: __( 'Category' ), value: 'category' },
 						{ label: __( 'Limit' ), value: 'limit' },
@@ -29,6 +61,7 @@ export default class SettingsRepeater extends Component {
 					value={ this.state.repeaterOption }
 					onChange={ ( value ) => this.setState( { repeaterOption: value } ) }
 				/>
+				{ this.generateSubSettings() }
 			</Fragment>
 		);
 	}

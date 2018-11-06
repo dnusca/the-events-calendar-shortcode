@@ -23,7 +23,6 @@ function ecs_register_block() {
 	// 	filemtime( plugin_dir_path( __FILE__ ) . 'style.css' )
     // );
 
-	// TODO: check if Gutenberg exists
 	register_block_type( 'events-calendar-shortcode/block', array(
 		'style'             => 'ecs-block',
         'script'            => 'ecs-block',
@@ -42,5 +41,5 @@ add_action( 'init', 'ecs_register_block' );
  */
 function ecs_render_block( $attributes ) {
 	// TODO: Map attributes to content
-	var_dump( $attributes ); die();
+	// var_dump( $attributes ); die();
 }

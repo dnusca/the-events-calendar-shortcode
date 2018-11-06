@@ -154,8 +154,7 @@ class BlockContainer extends Component {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BlockEdit; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _settingsRepeater__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./settingsRepeater */ "./block/components/settingsRepeater.js");
 
 const {
   Component,
@@ -177,8 +176,8 @@ class BlockEdit extends Component {
       attributes,
       setAttributes
     } = this.props;
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SelectControl, {
-      label: 'Design Option',
+    return React.createElement(Fragment, null, React.createElement(SelectControl, {
+      label: __('Design Option'),
       options: [{
         label: __('Standard'),
         value: 'standard'
@@ -190,9 +189,9 @@ class BlockEdit extends Component {
       onChange: value => setAttributes({
         design: value
       })
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }), React.createElement("span", null, React.createElement("a", {
       href: 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/'
-    }, 'Upgrade'), ' to Pro for more designs!'));
+    }, 'Upgrade'), ' to Pro for more designs!'), React.createElement(_settingsRepeater__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
   }
 
 }
@@ -222,6 +221,108 @@ const {
 class BlockPreview extends Component {
   render() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Preview Mode");
+  }
+
+}
+
+/***/ }),
+
+/***/ "./block/components/settingsRepeater.js":
+/*!**********************************************!*\
+  !*** ./block/components/settingsRepeater.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SettingsRepeater; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const {
+  Component,
+  Fragment
+} = wp.element;
+const {
+  __
+} = wp.i18n;
+const {
+  SelectControl
+} = wp.components;
+/**
+* Renders custom repeater component for block settings.
+*/
+
+class SettingsRepeater extends Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "generateSubSettings", () => {
+      let subSettingsComponent;
+
+      switch (this.state.repeaterOption) {
+        // case 'category':
+        // 	subSettingsComponent = <CategorySetting />;
+        // 	break;
+        // case 'limit':
+        // 	subSettingsComponent = <LimitSetting />;
+        // 	break;
+        // case 'month':
+        // 	subSettingsComponent = <MonthSetting />;
+        // 	break;
+        // case 'past':
+        // 	subSettingsComponent = <PastSetting />;
+        // 	break;
+        // case 'other':
+        // 	subSettingsComponent = <KeyValueSetting />;
+        // 	break;
+        default:
+          subSettingsComponent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Invalid Selection");
+          break;
+      }
+
+      return subSettingsComponent;
+    });
+
+    this.state = {
+      repeaterOption: 'category'
+    };
+  }
+  /**
+   * Returns the correct sub settings based on the repeater option
+   *
+   * @return {ReactElement} subSettingsComponent
+   */
+
+
+  render() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SelectControl, {
+      label: __('Choose an option'),
+      options: [{
+        label: __('Category'),
+        value: 'category'
+      }, {
+        label: __('Limit'),
+        value: 'limit'
+      }, {
+        label: __('Month'),
+        value: 'month'
+      }, {
+        label: __('Past'),
+        value: 'past'
+      }, {
+        label: __('Other'),
+        value: 'other'
+      }],
+      value: this.state.repeaterOption,
+      onChange: value => this.setState({
+        repeaterOption: value
+      })
+    }), this.generateSubSettings());
   }
 
 }

@@ -1,3 +1,5 @@
+import SettingsRepeater from './settingsRepeater';
+
 const { Component, Fragment } = wp.element;
 const { SelectControl } = wp.components;
 const { __ } = wp.i18n;
@@ -12,7 +14,7 @@ export default class BlockEdit extends Component {
 		return (
 			<Fragment>
 				<SelectControl
-					label={ 'Design Option' }
+					label={ __( 'Design Option' ) }
 					options={ [
 						{ label: __( 'Standard' ), value: 'standard' },
 						{ label: __( 'Pro' ), value: 'pro' },
@@ -24,6 +26,7 @@ export default class BlockEdit extends Component {
 					<a href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }>{ 'Upgrade' }</a>
 					{ ' to Pro for more designs!' }
 				</span>
+				<SettingsRepeater { ...this.props } />
 			</Fragment>
 		);
 	}
