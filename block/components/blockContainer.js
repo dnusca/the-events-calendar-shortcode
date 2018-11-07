@@ -1,5 +1,3 @@
-import { hot } from 'react-hot-loader';
-
 import BlockPreview from './blockPreview';
 import BlockEdit from './blockEdit';
 
@@ -40,4 +38,4 @@ class BlockContainer extends Component {
 	}
 }
 
-export default hot( module )( BlockContainer );
+export default BlockContainer;

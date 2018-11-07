@@ -3,6 +3,5 @@ module.exports = {
 		'@wordpress/babel-plugin-import-jsx-pragma',
 		'@babel/transform-react-jsx',
 		'@babel/proposal-class-properties',
-		'react-hot-loader/babel'
 	],
 };

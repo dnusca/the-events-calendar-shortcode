@@ -11,8 +11,8 @@ function ecs_register_block() {
 	
 	wp_register_script(
 		'ecs-block',
-		// plugins_url( 'static/block.js', dirname( __FILE__ ) ),
-		'http://localhost:8080/block.js',
+		plugins_url( 'static/block.js', dirname( __FILE__ ) ),
+		// 'http://localhost:8080/block.js',
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
 		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'static/block.js' )
     );

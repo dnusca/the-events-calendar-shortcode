@@ -1,3 +1,5 @@
+import CategorySetting from './categorySetting';
+
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
@@ -5,7 +7,7 @@ const { SelectControl } = wp.components;
 /**
 * Renders custom repeater component for block settings.
 */
-export default class SettingsRepeater extends Component {
+class SettingsRepeater extends Component {
 	constructor( props ) {
 		super( props );
 
@@ -23,9 +25,9 @@ export default class SettingsRepeater extends Component {
 		let subSettingsComponent;
 
 		switch ( this.state.repeaterOption ) {
-			// case 'category':
-			// 	subSettingsComponent = <CategorySetting />;
-			// 	break;
+			case 'category':
+				subSettingsComponent = <CategorySetting { ...this.props } />;
+				break;
 			// case 'limit':
 			// 	subSettingsComponent = <LimitSetting />;
 			// 	break;
@@ -66,3 +68,5 @@ export default class SettingsRepeater extends Component {
 		);
 	}
 }
+
+export default ( SettingsRepeater );

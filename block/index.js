@@ -11,6 +11,10 @@ registerBlockType( 'events-calendar-shortcode/block', {
 			type: 'string',
 			default: 'standard',
 		},
+		cat: {
+			type: 'string',
+			default: '',
+		}
 	},
 
 	edit: ( props ) => {
