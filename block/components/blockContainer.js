@@ -1,3 +1,5 @@
+import { hot } from 'react-hot-loader';
+
 import BlockPreview from './blockPreview';
 import BlockEdit from './blockEdit';
 
@@ -9,7 +11,7 @@ const { __ } = wp.i18n;
 /**
  * The block Edit container component
  */
-export default class BlockContainer extends Component {
+class BlockContainer extends Component {
 	render() {
 		const { attributes, setAttributes } = this.props;
 		const { settingsMode } = attributes;
@@ -37,3 +39,5 @@ export default class BlockContainer extends Component {
 		);
 	}
 }
+
+export default hot( module )( BlockContainer );
