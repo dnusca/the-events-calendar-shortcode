@@ -2,8 +2,6 @@ import Select from 'react-select';
 
 const { Component, Fragment } = wp.element;
 const { apiFetch } = wp;
-const { compose } = wp.compose;
-const { withSelect, dispatch } = wp.data;
 const { __ } = wp.i18n;
 
 /**
@@ -25,11 +23,11 @@ class CategorySetting extends Component {
 				return { value: category.id, label: category.name };
 			} );
 
-			const catArray = this.props.attributes.cat.split( ',' );
-			console( `cdm catArray is ${catArray}`)
+			const { cat } = this.props.attributes;
+			const catArray = cat.toString().split( ',' );
 
 			const selectedCats = selectOptions.filter( option => {
-				if ( catArray.indexOf( option.value ) > 0 ) {
+				if ( catArray.indexOf( option.value.toString() ) > 0 ) {
 					return option;
 				}
 			} );
@@ -47,15 +45,12 @@ class CategorySetting extends Component {
 	 * @param {Object} selectedCats The selected category
 	 */
 	handleChange = ( selectedCats ) => {
-		this.setState( { selectedCats } );
-
 		const formattedSelection = selectedCats.map( category => {
 			return category.value;
 		} );
-
 		const stringSelection = formattedSelection.join( ',' );
-		console( `hc stringSelection is ${stringSelection}`)
 
+		this.setState( { selectedCats } );
 		this.props.setAttributes( { cat: stringSelection } );
 	}
 

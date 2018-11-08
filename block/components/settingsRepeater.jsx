@@ -1,4 +1,6 @@
-import CategorySetting from './categorySetting';
+import CategorySetting from './categorySetting.jsx';
+import LimitSetting from './limitSetting.jsx';
+import MonthSetting from './monthSetting.jsx';
 
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
@@ -28,12 +30,12 @@ class SettingsRepeater extends Component {
 			case 'category':
 				subSettingsComponent = <CategorySetting { ...this.props } />;
 				break;
-			// case 'limit':
-			// 	subSettingsComponent = <LimitSetting />;
-			// 	break;
-			// case 'month':
-			// 	subSettingsComponent = <MonthSetting />;
-			// 	break;
+			case 'limit':
+				subSettingsComponent = <LimitSetting { ...this.props } />;
+				break;
+			case 'month':
+				subSettingsComponent = <MonthSetting { ...this.props } />;
+				break;
 			// case 'past':
 			// 	subSettingsComponent = <PastSetting />;
 			// 	break;

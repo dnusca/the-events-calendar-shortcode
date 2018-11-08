@@ -1,4 +1,5 @@
-import BlockContainer from './components/blockContainer';
+import BlockContainer from './containers/blockContainer';
+
 const { __ } = wp.i18n;
 const {	registerBlockType } = wp.blocks;
 
@@ -14,7 +15,17 @@ registerBlockType( 'events-calendar-shortcode/block', {
 		cat: {
 			type: 'string',
 			default: '',
-		}
+		},
+		limit: {
+			type: 'number',
+			default: 5,
+		},
+		month: {
+			type: 'string',
+		},
+		time: {
+			type: 'string',
+		},
 	},
 
 	edit: ( props ) => {

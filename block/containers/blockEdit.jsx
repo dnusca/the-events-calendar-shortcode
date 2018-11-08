@@ -1,4 +1,4 @@
-import SettingsRepeater from './settingsRepeater';
+import SettingsRepeater from '../components/settingsRepeater.jsx';
 
 const { Component, Fragment } = wp.element;
 const { SelectControl } = wp.components;
@@ -8,11 +8,15 @@ const { __ } = wp.i18n;
 * Outputs the edit settings mode of the block
 */
 class BlockEdit extends Component {
+	/**
+	 * @returns {ReactElement} The settings controls
+	 */
 	render() {
 		const { attributes, setAttributes } = this.props;
 
 		return (
 			<Fragment>
+				<h3>{ __( 'Configure your settings' ) }</h3>
 				<SelectControl
 					label={ __( 'Design Option' ) }
 					options={ [

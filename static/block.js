@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://localhost:8080/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -86,152 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./block/components/blockContainer.js":
-/*!********************************************!*\
-  !*** ./block/components/blockContainer.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _blockPreview__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blockPreview */ "./block/components/blockPreview.js");
-/* harmony import */ var _blockEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blockEdit */ "./block/components/blockEdit.js");
-
-
-const {
-  Component,
-  Fragment
-} = wp.element;
-const {
-  BlockControls
-} = wp.editor;
-const {
-  Toolbar
-} = wp.components;
-const {
-  __
-} = wp.i18n;
-/**
- * The block Edit container component
- */
-
-class BlockContainer extends Component {
-  render() {
-    const {
-      attributes,
-      setAttributes
-    } = this.props;
-    const {
-      settingsMode
-    } = attributes;
-    const settingsButton = [{
-      icon: 'calendar',
-      title: __('Configure Settings'),
-      onClick: () => setAttributes({
-        settingsMode: !settingsMode
-      }),
-      isActive: settingsMode
-    }];
-    return React.createElement(Fragment, null, React.createElement(BlockControls, null, React.createElement(Toolbar, {
-      controls: settingsButton
-    })), settingsMode ? React.createElement(_blockEdit__WEBPACK_IMPORTED_MODULE_1__["default"], this.props) : React.createElement(_blockPreview__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
-  }
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (BlockContainer);
-
-/***/ }),
-
-/***/ "./block/components/blockEdit.js":
-/*!***************************************!*\
-  !*** ./block/components/blockEdit.js ***!
-  \***************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _settingsRepeater__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./settingsRepeater */ "./block/components/settingsRepeater.js");
-
-const {
-  Component,
-  Fragment
-} = wp.element;
-const {
-  SelectControl
-} = wp.components;
-const {
-  __
-} = wp.i18n;
-/**
-* Outputs the edit settings mode of the block
-*/
-
-class BlockEdit extends Component {
-  render() {
-    const {
-      attributes,
-      setAttributes
-    } = this.props;
-    return React.createElement(Fragment, null, React.createElement(SelectControl, {
-      label: __('Design Option'),
-      options: [{
-        label: __('Standard'),
-        value: 'standard'
-      }, {
-        label: __('Pro'),
-        value: 'pro'
-      }],
-      value: attributes.design,
-      onChange: value => setAttributes({
-        design: value
-      })
-    }), React.createElement("span", null, React.createElement("a", {
-      href: 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/'
-    }, 'Upgrade'), ' to Pro for more designs!'), React.createElement(_settingsRepeater__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
-  }
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (BlockEdit);
-
-/***/ }),
-
-/***/ "./block/components/blockPreview.js":
-/*!******************************************!*\
-  !*** ./block/components/blockPreview.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BlockPreview; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-const {
-  Component
-} = wp.element;
-/**
- * Outputs the preview mode of the block
- */
-
-class BlockPreview extends Component {
-  render() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Preview Mode");
-  }
-
-}
-
-/***/ }),
-
-/***/ "./block/components/categorySetting.js":
-/*!*********************************************!*\
-  !*** ./block/components/categorySetting.js ***!
-  \*********************************************/
+/***/ "./block/components/categorySetting.jsx":
+/*!**********************************************!*\
+  !*** ./block/components/categorySetting.jsx ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -249,13 +107,6 @@ const {
   apiFetch
 } = wp;
 const {
-  compose
-} = wp.compose;
-const {
-  withSelect,
-  dispatch
-} = wp.data;
-const {
   __
 } = wp.i18n;
 /**
@@ -267,14 +118,13 @@ class CategorySetting extends Component {
     super(props);
 
     _defineProperty(this, "handleChange", selectedCats => {
-      this.setState({
-        selectedCats
-      });
       const formattedSelection = selectedCats.map(category => {
         return category.value;
       });
       const stringSelection = formattedSelection.join(',');
-      console(`hc stringSelection is ${stringSelection}`);
+      this.setState({
+        selectedCats
+      });
       this.props.setAttributes({
         cat: stringSelection
       });
@@ -296,10 +146,12 @@ class CategorySetting extends Component {
           label: category.name
         };
       });
-      const catArray = this.props.attributes.cat.split(',');
-      console(`cdm catArray is ${catArray}`);
+      const {
+        cat
+      } = this.props.attributes;
+      const catArray = cat.toString().split(',');
       const selectedCats = selectOptions.filter(option => {
-        if (catArray.indexOf(option.value) > 0) {
+        if (catArray.indexOf(option.value.toString()) > 0) {
           return option;
         }
       });
@@ -331,17 +183,146 @@ class CategorySetting extends Component {
 
 /***/ }),
 
-/***/ "./block/components/settingsRepeater.js":
-/*!**********************************************!*\
-  !*** ./block/components/settingsRepeater.js ***!
-  \**********************************************/
+/***/ "./block/components/limitSetting.jsx":
+/*!*******************************************!*\
+  !*** ./block/components/limitSetting.jsx ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _categorySetting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./categorySetting */ "./block/components/categorySetting.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const {
+  Component
+} = wp.element;
+const {
+  __
+} = wp.i18n;
+const {
+  BaseControl
+} = wp.components;
+/**
+* Setting component for limit
+*/
+
+class LimitSetting extends Component {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "handleChange", event => {
+      this.props.setAttributes({
+        limit: parseInt(event.target.value)
+      });
+    });
+  }
+
+  render() {
+    const {
+      limit
+    } = this.props.attributes;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BaseControl, {
+      id: 'ecs-setting-limit',
+      label: __('Limit'),
+      help: __('The number of events to show.')
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      id: 'ecs-setting-limit',
+      type: 'number',
+      value: limit,
+      onChange: this.handleChange
+    }));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (LimitSetting);
+
+/***/ }),
+
+/***/ "./block/components/monthSetting.jsx":
+/*!*******************************************!*\
+  !*** ./block/components/monthSetting.jsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const {
+  Component
+} = wp.element;
+const {
+  __
+} = wp.i18n;
+const {
+  BaseControl,
+  SelectControl
+} = wp.components;
+/**
+* Setting component for limit
+*/
+
+class MonthSetting extends Component {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "handleChange", event => {
+      const current = event.target.checked ? 'current' : '';
+      this.props.setAttributes({
+        month: current
+      });
+    });
+  }
+
+  render() {
+    const {
+      month
+    } = this.props.attributes;
+    const current = month === 'current' ? true : false;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BaseControl, {
+      id: 'ecs-setting-month-current',
+      label: __('Current'),
+      help: __('Show events from the current month.')
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      id: 'ecs-setting-month-current',
+      type: 'checkbox',
+      checked: current,
+      onChange: this.handleChange
+    }));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (MonthSetting);
+
+/***/ }),
+
+/***/ "./block/components/settingsRepeater.jsx":
+/*!***********************************************!*\
+  !*** ./block/components/settingsRepeater.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _categorySetting_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./categorySetting.jsx */ "./block/components/categorySetting.jsx");
+/* harmony import */ var _limitSetting_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./limitSetting.jsx */ "./block/components/limitSetting.jsx");
+/* harmony import */ var _monthSetting_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./monthSetting.jsx */ "./block/components/monthSetting.jsx");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 const {
@@ -367,14 +348,16 @@ class SettingsRepeater extends Component {
 
       switch (this.state.repeaterOption) {
         case 'category':
-          subSettingsComponent = React.createElement(_categorySetting__WEBPACK_IMPORTED_MODULE_0__["default"], this.props);
+          subSettingsComponent = React.createElement(_categorySetting_jsx__WEBPACK_IMPORTED_MODULE_0__["default"], this.props);
           break;
-        // case 'limit':
-        // 	subSettingsComponent = <LimitSetting />;
-        // 	break;
-        // case 'month':
-        // 	subSettingsComponent = <MonthSetting />;
-        // 	break;
+
+        case 'limit':
+          subSettingsComponent = React.createElement(_limitSetting_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], this.props);
+          break;
+
+        case 'month':
+          subSettingsComponent = React.createElement(_monthSetting_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], this.props);
+          break;
         // case 'past':
         // 	subSettingsComponent = <PastSetting />;
         // 	break;
@@ -433,6 +416,157 @@ class SettingsRepeater extends Component {
 
 /***/ }),
 
+/***/ "./block/containers/blockContainer.jsx":
+/*!*********************************************!*\
+  !*** ./block/containers/blockContainer.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _blockPreview_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blockPreview.jsx */ "./block/containers/blockPreview.jsx");
+/* harmony import */ var _blockEdit_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blockEdit.jsx */ "./block/containers/blockEdit.jsx");
+
+
+const {
+  Component,
+  Fragment
+} = wp.element;
+const {
+  BlockControls
+} = wp.editor;
+const {
+  Toolbar
+} = wp.components;
+const {
+  __
+} = wp.i18n;
+/**
+ * The block Edit container component
+ */
+
+class BlockContainer extends Component {
+  render() {
+    const {
+      attributes,
+      setAttributes
+    } = this.props;
+    const {
+      settingsMode
+    } = attributes;
+    const settingsButton = [{
+      icon: 'calendar',
+      title: __('Configure Settings'),
+      onClick: () => setAttributes({
+        settingsMode: !settingsMode
+      }),
+      isActive: settingsMode
+    }];
+    return React.createElement(Fragment, null, React.createElement(BlockControls, null, React.createElement(Toolbar, {
+      controls: settingsButton
+    })), settingsMode ? React.createElement(_blockEdit_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], this.props) : React.createElement(_blockPreview_jsx__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (BlockContainer);
+
+/***/ }),
+
+/***/ "./block/containers/blockEdit.jsx":
+/*!****************************************!*\
+  !*** ./block/containers/blockEdit.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_settingsRepeater_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/settingsRepeater.jsx */ "./block/components/settingsRepeater.jsx");
+
+const {
+  Component,
+  Fragment
+} = wp.element;
+const {
+  SelectControl
+} = wp.components;
+const {
+  __
+} = wp.i18n;
+/**
+* Outputs the edit settings mode of the block
+*/
+
+class BlockEdit extends Component {
+  render() {
+    const {
+      attributes,
+      setAttributes
+    } = this.props;
+    return React.createElement(Fragment, null, React.createElement("h3", null, __('Configure your settings')), React.createElement(SelectControl, {
+      label: __('Design Option'),
+      options: [{
+        label: __('Standard'),
+        value: 'standard'
+      }, {
+        label: __('Pro'),
+        value: 'pro'
+      }],
+      value: attributes.design,
+      onChange: value => setAttributes({
+        design: value
+      })
+    }), React.createElement("span", null, React.createElement("a", {
+      href: 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/'
+    }, 'Upgrade'), ' to Pro for more designs!'), React.createElement(_components_settingsRepeater_jsx__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (BlockEdit);
+
+/***/ }),
+
+/***/ "./block/containers/blockPreview.jsx":
+/*!*******************************************!*\
+  !*** ./block/containers/blockPreview.jsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BlockPreview; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const {
+  Component,
+  Fragment
+} = wp.element;
+/**
+ * Outputs the preview mode of the block
+ */
+
+class BlockPreview extends Component {
+  render() {
+    const {
+      attributes
+    } = this.props;
+    const propDisplay = Object.keys(attributes).map(key => {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        key: key
+      }, `${key}: ${attributes[key]}`);
+    });
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, propDisplay);
+  }
+
+}
+
+/***/ }),
+
 /***/ "./block/index.js":
 /*!************************!*\
   !*** ./block/index.js ***!
@@ -442,7 +576,7 @@ class SettingsRepeater extends Component {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_blockContainer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/blockContainer */ "./block/components/blockContainer.js");
+/* harmony import */ var _containers_blockContainer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./containers/blockContainer */ "./block/containers/blockContainer.jsx");
 
 const {
   __
@@ -462,10 +596,20 @@ registerBlockType('events-calendar-shortcode/block', {
     cat: {
       type: 'string',
       default: ''
+    },
+    limit: {
+      type: 'number',
+      default: 5
+    },
+    month: {
+      type: 'string'
+    },
+    time: {
+      type: 'string'
     }
   },
   edit: props => {
-    return React.createElement(_components_blockContainer__WEBPACK_IMPORTED_MODULE_0__["default"], props);
+    return React.createElement(_containers_blockContainer__WEBPACK_IMPORTED_MODULE_0__["default"], props);
   },
   save: () => {
     return null;

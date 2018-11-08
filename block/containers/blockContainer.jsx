@@ -1,5 +1,5 @@
-import BlockPreview from './blockPreview';
-import BlockEdit from './blockEdit';
+import BlockPreview from './blockPreview.jsx';
+import BlockEdit from './blockEdit.jsx';
 
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.editor;
