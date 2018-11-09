@@ -26,6 +26,9 @@ registerBlockType( 'events-calendar-shortcode/block', {
 		time: {
 			type: 'string',
 		},
+		keyValue: {
+			type: 'string',
+		},
 	},
 
 	edit: ( props ) => {

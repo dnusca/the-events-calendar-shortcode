@@ -28,8 +28,8 @@ class CategorySetting extends Component {
 			const catArray = cat.toString().split( ',' );
 
 			const selectedCats = selectOptions.filter( option => {
-				if ( catArray.indexOf( option.value.toString() ) > 0 ) {
-					return option;
+				if ( catArray.indexOf( option.value.toString() ) > -1 ) {
+					return parseInt( option.value );
 				}
 			} );
 

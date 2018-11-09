@@ -12,9 +12,9 @@ class PastSetting extends Component {
 	* @param {Object} event input onChange event
 	*/
 	handleChange = ( event ) => {
-		const current = ( event.target.checked ) ? 'yes' : '';
+		const past = ( event.target.checked ) ? 'yes' : '';
 
-		this.props.setAttributes( { month: current } );
+		this.props.setAttributes( { past: past } );
 	}
 
 	render() {
@@ -24,8 +24,8 @@ class PastSetting extends Component {
 		return (
 			<BaseControl
 				id={ 'ecs-setting-month-current' }
-				label={ __( 'Current' ) }
-				help={ __( 'Show events from the current month.' ) }
+				label={ __( 'Past' ) }
+				help={ __( 'Show past events.' ) }
 			>
 				<input
 					id={ 'ecs-setting-month-current' }
