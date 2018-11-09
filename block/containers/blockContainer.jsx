@@ -1,5 +1,5 @@
-import BlockPreview from './blockPreview.jsx';
-import BlockEdit from './blockEdit.jsx';
+import BlockPreview from './blockPreview';
+import BlockSettings from './blockSettings';
 
 const { Component, Fragment } = wp.element;
 const { BlockControls } = wp.editor;
@@ -29,7 +29,7 @@ class BlockContainer extends Component {
 					<Toolbar controls={ settingsButton } />
 				</BlockControls>
 				{ settingsMode ? (
-					<BlockEdit { ...this.props } />
+					<BlockSettings { ...this.props } />
 				) : (
 					<BlockPreview { ...this.props } />
 				) }

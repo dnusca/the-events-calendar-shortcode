@@ -15,6 +15,9 @@ export default class BlockPreview extends Component {
 
 		return (
 			<Fragment>
+				<div className={ 'ecs-block-preview-header' }>
+					<h3>The Events Calendar Block</h3>
+				</div>
 				{ propDisplay }
 			</Fragment>
 		);

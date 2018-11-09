@@ -1,15 +1,17 @@
-import CategorySetting from './categorySetting.jsx';
-import LimitSetting from './limitSetting.jsx';
-import MonthSetting from './monthSetting.jsx';
+import CategorySetting from '../components/categorySetting';
+import LimitSetting from '../components/limitSetting.jsx';
+import MonthSetting from '../components/monthSetting.jsx';
+import PastSetting from '../components/pastSetting.jsx';
+import KeyValueRepeater from '../components/keyValueRepeater.jsx';
 
 const { Component, Fragment } = wp.element;
-const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
+const { __ } = wp.i18n;
 
 /**
-* Renders custom repeater component for block settings.
+* Outputs the edit settings mode of the block
 */
-class SettingsRepeater extends Component {
+class BlockEdit extends Component {
 	constructor( props ) {
 		super( props );
 
@@ -36,12 +38,12 @@ class SettingsRepeater extends Component {
 			case 'month':
 				subSettingsComponent = <MonthSetting { ...this.props } />;
 				break;
-			// case 'past':
-			// 	subSettingsComponent = <PastSetting />;
-			// 	break;
-			// case 'other':
-			// 	subSettingsComponent = <KeyValueSetting />;
-			// 	break;
+			case 'past':
+				subSettingsComponent = <PastSetting { ...this.props } />;
+				break;
+			case 'other':
+				subSettingsComponent = <KeyValueRepeater { ...this.props } />;
+				break;
 			default:
 				subSettingsComponent = <p>Invalid Selection</p>;
 				break;
@@ -50,9 +52,30 @@ class SettingsRepeater extends Component {
 		return subSettingsComponent;
 	}
 
+	/**
+	 * @returns {ReactElement} The settings controls
+	 */
 	render() {
+		const { attributes, setAttributes } = this.props;
+
 		return (
 			<Fragment>
+				<h3>{ __( 'Configure your settings' ) }</h3>
+
+				<SelectControl
+					label={ __( 'Design Option' ) }
+					options={ [
+						{ label: __( 'Standard' ), value: 'standard' },
+						{ label: __( 'Pro' ), value: 'pro' },
+					] }
+					value={ attributes.design }
+					onChange={ ( value ) => setAttributes( { design: value } ) }
+				/>
+				<span>
+					<a href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }>{ 'Upgrade' }</a>
+					{ ' to Pro for more designs!' }
+				</span>
+
 				<SelectControl
 					label={ __( 'Choose an option' ) }
 					options={ [
@@ -65,10 +88,11 @@ class SettingsRepeater extends Component {
 					value={ this.state.repeaterOption }
 					onChange={ ( value ) => this.setState( { repeaterOption: value } ) }
 				/>
+
 				{ this.generateSubSettings() }
 			</Fragment>
 		);
 	}
 }
 
-export default ( SettingsRepeater );
+export default BlockEdit;

@@ -24,7 +24,7 @@ class MonthSetting extends Component {
 		return (
 			<BaseControl
 				id={ 'ecs-setting-month-current' }
-				label={ __( 'Current' ) }
+				label={ __( 'Month' ) }
 				help={ __( 'Show events from the current month.' ) }
 			>
 				<input
@@ -32,7 +32,7 @@ class MonthSetting extends Component {
 					type={ 'checkbox' }
 					checked={ current }
 					onChange={ this.handleChange }
-				/>
+				/><span>Current</span>
 			</BaseControl>
 		);
 	}

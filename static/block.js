@@ -100,9 +100,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 const {
-  Component,
-  Fragment
+  Component
 } = wp.element;
+const {
+  BaseControl
+} = wp.components;
 const {
   apiFetch
 } = wp;
@@ -169,7 +171,11 @@ class CategorySetting extends Component {
 
 
   render() {
-    return React.createElement(Fragment, null, React.createElement(react_select__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    return React.createElement(BaseControl, {
+      id: 'ecs-block-setting-category',
+      label: __('Category'),
+      help: __('Select categories to include.')
+    }, React.createElement(react_select__WEBPACK_IMPORTED_MODULE_0__["default"], {
       value: this.state.selectedCats,
       onChange: this.handleChange,
       options: this.state.selectOptions,
@@ -180,6 +186,111 @@ class CategorySetting extends Component {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (CategorySetting);
+
+/***/ }),
+
+/***/ "./block/components/keyValueRepeater.jsx":
+/*!***********************************************!*\
+  !*** ./block/components/keyValueRepeater.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const {
+  Component
+} = wp.element;
+const {
+  __
+} = wp.i18n;
+const {
+  TextControl,
+  Button
+} = wp.components;
+/**
+* Setting component for limit
+*/
+
+class KeyValueRepeater extends Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "generateRows", () => {
+      const {
+        keyValue
+      } = this.props.attributes;
+      console.log(keyValue);
+    });
+
+    _defineProperty(this, "handleAdd", () => {
+      let {
+        keyValue
+      } = this.props.attributes;
+      const {
+        currentKey,
+        currentValue
+      } = this.state;
+
+      if (!keyValue) {
+        keyValue = {};
+      }
+
+      keyValue = keyValue ? JSON.parse(keyValue) : {};
+      const newObject = Object.assign({}, keyValue, {
+        [currentKey]: [currentValue]
+      });
+      this.props.setAttributes({
+        keyValue: JSON.stringify(newObject)
+      });
+    });
+
+    this.state = {
+      rows: [],
+      currentKey: '',
+      currentValue: ''
+    };
+    this.keyRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    this.valueRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+  }
+  /**
+  * Handle current checkbox input change
+  */
+
+
+  render() {
+    const {
+      rows
+    } = this.state;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: 'ecs-block key-value-repeater'
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: 'ecs-block-input-row'
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TextControl, {
+      label: __('Key'),
+      onChange: key => this.setState({
+        currentKey: key
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TextControl, {
+      label: __('Value'),
+      onChange: value => this.setState({
+        currentValue: value
+      })
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
+      isDefault: true,
+      onClick: this.handleAdd
+    }, "Add")));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (KeyValueRepeater);
 
 /***/ }),
 
@@ -266,8 +377,7 @@ const {
   __
 } = wp.i18n;
 const {
-  BaseControl,
-  SelectControl
+  BaseControl
 } = wp.components;
 /**
 * Setting component for limit
@@ -292,14 +402,14 @@ class MonthSetting extends Component {
     const current = month === 'current' ? true : false;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BaseControl, {
       id: 'ecs-setting-month-current',
-      label: __('Current'),
+      label: __('Month'),
       help: __('Show events from the current month.')
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
       id: 'ecs-setting-month-current',
       type: 'checkbox',
       checked: current,
       onChange: this.handleChange
-    }));
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Current"));
   }
 
 }
@@ -308,111 +418,66 @@ class MonthSetting extends Component {
 
 /***/ }),
 
-/***/ "./block/components/settingsRepeater.jsx":
-/*!***********************************************!*\
-  !*** ./block/components/settingsRepeater.jsx ***!
-  \***********************************************/
+/***/ "./block/components/pastSetting.jsx":
+/*!******************************************!*\
+  !*** ./block/components/pastSetting.jsx ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _categorySetting_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./categorySetting.jsx */ "./block/components/categorySetting.jsx");
-/* harmony import */ var _limitSetting_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./limitSetting.jsx */ "./block/components/limitSetting.jsx");
-/* harmony import */ var _monthSetting_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./monthSetting.jsx */ "./block/components/monthSetting.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
-
-
 const {
-  Component,
-  Fragment
+  Component
 } = wp.element;
 const {
   __
 } = wp.i18n;
 const {
-  SelectControl
+  BaseControl
 } = wp.components;
 /**
-* Renders custom repeater component for block settings.
+* Setting component for limit
 */
 
-class SettingsRepeater extends Component {
-  constructor(props) {
-    super(props);
+class PastSetting extends Component {
+  constructor(...args) {
+    super(...args);
 
-    _defineProperty(this, "generateSubSettings", () => {
-      let subSettingsComponent;
-
-      switch (this.state.repeaterOption) {
-        case 'category':
-          subSettingsComponent = React.createElement(_categorySetting_jsx__WEBPACK_IMPORTED_MODULE_0__["default"], this.props);
-          break;
-
-        case 'limit':
-          subSettingsComponent = React.createElement(_limitSetting_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], this.props);
-          break;
-
-        case 'month':
-          subSettingsComponent = React.createElement(_monthSetting_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], this.props);
-          break;
-        // case 'past':
-        // 	subSettingsComponent = <PastSetting />;
-        // 	break;
-        // case 'other':
-        // 	subSettingsComponent = <KeyValueSetting />;
-        // 	break;
-
-        default:
-          subSettingsComponent = React.createElement("p", null, "Invalid Selection");
-          break;
-      }
-
-      return subSettingsComponent;
+    _defineProperty(this, "handleChange", event => {
+      const current = event.target.checked ? 'yes' : '';
+      this.props.setAttributes({
+        month: current
+      });
     });
-
-    this.state = {
-      repeaterOption: 'category'
-    };
   }
-  /**
-   * Returns the correct sub settings based on the repeater option
-   *
-   * @return {ReactElement} subSettingsComponent
-   */
-
 
   render() {
-    return React.createElement(Fragment, null, React.createElement(SelectControl, {
-      label: __('Choose an option'),
-      options: [{
-        label: __('Category'),
-        value: 'category'
-      }, {
-        label: __('Limit'),
-        value: 'limit'
-      }, {
-        label: __('Month'),
-        value: 'month'
-      }, {
-        label: __('Past'),
-        value: 'past'
-      }, {
-        label: __('Other'),
-        value: 'other'
-      }],
-      value: this.state.repeaterOption,
-      onChange: value => this.setState({
-        repeaterOption: value
-      })
-    }), this.generateSubSettings());
+    let {
+      past
+    } = this.props.attributes;
+    past = past === 'yes' ? true : false;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BaseControl, {
+      id: 'ecs-setting-month-current',
+      label: __('Current'),
+      help: __('Show events from the current month.')
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      id: 'ecs-setting-month-current',
+      type: 'checkbox',
+      checked: past,
+      onChange: this.handleChange
+    }));
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (SettingsRepeater);
+/* harmony default export */ __webpack_exports__["default"] = (PastSetting);
 
 /***/ }),
 
@@ -425,8 +490,8 @@ class SettingsRepeater extends Component {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _blockPreview_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blockPreview.jsx */ "./block/containers/blockPreview.jsx");
-/* harmony import */ var _blockEdit_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blockEdit.jsx */ "./block/containers/blockEdit.jsx");
+/* harmony import */ var _blockPreview__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blockPreview */ "./block/containers/blockPreview.jsx");
+/* harmony import */ var _blockSettings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blockSettings */ "./block/containers/blockSettings.jsx");
 
 
 const {
@@ -465,67 +530,12 @@ class BlockContainer extends Component {
     }];
     return React.createElement(Fragment, null, React.createElement(BlockControls, null, React.createElement(Toolbar, {
       controls: settingsButton
-    })), settingsMode ? React.createElement(_blockEdit_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], this.props) : React.createElement(_blockPreview_jsx__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
+    })), settingsMode ? React.createElement(_blockSettings__WEBPACK_IMPORTED_MODULE_1__["default"], this.props) : React.createElement(_blockPreview__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
   }
 
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (BlockContainer);
-
-/***/ }),
-
-/***/ "./block/containers/blockEdit.jsx":
-/*!****************************************!*\
-  !*** ./block/containers/blockEdit.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_settingsRepeater_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/settingsRepeater.jsx */ "./block/components/settingsRepeater.jsx");
-
-const {
-  Component,
-  Fragment
-} = wp.element;
-const {
-  SelectControl
-} = wp.components;
-const {
-  __
-} = wp.i18n;
-/**
-* Outputs the edit settings mode of the block
-*/
-
-class BlockEdit extends Component {
-  render() {
-    const {
-      attributes,
-      setAttributes
-    } = this.props;
-    return React.createElement(Fragment, null, React.createElement("h3", null, __('Configure your settings')), React.createElement(SelectControl, {
-      label: __('Design Option'),
-      options: [{
-        label: __('Standard'),
-        value: 'standard'
-      }, {
-        label: __('Pro'),
-        value: 'pro'
-      }],
-      value: attributes.design,
-      onChange: value => setAttributes({
-        design: value
-      })
-    }), React.createElement("span", null, React.createElement("a", {
-      href: 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/'
-    }, 'Upgrade'), ' to Pro for more designs!'), React.createElement(_components_settingsRepeater_jsx__WEBPACK_IMPORTED_MODULE_0__["default"], this.props));
-  }
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (BlockEdit);
 
 /***/ }),
 
@@ -560,10 +570,148 @@ class BlockPreview extends Component {
         key: key
       }, `${key}: ${attributes[key]}`);
     });
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, propDisplay);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: 'ecs-block-preview-header'
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "The Events Calendar Block")), propDisplay);
   }
 
 }
+
+/***/ }),
+
+/***/ "./block/containers/blockSettings.jsx":
+/*!********************************************!*\
+  !*** ./block/containers/blockSettings.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_categorySetting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/categorySetting */ "./block/components/categorySetting.jsx");
+/* harmony import */ var _components_limitSetting_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/limitSetting.jsx */ "./block/components/limitSetting.jsx");
+/* harmony import */ var _components_monthSetting_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/monthSetting.jsx */ "./block/components/monthSetting.jsx");
+/* harmony import */ var _components_pastSetting_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/pastSetting.jsx */ "./block/components/pastSetting.jsx");
+/* harmony import */ var _components_keyValueRepeater_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/keyValueRepeater.jsx */ "./block/components/keyValueRepeater.jsx");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+const {
+  Component,
+  Fragment
+} = wp.element;
+const {
+  SelectControl
+} = wp.components;
+const {
+  __
+} = wp.i18n;
+/**
+* Outputs the edit settings mode of the block
+*/
+
+class BlockEdit extends Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "generateSubSettings", () => {
+      let subSettingsComponent;
+
+      switch (this.state.repeaterOption) {
+        case 'category':
+          subSettingsComponent = React.createElement(_components_categorySetting__WEBPACK_IMPORTED_MODULE_0__["default"], this.props);
+          break;
+
+        case 'limit':
+          subSettingsComponent = React.createElement(_components_limitSetting_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], this.props);
+          break;
+
+        case 'month':
+          subSettingsComponent = React.createElement(_components_monthSetting_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], this.props);
+          break;
+
+        case 'past':
+          subSettingsComponent = React.createElement(_components_pastSetting_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], this.props);
+          break;
+
+        case 'other':
+          subSettingsComponent = React.createElement(_components_keyValueRepeater_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], this.props);
+          break;
+
+        default:
+          subSettingsComponent = React.createElement("p", null, "Invalid Selection");
+          break;
+      }
+
+      return subSettingsComponent;
+    });
+
+    this.state = {
+      repeaterOption: 'category'
+    };
+  }
+  /**
+   * Returns the correct sub settings based on the repeater option
+   *
+   * @return {ReactElement} subSettingsComponent
+   */
+
+
+  /**
+   * @returns {ReactElement} The settings controls
+   */
+  render() {
+    const {
+      attributes,
+      setAttributes
+    } = this.props;
+    return React.createElement(Fragment, null, React.createElement("h3", null, __('Configure your settings')), React.createElement(SelectControl, {
+      label: __('Design Option'),
+      options: [{
+        label: __('Standard'),
+        value: 'standard'
+      }, {
+        label: __('Pro'),
+        value: 'pro'
+      }],
+      value: attributes.design,
+      onChange: value => setAttributes({
+        design: value
+      })
+    }), React.createElement("span", null, React.createElement("a", {
+      href: 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/'
+    }, 'Upgrade'), ' to Pro for more designs!'), React.createElement(SelectControl, {
+      label: __('Choose an option'),
+      options: [{
+        label: __('Category'),
+        value: 'category'
+      }, {
+        label: __('Limit'),
+        value: 'limit'
+      }, {
+        label: __('Month'),
+        value: 'month'
+      }, {
+        label: __('Past'),
+        value: 'past'
+      }, {
+        label: __('Other'),
+        value: 'other'
+      }],
+      value: this.state.repeaterOption,
+      onChange: value => this.setState({
+        repeaterOption: value
+      })
+    }), this.generateSubSettings());
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (BlockEdit);
 
 /***/ }),
 

@@ -1,6 +1,7 @@
 import Select from 'react-select';
 
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
+const { BaseControl } = wp.components;
 const { apiFetch } = wp;
 const { __ } = wp.i18n;
 
@@ -56,15 +57,18 @@ class CategorySetting extends Component {
 
 	render() {
 		return (
-			<Fragment>
+			<BaseControl
+				id={ 'ecs-block-setting-category' }
+				label={ __( 'Category' ) }
+				help={ __( 'Select categories to include.' ) }
+			>
 				<Select
 					value={ this.state.selectedCats }
 					onChange={ this.handleChange }
 					options={ this.state.selectOptions }
 					isMulti={ 'true' }
 				/>
-
-			</Fragment>
+			</BaseControl>
 		);
 	}
 }
