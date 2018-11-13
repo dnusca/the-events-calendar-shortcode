@@ -20,36 +20,16 @@ class BlockEdit extends Component {
 		};
 	}
 
-	/**
-	 * Returns the correct sub settings based on the repeater option
-	 *
-	 * @return {ReactElement} subSettingsComponent
-	 */
-	generateSubSettings = () => {
-		let subSettingsComponent;
+	renderSetting = () => {
+		let settingsComponents = {
+			category: <CategorySetting { ...this.props } />,
+			limit: <LimitSetting { ...this.props } />,
+			month: <MonthSetting { ...this.props } />,
+			past: <PastSetting { ...this.props } />,
+			other: <KeyValueRepeater { ...this.props } />,
+		};
 
-		switch ( this.state.repeaterOption ) {
-			case 'category':
-				subSettingsComponent = <CategorySetting { ...this.props } />;
-				break;
-			case 'limit':
-				subSettingsComponent = <LimitSetting { ...this.props } />;
-				break;
-			case 'month':
-				subSettingsComponent = <MonthSetting { ...this.props } />;
-				break;
-			case 'past':
-				subSettingsComponent = <PastSetting { ...this.props } />;
-				break;
-			case 'other':
-				subSettingsComponent = <KeyValueRepeater { ...this.props } />;
-				break;
-			default:
-				subSettingsComponent = <p>Invalid Selection</p>;
-				break;
-		}
-
-		return subSettingsComponent;
+		return settingsComponents[ this.state.repeaterOption ];
 	}
 
 	/**
@@ -89,7 +69,7 @@ class BlockEdit extends Component {
 					onChange={ ( value ) => this.setState( { repeaterOption: value } ) }
 				/>
 
-				{ this.generateSubSettings() }
+				{ this.renderSetting() }
 			</Fragment>
 		);
 	}
