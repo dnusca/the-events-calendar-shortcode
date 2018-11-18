@@ -35,6 +35,8 @@ if ( $this_plugin_checks->pass() === false ) {
     return;
 }
 
+include_once dirname( TECS_CORE_PLUGIN_FILE ) . '/includes/ajax-endpoints.php';
+
 /**
  * Events calendar shortcode addon main class
  *
@@ -72,6 +74,7 @@ class Events_Calendar_Shortcode
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
 		add_filter( 'ecs_ending_output', array( $this, 'add_event_schema_json' ), 10, 3 );
+		add_filter( 'ecs_ending_output', array( $this, 'add_ecs_link' ), 10, 3 );
 		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
 	} // END __construct()
 
@@ -114,7 +117,7 @@ class Events_Calendar_Shortcode
 
 	public function enqueue() {
 		wp_enqueue_style( 'ecs-admin-css', plugins_url( 'static/ecs-admin.css', __FILE__ ), array(), self::VERSION );
-		wp_enqueue_script( 'ecs-admin-js', plugins_url( 'static/ecs-admin.js', __FILE__ ), array(), self::VERSION );
+		wp_enqueue_script( 'ecs-admin-js', plugins_url( 'static/ecs-admin.min.js', __FILE__ ), array(), self::VERSION );
 	}
 
 	/**
@@ -387,6 +390,13 @@ class Events_Calendar_Shortcode
 
 		wp_reset_postdata();
 
+		return $output;
+	}
+
+	public function add_ecs_link( $output, $posts, $atts ) {
+		$output .= '<div class="ecs-powered-by-link" style="background-color: white; padding: 3px; font-size: 12px;">';
+		$output .= sprintf( esc_html__( 'Event listing powered by %sThe Events Calendar Shortcode%s', 'the-events-calendar-shortcode' ), '<a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=footer&utm_campaign=powered-by-link">', '</a>' );
+		$output .= '</div>';
 		return $output;
 	}
 

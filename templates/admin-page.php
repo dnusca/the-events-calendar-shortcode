@@ -76,6 +76,14 @@
                         <blockquote>[ecs-list-events orderby='title']</blockquote>
 					<?php do_action( 'ecs_admin_page_options_after' ); ?>
 
+                    <div id="ecs-link-display">
+                        <?php wp_nonce_field( 'ecs-link-nonce', 'ecs-link-nonce' ) ?>
+                        <h2>We hope this plugin is helping you out!</h2>
+                        <p>Would you like to show your thanks for the plugin? Add a small link underneath your events pointing to The Events Calendar Shortcode project.</p>
+                        <p><label><input type="checkbox" value="1" id="show-ecs-link"<?php echo ( get_option( 'ecs-show-link' ) ? ' checked' : '' ) ?>> Show small link to The Events Calendar Shortcode</label></p>
+                        <button class="button button-primary">Save</button>
+                        <p class="small toggle-message" style="display:none;">Value saved</p>
+                    </div>
 				</div>
 
 			</td>
@@ -135,7 +143,9 @@
 						<p><?php echo esc_html__( 'Only show events in the future even when using the month or year option.', 'the-events-calendar-shortcode' ) ?></p>
 						<h4><?php echo esc_html__( 'Custom Design', 'the-events-calendar-shortcode' ) ?></h4>
 						<p><?php echo esc_html__( 'Use the new default or compact designs, or create your own using one or more templates in your theme folder', 'the-events-calendar-shortcode' ) ?></p>
-						<p><?php echo sprintf( esc_html__( '%sGet The Events Calendar Shortcode PRO%s', 'the-events-calendar-shortcode' ), '<a class="ecs-button" target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-after-options&utm_content=description">', '</a>' ); ?> or <a href="https://demo.eventcalendarnewsletter.com/the-events-calendar-shortcode/">see it in action</p>
+                        <h4><?php echo esc_html__( 'Filter Bar', 'the-events-calendar-shortcode' ) ?></h4>
+                        <p><?php echo esc_html__( 'Allow visitors to change what events are displayed wherever you put a calendar view on your site', 'the-events-calendar-shortcode' ) ?></p>
+                        <p><?php echo sprintf( esc_html__( '%sGet The Events Calendar Shortcode PRO%s', 'the-events-calendar-shortcode' ), '<a class="ecs-button" target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-after-options&utm_content=description">', '</a>' ); ?> or <a href="https://demo.eventcalendarnewsletter.com/the-events-calendar-shortcode/">see it in action</p>
 					</div>
 				<?php endif; ?>
 			</td>
