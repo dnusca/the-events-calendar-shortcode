@@ -36,6 +36,7 @@ if ( $this_plugin_checks->pass() === false ) {
 }
 
 include_once dirname( TECS_CORE_PLUGIN_FILE ) . '/includes/ajax-endpoints.php';
+include_once dirname( TECS_CORE_PLUGIN_FILE ) . '/includes/notices/discounts.php';
 
 /**
  * Events calendar shortcode addon main class
