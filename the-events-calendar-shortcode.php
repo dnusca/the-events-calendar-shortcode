@@ -395,12 +395,13 @@ class Events_Calendar_Shortcode
 	}
 
 	public function add_ecs_link( $output, $posts, $atts ) {
+		$output .= "<!--\n Event listing powered by The Events Calendar Shortcode\n https://eventcalendarnewsletter.com/the-events-calendar-shortcode/ \n-->";
 		if ( ! get_option( 'ecs-show-link', false ) ) {
 			return $output;
 		}
-		$output .= '<div class="ecs-powered-by-link" style="background-color: white; padding: 3px; font-size: 12px;">';
+		$output .= '<p class="ecs-powered-by-link">';
 		$output .= sprintf( esc_html__( 'Event listing powered by %sThe Events Calendar Shortcode%s', 'the-events-calendar-shortcode' ), '<a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=footer&utm_campaign=powered-by-link">', '</a>' );
-		$output .= '</div>';
+		$output .= '</p>';
 		return $output;
 	}
 
