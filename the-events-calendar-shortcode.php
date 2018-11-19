@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin by Modern Tribe</a>.
- Version: 1.9.1
+ Version: 1.10
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode
  Contributors: brianhogg
@@ -55,7 +55,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.8';
+	const VERSION = '1.10';
 
 	private $admin_page = null;
 
@@ -395,6 +395,9 @@ class Events_Calendar_Shortcode
 	}
 
 	public function add_ecs_link( $output, $posts, $atts ) {
+		if ( ! get_option( 'ecs-show-link', false ) ) {
+			return $output;
+		}
 		$output .= '<div class="ecs-powered-by-link" style="background-color: white; padding: 3px; font-size: 12px;">';
 		$output .= sprintf( esc_html__( 'Event listing powered by %sThe Events Calendar Shortcode%s', 'the-events-calendar-shortcode' ), '<a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=footer&utm_campaign=powered-by-link">', '</a>' );
 		$output .= '</div>';

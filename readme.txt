@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 5.0
-Stable tag: 1.9.1
+Stable tag: 1.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,7 @@ With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the
 * timeonly - To show just the start time of the event. `[ecs-list-events timeonly='true']`
 * offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns
 * custom design - Create one or more of your own templates for use with the shortcode
+* filter bar - Allow the user to filter the events shown in the full calendar design (ie. by category, state/province, country, venue, etc)
 * hiderecurring - To only show the first instance of a recurring event, set to 'true'
 
 [Get The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options-bottom&utm_content=description)
@@ -157,8 +158,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
-= 1.9.1 =
+= 1.10 =
 * Fix for multi-word category names not working with the "cat" option
+* Option to show "powered by" link
 
 = 1.9 =
 * Adds check for minimum WordPress and PHP version
@@ -252,8 +254,9 @@ Fix missing ul
 
 == Changelog ==
 
-= 1.9.1 =
+= 1.10 =
 * Fix for multi-word category names not working with the "cat" option
+* Option to show "powered by" link
 
 = 1.9 =
 * Adds check for minimum WordPress and PHP version
