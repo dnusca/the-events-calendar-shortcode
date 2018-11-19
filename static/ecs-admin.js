@@ -1,6 +1,6 @@
 (function($){
     $(document).ready(function(){
-        $('#ecs-link-display button').on('click', function() {
+        $('#show-ecs-link').on('change', function() {
             $.ajax({
                 url: ajaxurl,
                 type: 'POST',

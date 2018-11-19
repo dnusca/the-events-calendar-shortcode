@@ -81,7 +81,6 @@
                         <h2>We hope this plugin is helping you out!</h2>
                         <p>Would you like to show your thanks for the plugin? Add a small link underneath your events pointing to The Events Calendar Shortcode project.</p>
                         <p><label><input type="checkbox" value="1" id="show-ecs-link"<?php echo ( get_option( 'ecs-show-link' ) ? ' checked' : '' ) ?>> Show small link to The Events Calendar Shortcode</label></p>
-                        <button class="button button-primary">Save</button>
                         <p class="small toggle-message" style="display:none;">Value saved</p>
                     </div>
 				</div>
