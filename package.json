@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress --colors --watch --mode=development",
-    "prod": "webpack --progress --colors -p --config webpack.config.js --mode=production",
-    "hot": "webpack-dev-server --hot --mode=development"
+    "watch": "webpack --progress --colors --watch --mode=development",
+    "build": "webpack --progress --colors -p --config webpack.config.js --mode=production"
   },
   "repository": {
     "type": "git",
@@ -26,22 +25,29 @@
     "@babel/preset-env": "^7.1.0",
     "@wordpress/babel-plugin-import-jsx-pragma": "^1.1.2",
     "@wordpress/browserslist-config": "^2.2.2",
+    "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "cross-env": "^5.2.0",
+    "css-loader": "^1.0.1",
     "eslint": "^5.8.0",
     "eslint-config-wordpress": "^2.0.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-wordpress": "^0.1.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.10.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.23.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-cli": "^3.1.2"
   },
   "dependencies": {
     "react-select": "^2.1.1"
   },
-  "browserlist": [
+  "browserslist": [
     "extends @wordpress/browserslist-config"
   ]
 }
