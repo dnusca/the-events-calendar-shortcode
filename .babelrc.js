@@ -4,4 +4,7 @@ module.exports = {
 		'@babel/transform-react-jsx',
 		'@babel/proposal-class-properties',
 	],
+	presets: [
+		[ '@babel/preset-env' ],
+	],
 };
