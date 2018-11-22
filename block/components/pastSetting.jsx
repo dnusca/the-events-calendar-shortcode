@@ -11,7 +11,7 @@ class PastSetting extends Component {
 
 		this.state = {
 			key: 'past', // matching shortcode attribute
-			value: props.attributes.past ? props.attributes.past : false, // default
+			value: props.attributes.past ? props.attributes.past : '', // default
 		};
 	}
 

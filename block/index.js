@@ -26,7 +26,7 @@ registerBlockType( 'events-calendar-shortcode/block', {
 		time: {
 			type: 'string',
 		},
-		keyValue: {
+		past: {
 			type: 'string',
 		},
 	},

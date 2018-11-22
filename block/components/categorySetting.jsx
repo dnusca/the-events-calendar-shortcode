@@ -22,11 +22,11 @@ class CategorySetting extends Component {
 	componentDidMount() {
 		apiFetch( { path: '/tribe/events/v1/categories/' } ).then( response => {
 			const selectOptions = response.categories.map( category => {
-				return { value: category.id, label: category.name };
+				return { value: category.slug, label: category.name };
 			} );
 
 			const { cat } = this.props.attributes;
-			const catArray = cat.toString().split( ',' );
+			const catArray = cat.toString().split( ', ' );
 
 			const selectedCats = selectOptions.filter( option => {
 				if ( catArray.indexOf( option.value.toString() ) > -1 ) {
@@ -57,7 +57,7 @@ class CategorySetting extends Component {
 		const formattedSelection = this.state.selectedCats.map( category => {
 			return category.value;
 		} );
-		const stringSelection = formattedSelection.join( ',' );
+		const stringSelection = formattedSelection.join( ', ' );
 
 		this.props.onAdd( { [ this.state.key ]: stringSelection } );
 	}

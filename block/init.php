@@ -33,13 +33,19 @@ add_action( 'init', 'ecs_register_block' );
 
 
 /**
- * Maps the saved bloock attributes to the existing shortcode for front-end render
+ * Maps the saved block attributes to the existing shortcode for front-end render
  *
  * @param array $attributes
  *
  * @since 1.9.0
  */
 function ecs_render_block( $attributes ) {
-	// TODO: Map attributes to content
-	// var_dump( $attributes ); die();
+	$attribute_str = '';
+
+	foreach ( $attributes as $key => $value ) {
+		$attribute_str .= " {$key}={$value}";
+	}
+
+	$shortcode_str = "[ecs-list-events{$attribute_str}]";
+	echo do_shortcode( $shortcode_str );
 }
