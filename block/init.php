@@ -53,10 +53,12 @@ function ecs_render_block( $attributes ) {
 	$attribute_str = '';
 
 	foreach ( $attributes as $key => $value ) {
-		$attribute_str .= " {$key}={$value}";
+		if ( isset( $attributes[ $key ] ) && ! empty( $attributes[ $key ] ) ) {
+			$attribute_str .= " {$key}=\"{$value}\"";
+		}
 	}
 
 	$shortcode_str = "[ecs-list-events{$attribute_str}]";
-	
-	return do_shortcode( $shortcode_str );
+
+	return $shortcode_str;
 }
