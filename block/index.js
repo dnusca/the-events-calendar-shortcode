@@ -7,29 +7,6 @@ registerBlockType( 'events-calendar-shortcode/block', {
 	title: __( 'Events Calendar Shortcode', 'events-calendar-shortcode' ),
 	icon: 'calendar',
 	category: 'common',
-	attributes: {
-		design: {
-			type: 'string',
-			default: 'standard',
-		},
-		cat: {
-			type: 'string',
-			default: '',
-		},
-		limit: {
-			type: 'number',
-			default: 5,
-		},
-		month: {
-			type: 'string',
-		},
-		time: {
-			type: 'string',
-		},
-		past: {
-			type: 'string',
-		},
-	},
 
 	edit: ( props ) => {
 		return <BlockEdit { ...props } />;

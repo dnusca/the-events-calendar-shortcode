@@ -26,7 +26,17 @@ function ecs_register_block() {
 	register_block_type( 'events-calendar-shortcode/block', array(
 		'style'             => 'ecs-block',
         'script'            => 'ecs-block',
-        'render_callback'   => 'ecs_render_block'
+		'render_callback'   => 'ecs_render_block',
+		'attributes'		=> array(
+			'design' 	=> array(
+				'type' 		=> 'string',
+				'default'	=> 'standard',
+			),
+			'cat' 		=> array( 'type' => 'string' ),
+			'limit'		=> array( 'type' => 'number' ),
+			'month'		=> array( 'type' => 'string' ),
+			'past'		=> array( 'type' => 'string' ),
+		)
 	) );
 }
 add_action( 'init', 'ecs_register_block' );
