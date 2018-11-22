@@ -1,11 +1,20 @@
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
-const { BaseControl } = wp.components;
+const { BaseControl, Button } = wp.components;
 
 /**
 * Setting component for limit
 */
 class MonthSetting extends Component {
+	constructor( props ) {
+		super( props );
+
+		this.state = {
+			key: 'month', // matching shortcode attribute
+			value: props.attributes.month ? props.attributes.month : '', // default
+		};
+	}
+
 	/**
 	* Handle current checkbox input change
 	*
@@ -13,27 +22,41 @@ class MonthSetting extends Component {
 	*/
 	handleChange = ( event ) => {
 		const current = ( event.target.checked ) ? 'current' : '';
-
-		this.props.setAttributes( { month: current } );
+		this.setState( { value: current } );
 	}
 
+	/**
+	 * Pass added setting up to container
+	 */
+	handleAdd = () => {
+		this.props.onAdd( { [ this.state.key ]: this.state.value } );
+	}
+
+	/**
+	 * @returns {ReactElement} Month Setting
+	 */
 	render() {
-		const { month } = this.props.attributes;
-		const current = ( month === 'current' ) ? true : false;
+		const current = ( this.state.value === 'current' ) ? true : false;
 
 		return (
-			<BaseControl
-				id={ 'ecs-setting-month-current' }
-				label={ __( 'Month' ) }
-				help={ __( 'Show events from the current month.' ) }
-			>
-				<input
+			<Fragment>
+				<BaseControl
 					id={ 'ecs-setting-month-current' }
-					type={ 'checkbox' }
-					checked={ current }
-					onChange={ this.handleChange }
-				/><span>Current</span>
-			</BaseControl>
+					label={ __( 'Month' ) }
+					help={ __( 'Show events from the current month.' ) }
+				>
+					<input
+						id={ 'ecs-setting-month-current' }
+						type={ 'checkbox' }
+						checked={ current }
+						onChange={ this.handleChange }
+					/><span>Current</span>
+				</BaseControl>
+				<Button
+					isDefault
+					onClick={ this.handleAdd }
+				>Add</Button>
+			</Fragment>
 		);
 	}
 }

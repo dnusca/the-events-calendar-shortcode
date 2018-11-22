@@ -1,3 +1,9 @@
-.test {
-    display: none;
+.ecs-settings-container,
+.ecs-values-container {
+    flex: 1;
+    padding: 10px 15px;
+}
+
+.ecs-edit-block {
+    display: flex;
 }
