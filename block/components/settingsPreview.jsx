@@ -7,15 +7,28 @@ export default class BlockPreview extends Component {
 	render() {
 		const { attributes } = this.props;
 
-		const propDisplay = Object.keys( attributes ).map( ( key ) => {
+		const attributeRows = Object.keys( attributes ).map( ( key ) => {
 			return (
-				<h5 key={ key }>{ `${ key }: ${ attributes[ key ] }` }</h5>
+				<tr key={ key }>
+					<td align={ 'left' } width={ '50%' }>{ key }</td>
+					<td align={ 'left' } width={ '50%' }>{ attributes[ key ] }</td>
+				</tr>
 			);
 		} );
 
 		return (
 			<Fragment>
-				{ propDisplay }
+				<table>
+					<thead>
+						<tr>
+							<th width={ '50%' }>Name</th>
+							<th width={ '50%' }>Values</th>
+						</tr>
+					</thead>
+					<tbody>
+						{ attributeRows }
+					</tbody>
+				</table>
 			</Fragment>
 		);
 	}
