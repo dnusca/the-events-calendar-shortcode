@@ -400,7 +400,7 @@ class Events_Calendar_Shortcode
 			return $output;
 		}
 		$output .= '<p class="ecs-powered-by-link">';
-		$output .= sprintf( esc_html__( 'Event listing powered by %sThe Events Calendar Shortcode%s', 'the-events-calendar-shortcode' ), '<a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=footer&utm_campaign=powered-by-link">', '</a>' );
+		$output .= sprintf( esc_html__( 'Event listing powered by %sThe Events Calendar Shortcode%s', 'the-events-calendar-shortcode' ), '<a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=footer&utm_campaign=powered-by-link">', '</a>' );
 		$output .= '</p>';
 		return $output;
 	}
