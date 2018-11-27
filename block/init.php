@@ -60,5 +60,5 @@ function ecs_render_block( $attributes ) {
 
 	$shortcode_str = "[ecs-list-events{$attribute_str}]";
 
-	return $shortcode_str;
+	return do_shortcode( $shortcode_str );
 }

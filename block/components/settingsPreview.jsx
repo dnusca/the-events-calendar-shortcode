@@ -10,8 +10,8 @@ export default class BlockPreview extends Component {
 		const attributeRows = Object.keys( attributes ).map( ( key ) => {
 			return (
 				<tr key={ key }>
-					<td align={ 'left' } width={ '50%' }>{ key }</td>
-					<td align={ 'left' } width={ '50%' }>{ attributes[ key ] }</td>
+					<td width={ '50%' }>{ key }</td>
+					<td width={ '50%' }>{ attributes[ key ] }</td>
 				</tr>
 			);
 		} );
@@ -21,8 +21,8 @@ export default class BlockPreview extends Component {
 				<table>
 					<thead>
 						<tr>
-							<th width={ '50%' }>Name</th>
-							<th width={ '50%' }>Values</th>
+							<th align={ 'left' } width={ '50%' }>Name</th>
+							<th align={ 'left' } width={ '50%' }>Values</th>
 						</tr>
 					</thead>
 					<tbody>

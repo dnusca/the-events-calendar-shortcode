@@ -1,4 +1,4 @@
-import BlockEdit from './containers/blockEdit';
+import Block from './containers/block';
 
 const { __ } = wp.i18n;
 const {	registerBlockType } = wp.blocks;
@@ -12,7 +12,7 @@ registerBlockType( 'events-calendar-shortcode/block', {
 	},
 
 	edit: ( props ) => {
-		return <BlockEdit { ...props } />;
+		return <Block { ...props } />;
 	},
 
 	save: () => {

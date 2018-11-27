@@ -3,6 +3,7 @@ const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const OptimizeCSSAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' ); // Temporary until Webpack 5.0 resolves this
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const autoprefixer = require( 'autoprefixer' );
 
 module.exports = ( env, argv ) => {
@@ -46,6 +47,7 @@ module.exports = ( env, argv ) => {
 				filename: 'ecs-block.css',
 			} ),
 			new FixStyleOnlyEntriesPlugin(),
+			new WebpackBuildNotifierPlugin(),
 		],
 
 		module: {
