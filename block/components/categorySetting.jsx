@@ -1,7 +1,7 @@
 import Select from 'react-select';
 
 const { Component, Fragment } = wp.element;
-const { BaseControl, Button } = wp.components;
+const { BaseControl } = wp.components;
 const { apiFetch } = wp;
 const { __ } = wp.i18n;
 
@@ -80,10 +80,6 @@ class CategorySetting extends Component {
 						isMulti={ 'true' }
 					/>
 				</BaseControl>
-				<Button
-					isDefault
-					onClick={ this.handleAdd }
-				>Add</Button>
 			</Fragment>
 		);
 	}

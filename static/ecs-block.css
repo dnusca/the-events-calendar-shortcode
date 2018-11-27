@@ -1,1 +1,10 @@
-.ecs-settings-container,.ecs-values-container{flex:1;padding:10px 15px}.ecs-edit-block{display:flex}
+.ecs-settings-container,
+.ecs-values-container {
+  flex: 1;
+  padding: 10px 15px; }
+
+.ecs-edit-block {
+  display: flex; }
+
+
+/*# sourceMappingURL=ecs-block.css.map*/

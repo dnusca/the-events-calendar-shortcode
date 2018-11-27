@@ -1,6 +1,6 @@
 const { Component } = wp.element;
 const { __ } = wp.i18n;
-const { TextControl, Button } = wp.components;
+const { TextControl } = wp.components;
 
 /**
 * Setting component for limit
@@ -13,10 +13,6 @@ class KeyValueSetting extends Component {
 			key: '',
 			value: '',
 		};
-	}
-
-	handleAdd = () => {
-		this.props.onAdd( { [ this.state.key ]: this.state.value } );
 	}
 
 	/**
@@ -35,10 +31,6 @@ class KeyValueSetting extends Component {
 					value={ this.state.value }
 					onChange={ value => this.setState( { value } ) }
 				/>
-				<Button
-					isDefault
-					onClick={ this.handleAdd }
-				>Add</Button>
 			</div>
 		);
 	}

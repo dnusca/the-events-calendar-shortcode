@@ -1,20 +1,11 @@
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
-const { BaseControl, Button } = wp.components;
+const { BaseControl } = wp.components;
 
 /**
 * Setting component for limit
 */
 class PastSetting extends Component {
-	constructor( props ) {
-		super( props );
-
-		this.state = {
-			key: 'past', // matching shortcode attribute
-			value: props.attributes.past ? props.attributes.past : '', // default
-		};
-	}
-
 	/**
 	* Handle current checkbox input change
 	*
@@ -22,21 +13,14 @@ class PastSetting extends Component {
 	*/
 	handleChange = ( event ) => {
 		const past = ( event.target.checked ) ? 'yes' : '';
-		this.setState( { value: past } );
-	}
-
-	/**
-	 * Pass added setting up to container
-	 */
-	handleAdd = () => {
-		this.props.onAdd( { [ this.state.key ]: this.state.value } );
+		this.props.setAttributes( { past: past } );
 	}
 
 	/**
 	 * @returns {ReactElement} Limit Setting
 	 */
 	render() {
-		const past = ( this.state.value === 'yes' ) ? true : false;
+		const past = ( this.props.attributes.past === 'yes' ) ? true : false;
 
 		return (
 			<Fragment>
@@ -52,10 +36,6 @@ class PastSetting extends Component {
 						onChange={ this.handleChange }
 					/>
 				</BaseControl>
-				<Button
-					isDefault
-					onClick={ this.handleAdd }
-				>Add</Button>
 			</Fragment>
 		);
 	}
