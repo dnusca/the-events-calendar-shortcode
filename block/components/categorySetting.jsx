@@ -1,6 +1,6 @@
 import Select from 'react-select';
 
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 const { BaseControl } = wp.components;
 const { apiFetch } = wp;
 const { __ } = wp.i18n;
@@ -13,9 +13,8 @@ class CategorySetting extends Component {
 		super( props );
 
 		this.state = {
-			key: 'cat',
 			selectOptions: [],
-			selectedCats: props.attributes.cat ? props.attributes.cat : [],
+			selectedCats: [],
 		};
 	}
 
@@ -29,8 +28,8 @@ class CategorySetting extends Component {
 			const catArray = cat.toString().split( ', ' );
 
 			const selectedCats = selectOptions.filter( option => {
-				if ( catArray.indexOf( option.value.toString() ) > -1 ) {
-					return parseInt( option.value );
+				if ( catArray.indexOf( option.value ) > -1 ) {
+					return option.value;
 				}
 			} );
 
@@ -42,24 +41,18 @@ class CategorySetting extends Component {
 	}
 
 	/**
-	 * Format selection and update value
+	 * Handle selection change
 	 *
-	 * @param {Object} selectedCats The selected category
+	 * @param {Array} selectedCats the selected categories
 	 */
 	handleChange = ( selectedCats ) => {
-		this.setState( { selectedCats } );
-	}
-
-	/**
-	 * Pass added setting up to container
-	 */
-	handleAdd = () => {
-		const formattedSelection = this.state.selectedCats.map( category => {
+		const formattedSelection = selectedCats.map( category => {
 			return category.value;
 		} );
 		const stringSelection = formattedSelection.join( ', ' );
 
-		this.props.onAdd( { [ this.state.key ]: stringSelection } );
+		this.setState( { selectedCats } );
+		this.props.setAttributes( { cat: stringSelection } );
 	}
 
 	/**
@@ -67,20 +60,18 @@ class CategorySetting extends Component {
 	 */
 	render() {
 		return (
-			<Fragment>
-				<BaseControl
-					id={ 'ecs-block-setting-category' }
-					label={ __( 'Category' ) }
-					help={ __( 'Select categories to include.' ) }
-				>
-					<Select
-						value={ this.state.selectedCats }
-						onChange={ this.handleChange }
-						options={ this.state.selectOptions }
-						isMulti={ 'true' }
-					/>
-				</BaseControl>
-			</Fragment>
+			<BaseControl
+				id={ 'ecs-block-setting-category' }
+				label={ __( 'Category' ) }
+				help={ __( 'Select categories to include.' ) }
+			>
+				<Select
+					value={ this.state.selectedCats }
+					onChange={ this.handleChange }
+					options={ this.state.selectOptions }
+					isMulti={ 'true' }
+				/>
+			</BaseControl>
 		);
 	}
 }

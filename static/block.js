@@ -117,9 +117,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+var Component = wp.element.Component;
 var BaseControl = wp.components.BaseControl;
 var _wp = wp,
     apiFetch = _wp.apiFetch;
@@ -141,25 +139,23 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CategorySetting).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleChange", function (selectedCats) {
+      var formattedSelection = selectedCats.map(function (category) {
+        return category.value;
+      });
+      var stringSelection = formattedSelection.join(', ');
+
       _this.setState({
         selectedCats: selectedCats
       });
-    });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleAdd", function () {
-      var formattedSelection = _this.state.selectedCats.map(function (category) {
-        return category.value;
+      _this.props.setAttributes({
+        cat: stringSelection
       });
-
-      var stringSelection = formattedSelection.join(', ');
-
-      _this.props.onAdd(_defineProperty({}, _this.state.key, stringSelection));
     });
 
     _this.state = {
-      key: 'cat',
       selectOptions: [],
-      selectedCats: props.attributes.cat ? props.attributes.cat : []
+      selectedCats: []
     };
     return _this;
   }
@@ -181,8 +177,8 @@ function (_Component) {
         var cat = _this2.props.attributes.cat;
         var catArray = cat.toString().split(', ');
         var selectedCats = selectOptions.filter(function (option) {
-          if (catArray.indexOf(option.value.toString()) > -1) {
-            return parseInt(option.value);
+          if (catArray.indexOf(option.value) > -1) {
+            return option.value;
           }
         });
 
@@ -193,9 +189,9 @@ function (_Component) {
       });
     }
     /**
-     * Format selection and update value
+     * Handle selection change
      *
-     * @param {Object} selectedCats The selected category
+     * @param {Array} selectedCats the selected categories
      */
 
   }, {
@@ -205,7 +201,7 @@ function (_Component) {
      * @returns {ReactElement} Category Setting
      */
     value: function render() {
-      return React.createElement(Fragment, null, React.createElement(BaseControl, {
+      return React.createElement(BaseControl, {
         id: 'ecs-block-setting-category',
         label: __('Category'),
         help: __('Select categories to include.')
@@ -214,7 +210,7 @@ function (_Component) {
         onChange: this.handleChange,
         options: this.state.selectOptions,
         isMulti: 'true'
-      })));
+      }));
     }
   }]);
 
@@ -931,26 +927,17 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderOtherSettings", function () {
       var otherSettings = _this.state.otherSettings;
-      var attributes = _this.props.attributes;
-      console.log(attributes);
+      var attributes = _this.props.attributes; // Exclude default always showing settings
+
       var existingSettings = Object.keys(attributes).filter(function (setting) {
         return setting !== 'limit' && setting !== 'design';
       });
-      console.log(existingSettings);
       var settingsComponents = {
         choose: null,
-        category: React.createElement(_components_categorySetting__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({}, _this.props, {
-          onAdd: _this.handleSettingSave
-        })),
-        month: React.createElement(_components_monthSetting_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, _this.props, {
-          onAdd: _this.handleSettingSave
-        })),
-        past: React.createElement(_components_pastSetting_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({}, _this.props, {
-          onAdd: _this.handleSettingSave
-        })),
-        other: React.createElement(_components_keyValueSetting_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({}, _this.props, {
-          onAdd: _this.handleSettingSave
-        }))
+        category: React.createElement(_components_categorySetting__WEBPACK_IMPORTED_MODULE_1__["default"], _this.props),
+        month: React.createElement(_components_monthSetting_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], _this.props),
+        past: React.createElement(_components_pastSetting_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], _this.props),
+        other: React.createElement(_components_keyValueSetting_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], _this.props)
       };
       var otherSettingsRender = otherSettings.map(function (setting) {
         return settingsComponents[setting];

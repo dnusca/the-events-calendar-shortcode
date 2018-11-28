@@ -29,16 +29,16 @@ class BlockEdit extends Component {
 	renderOtherSettings = () => {
 		const { otherSettings } = this.state;
 		const { attributes } = this.props;
-		console.log ( attributes );
+
+		// Exclude default always showing settings
 		const existingSettings = Object.keys( attributes ).filter( setting => ( setting !== 'limit' && setting !== 'design' ) );
-		console.log( existingSettings );
 
 		let settingsComponents = {
 			choose: null,
-			category: <CategorySetting { ...this.props } onAdd={ this.handleSettingSave } />,
-			month: <MonthSetting { ...this.props } onAdd={ this.handleSettingSave } />,
-			past: <PastSetting { ...this.props } onAdd={ this.handleSettingSave } />,
-			other: <KeyValueRepeater { ...this.props } onAdd={ this.handleSettingSave } />,
+			category: <CategorySetting { ...this.props } />,
+			month: <MonthSetting { ...this.props } />,
+			past: <PastSetting { ...this.props } />,
+			other: <KeyValueRepeater { ...this.props } />,
 		};
 
 		const otherSettingsRender = otherSettings.map( setting => settingsComponents[ setting ] );

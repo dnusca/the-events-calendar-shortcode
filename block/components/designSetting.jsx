@@ -20,7 +20,7 @@ class DesignSetting extends Component {
 	 */
 	render() {
 		const { attributes } = this.props;
-		
+
 		return (
 			<Fragment>
 				<SelectControl
