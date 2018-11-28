@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./block/styles/index.scss"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,qBAAqB;;AAErB;AACA,gBAAgB","file":"ecs-block.css","sourcesContent":[".ecs-settings-container,\n.ecs-values-container {\n  flex: 1;\n  padding: 10px 15px; }\n\n.ecs-edit-block {\n  display: flex; }\n"],"sourceRoot":""}

@@ -15,6 +15,26 @@ class KeyValueSetting extends Component {
 		};
 	}
 
+	handleKeyChange = ( key ) => {
+		this.updateKeyValueAttribute();
+		this.setState( { key } );
+	}
+
+	handleValueChange = ( value ) => {
+		this.updateKeyValueAttribute();
+		this.setState( { value } );
+	}
+
+	updateKeyValueAttribute = () => {
+		let { keyValue } = this.props.attributes;
+		const { key, value } = this.state;
+
+		keyValue = ( typeof keyValue === 'undefined' ) ? {} : JSON.parse( keyValue );
+		const newObject = Object.assign( {}, keyValue, { [ key ]: value } );
+
+		// this.props.setAttributes( { keyValue: JSON.stringify( newObject ) } );
+	}
+
 	/**
 	 * @returns {ReactElement} Key Value Repeater
 	 */
@@ -24,12 +44,12 @@ class KeyValueSetting extends Component {
 				<TextControl
 					label={ __( 'Key' ) }
 					value={ this.state.key }
-					onChange={ key => this.setState( { key } ) }
+					onChange={ this.handleKeyChange }
 				/>
 				<TextControl
 					label={ __( 'Value' ) }
 					value={ this.state.value }
-					onChange={ value => this.setState( { value } ) }
+					onChange={ this.handleValueChange }
 				/>
 			</div>
 		);

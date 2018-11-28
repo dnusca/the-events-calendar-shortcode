@@ -36,6 +36,7 @@ function ecs_register_block() {
 			'limit'		=> array( 'type' => 'number' ),
 			'month'		=> array( 'type' => 'string' ),
 			'past'		=> array( 'type' => 'string' ),
+			'keyValue'	=> array( 'type' => 'string' ),
 		)
 	) );
 }

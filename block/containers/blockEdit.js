@@ -3,7 +3,7 @@ import CategorySetting from '../components/categorySetting';
 import LimitSetting from '../components/limitSetting';
 import MonthSetting from '../components/monthSetting';
 import PastSetting from '../components/pastSetting';
-import KeyValueRepeater from '../components/keyValueSetting';
+import KeyValueSetting from '../components/keyValueSetting';
 
 import SettingsPreview from '../components/settingsPreview';
 
@@ -24,18 +24,37 @@ class BlockEdit extends Component {
 	componentDidMount() {
 		const { otherSettings } = this.state;
 		const { attributes } = this.props;
+		const defaults = [ 'limit', 'design' ];
 
 		const existingSettings = Object.keys( attributes ).filter( setting => {
-			return ( setting !== 'limit' && setting !== 'design' );
+			return defaults.indexOf( setting ) < 0;
 		} );
 
-		const combinedSettings = [ ...otherSettings, ...existingSettings ];
-		this.setState( { otherSettings: combinedSettings } );
+		this.setState( { otherSettings: [ ...otherSettings, ...existingSettings ] } );
 	}
 
-	handleSettingSave = ( setting ) => {
-		this.props.setAttributes( setting );
-		this.setState( { repeaterOption: 'choose' } );
+	/**
+	 *
+	 *
+	 * @return {ReactElement} existingSettings
+	 */
+	generateKeyValueRows = () => {
+		let { keyValue } = this.props.attributes;
+
+		if ( typeof keyValue === 'undefined' ) {
+			return null;
+		}
+
+		keyValue = JSON.parse( keyValue );
+		console.log( keyValue );
+
+		const existingSettings = Object.keys( keyValue ).map( ( key ) => {
+			return (
+				<KeyValueSetting key={ key } { ...this.props } />
+			);
+		} );
+
+		return existingSettings;
 	}
 
 	renderOtherSettings = () => {
@@ -46,7 +65,7 @@ class BlockEdit extends Component {
 			cat: <CategorySetting { ...this.props } />,
 			month: <MonthSetting { ...this.props } />,
 			past: <PastSetting { ...this.props } />,
-			other: <KeyValueRepeater { ...this.props } />,
+			other: <KeyValueSetting { ...this.props } />,
 		};
 
 		const otherSettingsRender = otherSettings.map( setting => settingsComponents[ setting ] );
@@ -76,11 +95,12 @@ class BlockEdit extends Component {
 					<div className={ 'ecs-settings-container' }>
 						<h4>{ __( 'Configure your settings' ) }</h4>
 
-						<DesignSetting { ...this.props } onAdd={ this.handleSettingSave } />
+						<DesignSetting { ...this.props } />
 
-						<LimitSetting { ...this.props } onAdd={ this.handleSettingSave } />
+						<LimitSetting { ...this.props } />
 
 						{ this.renderOtherSettings() }
+						{ /* this.generateKeyValueRows() */ }
 
 						<SelectControl
 							label={ __( 'Choose an option' ) }
