@@ -1,9 +1,9 @@
 import DesignSetting from '../components/designSetting';
 import CategorySetting from '../components/categorySetting';
-import LimitSetting from '../components/limitSetting.jsx';
-import MonthSetting from '../components/monthSetting.jsx';
-import PastSetting from '../components/pastSetting.jsx';
-import KeyValueRepeater from '../components/keyValueSetting.jsx';
+import LimitSetting from '../components/limitSetting';
+import MonthSetting from '../components/monthSetting';
+import PastSetting from '../components/pastSetting';
+import KeyValueRepeater from '../components/keyValueSetting';
 
 import SettingsPreview from '../components/settingsPreview';
 
@@ -21,6 +21,18 @@ class BlockEdit extends Component {
 		};
 	}
 
+	componentDidMount() {
+		const { otherSettings } = this.state;
+		const { attributes } = this.props;
+
+		const existingSettings = Object.keys( attributes ).filter( setting => {
+			return ( setting !== 'limit' && setting !== 'design' );
+		} );
+
+		const combinedSettings = [ ...otherSettings, ...existingSettings ];
+		this.setState( { otherSettings: combinedSettings } );
+	}
+
 	handleSettingSave = ( setting ) => {
 		this.props.setAttributes( setting );
 		this.setState( { repeaterOption: 'choose' } );
@@ -28,14 +40,10 @@ class BlockEdit extends Component {
 
 	renderOtherSettings = () => {
 		const { otherSettings } = this.state;
-		const { attributes } = this.props;
-
-		// Exclude default always showing settings
-		const existingSettings = Object.keys( attributes ).filter( setting => ( setting !== 'limit' && setting !== 'design' ) );
 
 		let settingsComponents = {
 			choose: null,
-			category: <CategorySetting { ...this.props } />,
+			cat: <CategorySetting { ...this.props } />,
 			month: <MonthSetting { ...this.props } />,
 			past: <PastSetting { ...this.props } />,
 			other: <KeyValueRepeater { ...this.props } />,
