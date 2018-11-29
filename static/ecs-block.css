@@ -6,5 +6,12 @@
 .ecs-edit-block {
   display: flex; }
 
+.ecs-key-value {
+  display: flex; }
+  .ecs-key-value :first-child {
+    margin-right: 10px; }
+  .ecs-key-value > div {
+    flex: 1; }
+
 
 /*# sourceMappingURL=ecs-block.css.map*/

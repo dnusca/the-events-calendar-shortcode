@@ -65,7 +65,6 @@ class BlockEdit extends Component {
 			cat: <CategorySetting { ...this.props } />,
 			month: <MonthSetting { ...this.props } />,
 			past: <PastSetting { ...this.props } />,
-			other: <KeyValueSetting { ...this.props } />,
 		};
 
 		const otherSettingsRender = otherSettings.map( setting => settingsComponents[ setting ] );
@@ -132,8 +131,6 @@ class BlockEdit extends Component {
 							onClick={ this.addOtherSetting }
 						>Add</Button>
 					</div>
-
-					<SettingsPreview attributes={ attributes } />
 				</div>
 			</Fragment>
 		);

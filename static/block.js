@@ -1027,8 +1027,7 @@ function (_Component) {
         choose: null,
         cat: React.createElement(_components_categorySetting__WEBPACK_IMPORTED_MODULE_1__["default"], _this.props),
         month: React.createElement(_components_monthSetting__WEBPACK_IMPORTED_MODULE_3__["default"], _this.props),
-        past: React.createElement(_components_pastSetting__WEBPACK_IMPORTED_MODULE_4__["default"], _this.props),
-        other: React.createElement(_components_keyValueSetting__WEBPACK_IMPORTED_MODULE_5__["default"], _this.props)
+        past: React.createElement(_components_pastSetting__WEBPACK_IMPORTED_MODULE_4__["default"], _this.props)
       };
       var otherSettingsRender = otherSettings.map(function (setting) {
         return settingsComponents[setting];
@@ -1134,9 +1133,7 @@ function (_Component) {
       }), React.createElement(Button, {
         isPrimary: true,
         onClick: this.addOtherSetting
-      }, "Add")), React.createElement(_components_settingsPreview__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        attributes: attributes
-      })));
+      }, "Add"))));
     }
   }]);
 

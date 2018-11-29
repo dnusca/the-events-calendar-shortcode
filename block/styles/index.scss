@@ -7,3 +7,13 @@
 .ecs-edit-block {
     display: flex;
 }
+
+.ecs-key-value {
+    display: flex;
+    :first-child {
+        margin-right: 10px;
+    }
+    > div {
+        flex: 1;
+    }
+}
