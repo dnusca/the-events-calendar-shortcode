@@ -417,6 +417,10 @@ function (_Component) {
         _this.setState({
           key: newValue
         });
+
+        _this.props.setAttributes({
+          keyValue: JSON.stringify(newArray)
+        });
       }
 
       if (type === 'value') {
@@ -447,11 +451,11 @@ function (_Component) {
         _this.setState({
           value: newValue
         });
-      }
 
-      _this.props.setAttributes({
-        keyValue: JSON.stringify(newArray)
-      });
+        _this.props.setAttributes({
+          keyValue: JSON.stringify(newArray)
+        });
+      }
     });
 
     _this.state = {
@@ -1008,11 +1012,11 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "generateKeyValueRows", function () {
       var keyValue = _this.props.attributes.keyValue;
       keyValue = typeof keyValue === 'undefined' || keyValue === null ? [] : JSON.parse(keyValue);
-      var existingSettings = keyValue.map(function (object) {
+      var existingSettings = keyValue.map(function (object, index) {
         var key = object.key,
             value = object.value;
         return React.createElement(_components_keyValueSetting__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({
-          key: key,
+          key: "kv-".concat(index),
           existing: {
             key: key,
             value: value

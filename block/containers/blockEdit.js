@@ -43,11 +43,11 @@ class BlockEdit extends Component {
 
 		keyValue = ( typeof keyValue === 'undefined' || keyValue === null ) ? [] : JSON.parse( keyValue );
 
-		const existingSettings = keyValue.map( object => {
+		const existingSettings = keyValue.map( ( object, index ) => {
 			const { key, value } = object;
 			return (
 				<KeyValueSetting
-					key={ key }
+					key={ `kv-${ index }` }
 					existing={ { key, value } }
 					{ ...this.props }
 				/>

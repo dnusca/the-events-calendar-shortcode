@@ -62,6 +62,7 @@ class KeyValueSetting extends Component {
 			}
 
 			this.setState( { key: newValue } );
+			this.props.setAttributes( { keyValue: JSON.stringify( newArray ) } );
 		}
 
 		if ( type === 'value' ) {
@@ -85,9 +86,8 @@ class KeyValueSetting extends Component {
 			}
 
 			this.setState( { value: newValue } );
+			this.props.setAttributes( { keyValue: JSON.stringify( newArray ) } );
 		}
-
-		this.props.setAttributes( { keyValue: JSON.stringify( newArray ) } );
 	}
 
 	/**
