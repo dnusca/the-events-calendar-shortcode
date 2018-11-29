@@ -10,8 +10,8 @@ class KeyValueSetting extends Component {
 		super( props );
 
 		this.state = {
-			key: '',
-			value: '',
+			key: props.existing ? props.existing.key : '',
+			value: props.existing ? props.existing.value : '',
 		};
 	}
 

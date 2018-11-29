@@ -414,8 +414,8 @@ function (_Component) {
     });
 
     _this.state = {
-      key: '',
-      value: ''
+      key: props.existing ? props.existing.key : '',
+      value: props.existing ? props.existing.value : ''
     };
     return _this;
   }
@@ -972,10 +972,13 @@ function (_Component) {
       }
 
       keyValue = JSON.parse(keyValue);
-      console.log(keyValue);
       var existingSettings = Object.keys(keyValue).map(function (key) {
         return React.createElement(_components_keyValueSetting__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({
-          key: key
+          key: key,
+          existing: {
+            key: key,
+            value: keyValue[key]
+          }
         }, _this.props));
       });
       return existingSettings;
@@ -997,8 +1000,10 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "addOtherSetting", function () {
-      var otherSettings = _this.state.otherSettings;
-      otherSettings.push(_this.state.selectedOption);
+      var _this$state = _this.state,
+          otherSettings = _this$state.otherSettings,
+          selectedOption = _this$state.selectedOption;
+      otherSettings.push(selectedOption);
 
       _this.setState({
         otherSettings: otherSettings
@@ -1007,8 +1012,7 @@ function (_Component) {
 
     _this.state = {
       selectedOption: 'choose',
-      otherSettings: [],
-      keyValue: {}
+      otherSettings: []
     };
     return _this;
   }
@@ -1048,7 +1052,7 @@ function (_Component) {
         className: 'ecs-edit-block'
       }, React.createElement("div", {
         className: 'ecs-settings-container'
-      }, React.createElement("h4", null, __('Configure your settings')), React.createElement(_components_designSetting__WEBPACK_IMPORTED_MODULE_0__["default"], this.props), React.createElement(_components_limitSetting__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), this.renderOtherSettings(), React.createElement(SelectControl, {
+      }, React.createElement("h4", null, __('Configure your settings')), React.createElement(_components_designSetting__WEBPACK_IMPORTED_MODULE_0__["default"], this.props), React.createElement(_components_limitSetting__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), this.renderOtherSettings(), this.generateKeyValueRows(), React.createElement(SelectControl, {
         label: __('Choose an option'),
         options: [{
           label: __('Choose a setting'),

@@ -18,7 +18,6 @@ class BlockEdit extends Component {
 		this.state = {
 			selectedOption: 'choose',
 			otherSettings: [],
-			keyValue: {},
 		};
 	}
 
@@ -47,11 +46,14 @@ class BlockEdit extends Component {
 		}
 
 		keyValue = JSON.parse( keyValue );
-		console.log( keyValue );
 
-		const existingSettings = Object.keys( keyValue ).map( ( key ) => {
+		const existingSettings = Object.keys( keyValue ).map( key => {
 			return (
-				<KeyValueSetting key={ key } { ...this.props } />
+				<KeyValueSetting
+					key={ key }
+					existing={ { key, value: keyValue[ key ] } }
+					{ ...this.props }
+				/>
 			);
 		} );
 
@@ -75,8 +77,9 @@ class BlockEdit extends Component {
 	}
 
 	addOtherSetting = () => {
-		const { otherSettings } = this.state;
-		otherSettings.push( this.state.selectedOption );
+		const { otherSettings, selectedOption } = this.state;
+
+		otherSettings.push( selectedOption );
 		this.setState( { otherSettings } );
 	}
 
@@ -101,7 +104,7 @@ class BlockEdit extends Component {
 						<LimitSetting { ...this.props } />
 
 						{ this.renderOtherSettings() }
-						{ /* this.generateKeyValueRows() */ }
+						{ this.generateKeyValueRows() }
 
 						<SelectControl
 							label={ __( 'Choose an option' ) }
