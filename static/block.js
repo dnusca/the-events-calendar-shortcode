@@ -380,20 +380,39 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateKeyValueAttribute", function (type, newValue) {
-      var keyValue = _this.props.attributes.keyValue;
-      var newObject = {};
+      var keyValue = _this.props.attributes.keyValue; // let newObject = {};
+
+      var newArray = [];
       var _this$state = _this.state,
           key = _this$state.key,
           value = _this$state.value; // before update
 
-      keyValue = typeof keyValue === 'undefined' ? {} : JSON.parse(keyValue);
+      keyValue = typeof keyValue === 'undefined' || keyValue === null ? [] : JSON.parse(keyValue);
 
       if (type === 'key') {
-        if (keyValue.hasOwnProperty(key)) {
-          delete keyValue[key];
-        }
+        var exists = false;
+        newArray = keyValue.map(function (object) {
+          var returnObject;
 
-        newObject = Object.assign({}, keyValue, _defineProperty({}, newValue, value));
+          if (object.key === key) {
+            exists = true;
+            returnObject = {
+              key: newValue,
+              value: object.value
+            };
+          } else {
+            returnObject = object;
+          }
+
+          return returnObject;
+        });
+
+        if (!exists) {
+          newArray.push({
+            key: newValue,
+            value: ''
+          });
+        }
 
         _this.setState({
           key: newValue
@@ -401,7 +420,29 @@ function (_Component) {
       }
 
       if (type === 'value') {
-        newObject = Object.assign({}, keyValue, _defineProperty({}, key, newValue));
+        var _exists = false;
+        newArray = keyValue.map(function (object) {
+          var returnObject;
+
+          if (object.key === key) {
+            _exists = true;
+            returnObject = {
+              key: key,
+              value: newValue
+            };
+          } else {
+            returnObject = object;
+          }
+
+          return returnObject;
+        });
+
+        if (!_exists) {
+          newArray.push({
+            key: '',
+            value: newValue
+          });
+        }
 
         _this.setState({
           value: newValue
@@ -409,7 +450,7 @@ function (_Component) {
       }
 
       _this.props.setAttributes({
-        keyValue: JSON.stringify(newObject)
+        keyValue: JSON.stringify(newArray)
       });
     });
 
@@ -966,18 +1007,15 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "generateKeyValueRows", function () {
       var keyValue = _this.props.attributes.keyValue;
-
-      if (typeof keyValue === 'undefined') {
-        return null;
-      }
-
-      keyValue = JSON.parse(keyValue);
-      var existingSettings = Object.keys(keyValue).map(function (key) {
+      keyValue = typeof keyValue === 'undefined' || keyValue === null ? [] : JSON.parse(keyValue);
+      var existingSettings = keyValue.map(function (object) {
+        var key = object.key,
+            value = object.value;
         return React.createElement(_components_keyValueSetting__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({
           key: key,
           existing: {
             key: key,
-            value: keyValue[key]
+            value: value
           }
         }, _this.props));
       });
@@ -1003,11 +1041,25 @@ function (_Component) {
       var _this$state = _this.state,
           otherSettings = _this$state.otherSettings,
           selectedOption = _this$state.selectedOption;
-      otherSettings.push(selectedOption);
 
-      _this.setState({
-        otherSettings: otherSettings
-      });
+      if (selectedOption === 'other') {
+        var keyValue = _this.props.attributes.keyValue;
+        keyValue = typeof _this.props.attributes.keyValue === 'undefined' ? [] : JSON.parse(keyValue);
+        keyValue.push({
+          key: '',
+          value: ''
+        });
+
+        _this.props.setAttributes({
+          keyValue: JSON.stringify(keyValue)
+        });
+      } else {
+        otherSettings.push(selectedOption);
+
+        _this.setState({
+          otherSettings: otherSettings
+        });
+      }
     });
 
     _this.state = {

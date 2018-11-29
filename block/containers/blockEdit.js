@@ -41,17 +41,14 @@ class BlockEdit extends Component {
 	generateKeyValueRows = () => {
 		let { keyValue } = this.props.attributes;
 
-		if ( typeof keyValue === 'undefined' ) {
-			return null;
-		}
+		keyValue = ( typeof keyValue === 'undefined' || keyValue === null ) ? [] : JSON.parse( keyValue );
 
-		keyValue = JSON.parse( keyValue );
-
-		const existingSettings = Object.keys( keyValue ).map( key => {
+		const existingSettings = keyValue.map( object => {
+			const { key, value } = object;
 			return (
 				<KeyValueSetting
 					key={ key }
-					existing={ { key, value: keyValue[ key ] } }
+					existing={ { key, value } }
 					{ ...this.props }
 				/>
 			);
@@ -79,8 +76,15 @@ class BlockEdit extends Component {
 	addOtherSetting = () => {
 		const { otherSettings, selectedOption } = this.state;
 
-		otherSettings.push( selectedOption );
-		this.setState( { otherSettings } );
+		if ( selectedOption === 'other' ) {
+			let { keyValue } = this.props.attributes;
+			keyValue = ( typeof this.props.attributes.keyValue === 'undefined' ) ? [] : JSON.parse( keyValue );
+			keyValue.push( { key: '', value: '' } );
+			this.props.setAttributes( { keyValue: JSON.stringify( keyValue ) } );
+		} else {
+			otherSettings.push( selectedOption );
+			this.setState( { otherSettings } );
+		}
 	}
 
 	/**

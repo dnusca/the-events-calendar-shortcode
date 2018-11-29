@@ -35,26 +35,59 @@ class KeyValueSetting extends Component {
 	 */
 	updateKeyValueAttribute = ( type, newValue ) => {
 		let { keyValue } = this.props.attributes;
-		let newObject = {};
+		// let newObject = {};
+		let newArray = [];
 		const { key, value } = this.state; // before update
 
-		keyValue = ( typeof keyValue === 'undefined' ) ? {} : JSON.parse( keyValue );
+		keyValue = ( typeof keyValue === 'undefined' || keyValue === null ) ? [] : JSON.parse( keyValue );
 
 		if ( type === 'key' ) {
-			if ( keyValue.hasOwnProperty( key ) ) {
-				delete keyValue[ key ];
+			let exists = false;
+
+			newArray = keyValue.map( object => {
+				let returnObject;
+
+				if ( object.key === key ) {
+					exists = true;
+					returnObject = { key: newValue, value: object.value };
+				} else {
+					returnObject = object;
+				}
+
+				return returnObject;
+			} );
+
+			if ( ! exists ) {
+				newArray.push( { key: newValue, value: '' } );
 			}
 
-			newObject = Object.assign( {}, keyValue, { [ newValue ]: value } );
 			this.setState( { key: newValue } );
 		}
 
 		if ( type === 'value' ) {
-			newObject = Object.assign( {}, keyValue, { [ key ]: newValue } );
+			let exists = false;
+
+			newArray = keyValue.map( object => {
+				let returnObject;
+
+				if ( object.key === key ) {
+					exists = true;
+					returnObject = { key, value: newValue };
+				} else {
+					returnObject = object;
+				}
+
+				return returnObject;
+			} );
+
+			if ( ! exists ) {
+				newArray.push( { key: '', value: newValue } );
+			}
+
 			this.setState( { value: newValue } );
 		}
 
-		this.props.setAttributes( { keyValue: JSON.stringify( newObject ) } );
+		this.props.setAttributes( { keyValue: JSON.stringify( newArray ) } );
 	}
 
 	/**
