@@ -40,8 +40,11 @@ class KeyValueSetting extends Component {
 
 		keyValue = ( typeof keyValue === 'undefined' ) ? {} : JSON.parse( keyValue );
 
-		if ( type === 'key' && keyValue.hasOwnProperty( key ) ) {
-			delete keyValue[ key ];
+		if ( type === 'key' ) {
+			if ( keyValue.hasOwnProperty( key ) ) {
+				delete keyValue[ key ];
+			}
+
 			newObject = Object.assign( {}, keyValue, { [ newValue ]: value } );
 			this.setState( { key: newValue } );
 		}
