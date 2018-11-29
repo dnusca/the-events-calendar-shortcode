@@ -380,13 +380,8 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateKeyValueAttribute", function (type, newValue) {
-      var keyValue = _this.props.attributes.keyValue; // let newObject = {};
-
+      var keyValue = _this.props.attributes.keyValue;
       var newArray = [];
-      var _this$state = _this.state,
-          key = _this$state.key,
-          value = _this$state.value; // before update
-
       keyValue = typeof keyValue === 'undefined' || keyValue === null ? [] : JSON.parse(keyValue);
 
       if (type === 'key') {
@@ -394,7 +389,7 @@ function (_Component) {
         newArray = keyValue.map(function (object) {
           var returnObject;
 
-          if (object.key === key) {
+          if (object.key === _this.state.key) {
             exists = true;
             returnObject = {
               key: newValue,
@@ -428,10 +423,10 @@ function (_Component) {
         newArray = keyValue.map(function (object) {
           var returnObject;
 
-          if (object.key === key) {
+          if (object.key === _this.state.key) {
             _exists = true;
             returnObject = {
-              key: key,
+              key: _this.state.key,
               value: newValue
             };
           } else {

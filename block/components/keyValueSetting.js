@@ -35,9 +35,7 @@ class KeyValueSetting extends Component {
 	 */
 	updateKeyValueAttribute = ( type, newValue ) => {
 		let { keyValue } = this.props.attributes;
-		// let newObject = {};
 		let newArray = [];
-		const { key, value } = this.state; // before update
 
 		keyValue = ( typeof keyValue === 'undefined' || keyValue === null ) ? [] : JSON.parse( keyValue );
 
@@ -47,7 +45,7 @@ class KeyValueSetting extends Component {
 			newArray = keyValue.map( object => {
 				let returnObject;
 
-				if ( object.key === key ) {
+				if ( object.key === this.state.key ) {
 					exists = true;
 					returnObject = { key: newValue, value: object.value };
 				} else {
@@ -71,9 +69,9 @@ class KeyValueSetting extends Component {
 			newArray = keyValue.map( object => {
 				let returnObject;
 
-				if ( object.key === key ) {
+				if ( object.key === this.state.key ) {
 					exists = true;
-					returnObject = { key, value: newValue };
+					returnObject = { key: this.state.key, value: newValue };
 				} else {
 					returnObject = object;
 				}
