@@ -43,11 +43,9 @@ module.exports = ( env, argv ) => {
 		},
 
 		plugins: [
-			new MiniCssExtractPlugin( {
-				filename: 'ecs-block.css',
-			} ),
+			new MiniCssExtractPlugin( { filename: 'ecs-block.css' } ),
 			new FixStyleOnlyEntriesPlugin(),
-			new WebpackBuildNotifierPlugin(),
+			new WebpackBuildNotifierPlugin( { sound: false } ),
 		],
 
 		module: {

@@ -15,24 +15,43 @@ class KeyValueSetting extends Component {
 		};
 	}
 
+	/**
+	 * @param {string} key The new key
+	 */
 	handleKeyChange = ( key ) => {
-		this.updateKeyValueAttribute();
-		this.setState( { key } );
+		this.updateKeyValueAttribute( 'key', key );
 	}
 
+	/**
+	 * @param {string} value The new value
+	 */
 	handleValueChange = ( value ) => {
-		this.updateKeyValueAttribute();
-		this.setState( { value } );
+		this.updateKeyValueAttribute( 'value', value );
 	}
 
-	updateKeyValueAttribute = () => {
+	/**
+	 * @param {string} type key or value input
+	 * @param {string} newValue the updated input for key or value
+	 */
+	updateKeyValueAttribute = ( type, newValue ) => {
 		let { keyValue } = this.props.attributes;
-		const { key, value } = this.state;
+		let newObject = {};
+		const { key, value } = this.state; // before update
 
 		keyValue = ( typeof keyValue === 'undefined' ) ? {} : JSON.parse( keyValue );
-		const newObject = Object.assign( {}, keyValue, { [ key ]: value } );
 
-		// this.props.setAttributes( { keyValue: JSON.stringify( newObject ) } );
+		if ( type === 'key' && keyValue.hasOwnProperty( key ) ) {
+			delete keyValue[ key ];
+			newObject = Object.assign( {}, keyValue, { [ newValue ]: value } );
+			this.setState( { key: newValue } );
+		}
+
+		if ( type === 'value' ) {
+			newObject = Object.assign( {}, keyValue, { [ key ]: newValue } );
+			this.setState( { value: newValue } );
+		}
+
+		this.props.setAttributes( { keyValue: JSON.stringify( newObject ) } );
 	}
 
 	/**

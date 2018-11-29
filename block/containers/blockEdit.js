@@ -18,6 +18,7 @@ class BlockEdit extends Component {
 		this.state = {
 			selectedOption: 'choose',
 			otherSettings: [],
+			keyValue: {},
 		};
 	}
 

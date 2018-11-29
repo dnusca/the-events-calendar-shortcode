@@ -372,28 +372,42 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(KeyValueSetting).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleKeyChange", function (key) {
-      _this.updateKeyValueAttribute();
-
-      _this.setState({
-        key: key
-      });
+      _this.updateKeyValueAttribute('key', key);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleValueChange", function (value) {
-      _this.updateKeyValueAttribute();
-
-      _this.setState({
-        value: value
-      });
+      _this.updateKeyValueAttribute('value', value);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateKeyValueAttribute", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateKeyValueAttribute", function (type, newValue) {
       var keyValue = _this.props.attributes.keyValue;
+      var newObject = {};
       var _this$state = _this.state,
           key = _this$state.key,
-          value = _this$state.value;
+          value = _this$state.value; // before update
+
       keyValue = typeof keyValue === 'undefined' ? {} : JSON.parse(keyValue);
-      var newObject = Object.assign({}, keyValue, _defineProperty({}, key, value)); // this.props.setAttributes( { keyValue: JSON.stringify( newObject ) } );
+
+      if (type === 'key' && keyValue.hasOwnProperty(key)) {
+        delete keyValue[key];
+        newObject = Object.assign({}, keyValue, _defineProperty({}, newValue, value));
+
+        _this.setState({
+          key: newValue
+        });
+      }
+
+      if (type === 'value') {
+        newObject = Object.assign({}, keyValue, _defineProperty({}, key, newValue));
+
+        _this.setState({
+          value: newValue
+        });
+      }
+
+      _this.props.setAttributes({
+        keyValue: JSON.stringify(newObject)
+      });
     });
 
     _this.state = {
@@ -402,6 +416,10 @@ function (_Component) {
     };
     return _this;
   }
+  /**
+   * @param {string} key The new key
+   */
+
 
   _createClass(KeyValueSetting, [{
     key: "render",
@@ -986,7 +1004,8 @@ function (_Component) {
 
     _this.state = {
       selectedOption: 'choose',
-      otherSettings: []
+      otherSettings: [],
+      keyValue: {}
     };
     return _this;
   }
