@@ -175,7 +175,7 @@ function (_Component) {
           };
         });
         var cat = _this2.props.attributes.cat;
-        var catArray = cat.toString().split(', ');
+        var catArray = typeof cat === 'undefined' ? [] : cat.split(', ');
         var selectedCats = selectOptions.filter(function (option) {
           if (catArray.indexOf(option.value) > -1) {
             return option.value;

@@ -25,7 +25,7 @@ class CategorySetting extends Component {
 			} );
 
 			const { cat } = this.props.attributes;
-			const catArray = cat.toString().split( ', ' );
+			const catArray = ( typeof cat === 'undefined' ) ? [] : cat.split( ', ' );
 
 			const selectedCats = selectOptions.filter( option => {
 				if ( catArray.indexOf( option.value ) > -1 ) {
