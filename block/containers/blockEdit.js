@@ -88,6 +88,17 @@ class BlockEdit extends Component {
 	 */
 	render() {
 		const { attributes } = this.props;
+		const selectOptions = [
+			{ label: __( 'Choose a setting' ), value: 'choose' },
+			{ label: __( 'Category' ), value: 'cat' },
+			{ label: __( 'Month' ), value: 'month' },
+			{ label: __( 'Past' ), value: 'past' },
+			{ label: __( 'Other' ), value: 'other' },
+		];
+
+		const availableOptions = selectOptions.filter( option => {
+			return this.state.otherSettings.indexOf( option.value ) < 0;
+		} );
 
 		return (
 			<Fragment>
@@ -108,13 +119,7 @@ class BlockEdit extends Component {
 
 						<SelectControl
 							label={ __( 'Choose an option' ) }
-							options={ [
-								{ label: __( 'Choose a setting' ), value: 'choose' },
-								{ label: __( 'Category' ), value: 'category' },
-								{ label: __( 'Month' ), value: 'month' },
-								{ label: __( 'Past' ), value: 'past' },
-								{ label: __( 'Other' ), value: 'other' },
-							] }
+							options={ availableOptions }
 							value={ this.state.selectedOption }
 							onChange={ ( value ) => this.setState( { selectedOption: value } ) }
 						/>

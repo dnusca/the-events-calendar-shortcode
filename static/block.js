@@ -1046,6 +1046,25 @@ function (_Component) {
       var _this2 = this;
 
       var attributes = this.props.attributes;
+      var selectOptions = [{
+        label: __('Choose a setting'),
+        value: 'choose'
+      }, {
+        label: __('Category'),
+        value: 'cat'
+      }, {
+        label: __('Month'),
+        value: 'month'
+      }, {
+        label: __('Past'),
+        value: 'past'
+      }, {
+        label: __('Other'),
+        value: 'other'
+      }];
+      var availableOptions = selectOptions.filter(function (option) {
+        return _this2.state.otherSettings.indexOf(option.value) < 0;
+      });
       return React.createElement(Fragment, null, React.createElement("div", {
         className: 'ecs-block-preview-header'
       }, React.createElement("h3", null, __('The Events Calendar Block'))), React.createElement("div", {
@@ -1054,22 +1073,7 @@ function (_Component) {
         className: 'ecs-settings-container'
       }, React.createElement("h4", null, __('Configure your settings')), React.createElement(_components_designSetting__WEBPACK_IMPORTED_MODULE_0__["default"], this.props), React.createElement(_components_limitSetting__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), this.renderOtherSettings(), this.generateKeyValueRows(), React.createElement(SelectControl, {
         label: __('Choose an option'),
-        options: [{
-          label: __('Choose a setting'),
-          value: 'choose'
-        }, {
-          label: __('Category'),
-          value: 'category'
-        }, {
-          label: __('Month'),
-          value: 'month'
-        }, {
-          label: __('Past'),
-          value: 'past'
-        }, {
-          label: __('Other'),
-          value: 'other'
-        }],
+        options: availableOptions,
         value: this.state.selectedOption,
         onChange: function onChange(value) {
           return _this2.setState({
