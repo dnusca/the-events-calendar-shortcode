@@ -1,14 +1,8 @@
-import DesignSetting from '../components/designSetting';
-import CategorySetting from '../components/categorySetting';
-import LimitSetting from '../components/limitSetting';
-import MonthSetting from '../components/monthSetting';
-import PastSetting from '../components/pastSetting';
-import KeyValueSetting from '../components/keyValueSetting';
+import settingsConfig from '../config/settings';
 
-import SettingsPreview from '../components/settingsPreview';
-
-const { Component, Fragment } = wp.element;
+const { Component, Fragment, createElement } = wp.element;
 const { SelectControl, Button } = wp.components;
+const { applyFilters } = wp.hooks;
 const { __ } = wp.i18n;
 
 class BlockEdit extends Component {
@@ -17,63 +11,36 @@ class BlockEdit extends Component {
 
 		this.state = {
 			selectedOption: 'choose',
-			otherSettings: [],
+			settings: [],
 		};
-	}
 
-	componentDidMount() {
-		const { otherSettings } = this.state;
-		const { attributes } = this.props;
-		const defaults = [ 'limit', 'design' ];
-
-		const existingSettings = Object.keys( attributes ).filter( setting => {
-			return defaults.indexOf( setting ) < 0;
-		} );
-
-		this.setState( { otherSettings: [ ...otherSettings, ...existingSettings ] } );
+		this.settingsConfig = applyFilters( 'ecs.settingsConfig', settingsConfig );
 	}
 
 	/**
-	 *
-	 *
-	 * @return {ReactElement} existingSettings
+	 * CDM - pull in existing settings to the top level from block attributes
 	 */
-	generateKeyValueRows = () => {
-		let { keyValue } = this.props.attributes;
+	componentDidMount() {
+		const { settings } = this.state;
+		const { attributes } = this.props;
 
-		keyValue = ( typeof keyValue === 'undefined' || keyValue === null ) ? [] : JSON.parse( keyValue );
+		const existingSettings = Object.keys( attributes ).filter( key => key );
 
-		const existingSettings = keyValue.map( ( object, index ) => {
-			const { key, value } = object;
-			return (
-				<KeyValueSetting
-					key={ `kv-${ index }` }
-					existing={ { key, value } }
-					{ ...this.props }
-				/>
-			);
-		} );
-
-		return existingSettings;
+		this.setState( { settings: [ ...settings, ...existingSettings ] } );
 	}
 
-	renderOtherSettings = () => {
-		const { otherSettings } = this.state;
+	renderSettings = () => {
+		const { settings } = this.state;
 
-		let settingsComponents = {
-			choose: null,
-			cat: <CategorySetting { ...this.props } />,
-			month: <MonthSetting { ...this.props } />,
-			past: <PastSetting { ...this.props } />,
-		};
+		const settingsRender = settings.map( ( setting ) => {
+			return createElement( this.settingsConfig[ setting ].component, this.props );
+		} );
 
-		const otherSettingsRender = otherSettings.map( setting => settingsComponents[ setting ] );
-
-		return otherSettingsRender;
+		return settingsRender;
 	}
 
 	addOtherSetting = () => {
-		const { otherSettings, selectedOption } = this.state;
+		const { settings, selectedOption } = this.state;
 
 		if ( selectedOption === 'other' ) {
 			let { keyValue } = this.props.attributes;
@@ -81,8 +48,8 @@ class BlockEdit extends Component {
 			keyValue.push( { key: '', value: '' } );
 			this.props.setAttributes( { keyValue: JSON.stringify( keyValue ) } );
 		} else {
-			otherSettings.push( selectedOption );
-			this.setState( { otherSettings } );
+			settings.push( selectedOption );
+			this.setState( { settings } );
 		}
 	}
 
@@ -90,7 +57,6 @@ class BlockEdit extends Component {
 	 * @returns {ReactElement} The settings controls
 	 */
 	render() {
-		const { attributes } = this.props;
 		const selectOptions = [
 			{ label: __( 'Choose a setting' ), value: 'choose' },
 			{ label: __( 'Category' ), value: 'cat' },
@@ -100,7 +66,7 @@ class BlockEdit extends Component {
 		];
 
 		const availableOptions = selectOptions.filter( option => {
-			return this.state.otherSettings.indexOf( option.value ) < 0;
+			return this.state.settings.indexOf( option.value ) < 0;
 		} );
 
 		return (
@@ -113,12 +79,7 @@ class BlockEdit extends Component {
 					<div className={ 'ecs-settings-container' }>
 						<h4>{ __( 'Configure your settings' ) }</h4>
 
-						<DesignSetting { ...this.props } />
-
-						<LimitSetting { ...this.props } />
-
-						{ this.renderOtherSettings() }
-						{ this.generateKeyValueRows() }
+						{ this.renderSettings() }
 
 						<SelectControl
 							label={ __( 'Choose an option' ) }

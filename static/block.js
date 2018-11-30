@@ -319,179 +319,6 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./block/components/keyValueSetting.js":
-/*!*********************************************!*\
-  !*** ./block/components/keyValueSetting.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Component = wp.element.Component;
-var __ = wp.i18n.__;
-var TextControl = wp.components.TextControl;
-/**
-* Setting component for limit
-*/
-
-var KeyValueSetting =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(KeyValueSetting, _Component);
-
-  function KeyValueSetting(props) {
-    var _this;
-
-    _classCallCheck(this, KeyValueSetting);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(KeyValueSetting).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleKeyChange", function (key) {
-      _this.updateKeyValueAttribute('key', key);
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleValueChange", function (value) {
-      _this.updateKeyValueAttribute('value', value);
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateKeyValueAttribute", function (type, newValue) {
-      var keyValue = _this.props.attributes.keyValue;
-      var newArray = [];
-      keyValue = typeof keyValue === 'undefined' || keyValue === null ? [] : JSON.parse(keyValue);
-
-      if (type === 'key') {
-        var exists = false;
-        newArray = keyValue.map(function (object) {
-          var returnObject;
-
-          if (object.key === _this.state.key) {
-            exists = true;
-            returnObject = {
-              key: newValue,
-              value: object.value
-            };
-          } else {
-            returnObject = object;
-          }
-
-          return returnObject;
-        });
-
-        if (!exists) {
-          newArray.push({
-            key: newValue,
-            value: ''
-          });
-        }
-
-        _this.setState({
-          key: newValue
-        });
-
-        _this.props.setAttributes({
-          keyValue: JSON.stringify(newArray)
-        });
-      }
-
-      if (type === 'value') {
-        var _exists = false;
-        newArray = keyValue.map(function (object) {
-          var returnObject;
-
-          if (object.key === _this.state.key) {
-            _exists = true;
-            returnObject = {
-              key: _this.state.key,
-              value: newValue
-            };
-          } else {
-            returnObject = object;
-          }
-
-          return returnObject;
-        });
-
-        if (!_exists) {
-          newArray.push({
-            key: '',
-            value: newValue
-          });
-        }
-
-        _this.setState({
-          value: newValue
-        });
-
-        _this.props.setAttributes({
-          keyValue: JSON.stringify(newArray)
-        });
-      }
-    });
-
-    _this.state = {
-      key: props.existing ? props.existing.key : '',
-      value: props.existing ? props.existing.value : ''
-    };
-    return _this;
-  }
-  /**
-   * @param {string} key The new key
-   */
-
-
-  _createClass(KeyValueSetting, [{
-    key: "render",
-
-    /**
-     * @returns {ReactElement} Key Value Repeater
-     */
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: 'ecs-key-value'
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TextControl, {
-        label: __('Key'),
-        value: this.state.key,
-        onChange: this.handleKeyChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TextControl, {
-        label: __('Value'),
-        value: this.state.value,
-        onChange: this.handleValueChange
-      }));
-    }
-  }]);
-
-  return KeyValueSetting;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (KeyValueSetting);
-
-/***/ }),
-
 /***/ "./block/components/limitSetting.js":
 /*!******************************************!*\
   !*** ./block/components/limitSetting.js ***!
@@ -787,83 +614,51 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./block/components/settingsPreview.js":
-/*!*********************************************!*\
-  !*** ./block/components/settingsPreview.js ***!
-  \*********************************************/
+/***/ "./block/config/settings.js":
+/*!**********************************!*\
+  !*** ./block/config/settings.js ***!
+  \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BlockPreview; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_designSetting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/designSetting */ "./block/components/designSetting.js");
+/* harmony import */ var _components_categorySetting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/categorySetting */ "./block/components/categorySetting.js");
+/* harmony import */ var _components_limitSetting__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/limitSetting */ "./block/components/limitSetting.js");
+/* harmony import */ var _components_monthSetting__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/monthSetting */ "./block/components/monthSetting.js");
+/* harmony import */ var _components_pastSetting__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/pastSetting */ "./block/components/pastSetting.js");
 
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
-/**
- * Outputs the preview mode of the block
- */
-
-var BlockPreview =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(BlockPreview, _Component);
-
-  function BlockPreview() {
-    _classCallCheck(this, BlockPreview);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(BlockPreview).apply(this, arguments));
+var __ = wp.i18n.__;
+var config = {
+  design: {
+    component: _components_designSetting__WEBPACK_IMPORTED_MODULE_0__["default"],
+    label: __('Design'),
+    removable: false
+  },
+  limit: {
+    component: _components_limitSetting__WEBPACK_IMPORTED_MODULE_2__["default"],
+    label: __('Limit'),
+    removable: false
+  },
+  cat: {
+    component: _components_categorySetting__WEBPACK_IMPORTED_MODULE_1__["default"],
+    label: __('Category')
+  },
+  month: {
+    component: _components_monthSetting__WEBPACK_IMPORTED_MODULE_3__["default"],
+    label: __('Month')
+  },
+  past: {
+    component: _components_pastSetting__WEBPACK_IMPORTED_MODULE_4__["default"],
+    label: __('Past')
   }
-
-  _createClass(BlockPreview, [{
-    key: "render",
-    value: function render() {
-      var attributes = this.props.attributes;
-      var attributeRows = Object.keys(attributes).map(function (key) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: key
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-          width: '50%'
-        }, key), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-          width: '50%'
-        }, attributes[key]));
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        align: 'left',
-        width: '50%'
-      }, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        align: 'left',
-        width: '50%'
-      }, "Values"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, attributeRows)));
-    }
-  }]);
-
-  return BlockPreview;
-}(Component);
-
-
+};
+/* harmony default export */ __webpack_exports__["default"] = (config);
 
 /***/ }),
 
@@ -940,13 +735,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_designSetting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/designSetting */ "./block/components/designSetting.js");
-/* harmony import */ var _components_categorySetting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/categorySetting */ "./block/components/categorySetting.js");
-/* harmony import */ var _components_limitSetting__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/limitSetting */ "./block/components/limitSetting.js");
-/* harmony import */ var _components_monthSetting__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/monthSetting */ "./block/components/monthSetting.js");
-/* harmony import */ var _components_pastSetting__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/pastSetting */ "./block/components/pastSetting.js");
-/* harmony import */ var _components_keyValueSetting__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/keyValueSetting */ "./block/components/keyValueSetting.js");
-/* harmony import */ var _components_settingsPreview__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/settingsPreview */ "./block/components/settingsPreview.js");
+/* harmony import */ var _config_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/settings */ "./block/config/settings.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -956,8 +745,6 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -978,18 +765,14 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-
-
-
-
-
-
 var _wp$element = wp.element,
     Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+    Fragment = _wp$element.Fragment,
+    createElement = _wp$element.createElement;
 var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     Button = _wp$components.Button;
+var applyFilters = wp.hooks.applyFilters;
 var __ = wp.i18n.__;
 
 var BlockEdit =
@@ -1004,40 +787,17 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BlockEdit).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "generateKeyValueRows", function () {
-      var keyValue = _this.props.attributes.keyValue;
-      keyValue = typeof keyValue === 'undefined' || keyValue === null ? [] : JSON.parse(keyValue);
-      var existingSettings = keyValue.map(function (object, index) {
-        var key = object.key,
-            value = object.value;
-        return React.createElement(_components_keyValueSetting__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({
-          key: "kv-".concat(index),
-          existing: {
-            key: key,
-            value: value
-          }
-        }, _this.props));
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderSettings", function () {
+      var settings = _this.state.settings;
+      var settingsRender = settings.map(function (setting) {
+        return createElement(_this.settingsConfig[setting].component, _this.props);
       });
-      return existingSettings;
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderOtherSettings", function () {
-      var otherSettings = _this.state.otherSettings;
-      var settingsComponents = {
-        choose: null,
-        cat: React.createElement(_components_categorySetting__WEBPACK_IMPORTED_MODULE_1__["default"], _this.props),
-        month: React.createElement(_components_monthSetting__WEBPACK_IMPORTED_MODULE_3__["default"], _this.props),
-        past: React.createElement(_components_pastSetting__WEBPACK_IMPORTED_MODULE_4__["default"], _this.props)
-      };
-      var otherSettingsRender = otherSettings.map(function (setting) {
-        return settingsComponents[setting];
-      });
-      return otherSettingsRender;
+      return settingsRender;
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "addOtherSetting", function () {
       var _this$state = _this.state,
-          otherSettings = _this$state.otherSettings,
+          settings = _this$state.settings,
           selectedOption = _this$state.selectedOption;
 
       if (selectedOption === 'other') {
@@ -1052,40 +812,38 @@ function (_Component) {
           keyValue: JSON.stringify(keyValue)
         });
       } else {
-        otherSettings.push(selectedOption);
+        settings.push(selectedOption);
 
         _this.setState({
-          otherSettings: otherSettings
+          settings: settings
         });
       }
     });
 
     _this.state = {
       selectedOption: 'choose',
-      otherSettings: []
+      settings: []
     };
+    _this.settingsConfig = applyFilters('ecs.settingsConfig', _config_settings__WEBPACK_IMPORTED_MODULE_0__["default"]);
     return _this;
   }
+  /**
+   * CDM - pull in existing settings to the top level from block attributes
+   */
+
 
   _createClass(BlockEdit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var otherSettings = this.state.otherSettings;
+      var settings = this.state.settings;
       var attributes = this.props.attributes;
-      var defaults = ['limit', 'design'];
-      var existingSettings = Object.keys(attributes).filter(function (setting) {
-        return defaults.indexOf(setting) < 0;
+      var existingSettings = Object.keys(attributes).filter(function (key) {
+        return key;
       });
       this.setState({
-        otherSettings: _toConsumableArray(otherSettings).concat(_toConsumableArray(existingSettings))
+        settings: _toConsumableArray(settings).concat(_toConsumableArray(existingSettings))
       });
     }
-    /**
-     *
-     *
-     * @return {ReactElement} existingSettings
-     */
-
   }, {
     key: "render",
 
@@ -1095,7 +853,6 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var attributes = this.props.attributes;
       var selectOptions = [{
         label: __('Choose a setting'),
         value: 'choose'
@@ -1113,7 +870,7 @@ function (_Component) {
         value: 'other'
       }];
       var availableOptions = selectOptions.filter(function (option) {
-        return _this2.state.otherSettings.indexOf(option.value) < 0;
+        return _this2.state.settings.indexOf(option.value) < 0;
       });
       return React.createElement(Fragment, null, React.createElement("div", {
         className: 'ecs-block-preview-header'
@@ -1121,7 +878,7 @@ function (_Component) {
         className: 'ecs-edit-block'
       }, React.createElement("div", {
         className: 'ecs-settings-container'
-      }, React.createElement("h4", null, __('Configure your settings')), React.createElement(_components_designSetting__WEBPACK_IMPORTED_MODULE_0__["default"], this.props), React.createElement(_components_limitSetting__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), this.renderOtherSettings(), this.generateKeyValueRows(), React.createElement(SelectControl, {
+      }, React.createElement("h4", null, __('Configure your settings')), this.renderSettings(), React.createElement(SelectControl, {
         label: __('Choose an option'),
         options: availableOptions,
         value: this.state.selectedOption,
@@ -1225,6 +982,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_block__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./containers/block */ "./block/containers/block.js");
 
 var __ = wp.i18n.__;
+var addFilter = wp.hooks.addFilter;
 var registerBlockType = wp.blocks.registerBlockType;
 registerBlockType('events-calendar-shortcode/block', {
   title: __('Events Calendar Shortcode', 'events-calendar-shortcode'),
@@ -1239,6 +997,12 @@ registerBlockType('events-calendar-shortcode/block', {
   save: function save() {
     return null;
   }
+}); // Hook test
+// TODO: remove
+
+addFilter('ecs.settingsConfig', 'events-calendar-shortcode/block', function (settingsConfig) {
+  console.log(settingsConfig);
+  return settingsConfig;
 });
 
 /***/ }),
