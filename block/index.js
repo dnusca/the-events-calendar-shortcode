@@ -1,7 +1,8 @@
+import settingsConfig from './config/settings';
 import Block from './containers/block';
 
 const { __ } = wp.i18n;
-const { addFilter } = wp.hooks;
+const { addFilter, applyFilters } = wp.hooks;
 const {	registerBlockType } = wp.blocks;
 
 registerBlockType( 'events-calendar-shortcode/block', {
@@ -13,7 +14,12 @@ registerBlockType( 'events-calendar-shortcode/block', {
 	},
 
 	edit: ( props ) => {
-		return <Block { ...props } />;
+		return (
+			<Block
+				settingsConfig={ applyFilters( 'ecs.settingsConfig', settingsConfig ) }
+				{ ...props }
+			/>
+		);
 	},
 
 	save: () => {

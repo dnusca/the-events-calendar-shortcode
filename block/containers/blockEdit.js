@@ -1,5 +1,3 @@
-import settingsConfig from '../config/settings';
-
 const { Component, Fragment, createElement } = wp.element;
 const { SelectControl, Button } = wp.components;
 const { applyFilters } = wp.hooks;
@@ -13,8 +11,6 @@ class BlockEdit extends Component {
 			selectedOption: 'choose',
 			settings: [],
 		};
-
-		this.settingsConfig = applyFilters( 'ecs.settingsConfig', settingsConfig );
 	}
 
 	/**
@@ -31,9 +27,10 @@ class BlockEdit extends Component {
 
 	renderSettings = () => {
 		const { settings } = this.state;
+		const { settingsConfig } = this.props;
 
 		const settingsRender = settings.map( ( setting ) => {
-			return createElement( this.settingsConfig[ setting ].component, this.props );
+			return createElement( settingsConfig[ setting ].component, this.props );
 		} );
 
 		return settingsRender;

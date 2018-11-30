@@ -735,7 +735,10 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _config_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/settings */ "./block/config/settings.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -764,7 +767,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment,
@@ -789,8 +791,9 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderSettings", function () {
       var settings = _this.state.settings;
+      var settingsConfig = _this.props.settingsConfig;
       var settingsRender = settings.map(function (setting) {
-        return createElement(_this.settingsConfig[setting].component, _this.props);
+        return createElement(settingsConfig[setting].component, _this.props);
       });
       return settingsRender;
     });
@@ -824,7 +827,6 @@ function (_Component) {
       selectedOption: 'choose',
       settings: []
     };
-    _this.settingsConfig = applyFilters('ecs.settingsConfig', _config_settings__WEBPACK_IMPORTED_MODULE_0__["default"]);
     return _this;
   }
   /**
@@ -872,13 +874,13 @@ function (_Component) {
       var availableOptions = selectOptions.filter(function (option) {
         return _this2.state.settings.indexOf(option.value) < 0;
       });
-      return React.createElement(Fragment, null, React.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'ecs-block-preview-header'
-      }, React.createElement("h3", null, __('The Events Calendar Block'))), React.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, __('The Events Calendar Block'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'ecs-edit-block'
-      }, React.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'ecs-settings-container'
-      }, React.createElement("h4", null, __('Configure your settings')), this.renderSettings(), React.createElement(SelectControl, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, __('Configure your settings')), this.renderSettings(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SelectControl, {
         label: __('Choose an option'),
         options: availableOptions,
         value: this.state.selectedOption,
@@ -887,7 +889,7 @@ function (_Component) {
             selectedOption: value
           });
         }
-      }), React.createElement(Button, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
         isPrimary: true,
         onClick: this.addOtherSetting
       }, "Add"))));
@@ -979,10 +981,16 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _containers_block__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./containers/block */ "./block/containers/block.js");
+/* harmony import */ var _config_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./config/settings */ "./block/config/settings.js");
+/* harmony import */ var _containers_block__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./containers/block */ "./block/containers/block.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
 
 var __ = wp.i18n.__;
-var addFilter = wp.hooks.addFilter;
+var _wp$hooks = wp.hooks,
+    addFilter = _wp$hooks.addFilter,
+    applyFilters = _wp$hooks.applyFilters;
 var registerBlockType = wp.blocks.registerBlockType;
 registerBlockType('events-calendar-shortcode/block', {
   title: __('Events Calendar Shortcode', 'events-calendar-shortcode'),
@@ -992,7 +1000,9 @@ registerBlockType('events-calendar-shortcode/block', {
     html: false
   },
   edit: function edit(props) {
-    return React.createElement(_containers_block__WEBPACK_IMPORTED_MODULE_0__["default"], props);
+    return React.createElement(_containers_block__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+      settingsConfig: applyFilters('ecs.settingsConfig', _config_settings__WEBPACK_IMPORTED_MODULE_0__["default"])
+    }, props));
   },
   save: function save() {
     return null;
