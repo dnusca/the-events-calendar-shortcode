@@ -20,14 +20,17 @@ const config = {
 	cat: {
 		component: CategorySetting,
 		label: __( 'Category' ),
+		removable: true,
 	},
 	month: {
 		component: MonthSetting,
 		label: __( 'Month' ),
+		removable: true,
 	},
 	past: {
 		component: PastSetting,
 		label: __( 'Past' ),
+		removable: true,
 	},
 };
 
