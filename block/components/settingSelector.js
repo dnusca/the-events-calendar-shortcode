@@ -1,4 +1,4 @@
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
 
@@ -7,33 +7,55 @@ const { SelectControl } = wp.components;
 */
 class SettingSelector extends Component {
 	/**
+	 *
+	 *
+	 * @param {String} setting the chosen option
+	 */
+	createNewSetting = ( setting ) => {
+		this.props.setAttributes( { [ setting ]: '' } );
+	}
+	/**
 	* @returns {ReactElement} Limit Setting
 	*/
 	render() {
-		// const selectOptions = [
-		// 	{ label: __( 'Choose a setting' ), value: 'choose' },
-		// 	{ label: __( 'Category' ), value: 'cat' },
-		// 	{ label: __( 'Month' ), value: 'month' },
-		// 	{ label: __( 'Past' ), value: 'past' },
-		// 	{ label: __( 'Other' ), value: 'other' },
-		// ];
+		const { settingsConfig, setting, disabled } = this.props;
+		let { activeSettings } = this.props;
 
-		// const availableOptions = selectOptions.filter( option => {
-		// 	return this.state.settings.indexOf( option.value ) < 0;
-		// } );
-		console.log( this.props );
+		if ( typeof activeSettings === 'undefined' ) {
+			return null;
+		}
+
+		let selectOptions = Object.keys( settingsConfig ).map( key => {
+			return {
+				value: key,
+				label: settingsConfig[ key ].label,
+			};
+		} );
+
+		selectOptions.push( {
+			value: 'new-setting',
+			label: __( 'Choose an option' ),
+		} );
+
+		activeSettings = setting ? activeSettings.filter( value => value !== setting ) : activeSettings;
+
+		const availableOptions = selectOptions.filter( option => {
+			return activeSettings.indexOf( option.value ) < 0;
+		} );
+
+		const selectedValue = setting ? setting : 'new-setting';
+		const label = setting ? '' : __( 'Add new setting' );
 		return (
-			<Fragment>
-				<h5>{ this.props.setting }</h5>
-			</Fragment>
+			<SelectControl
+				label={ label }
+				options={ availableOptions }
+				value={ selectedValue }
+				disabled={ disabled }
+				onChange={ this.createNewSetting }
+			/>
 		);
 	}
 }
 
 export default SettingSelector;
-{/* <SelectControl
-	label={ __( 'Choose an option' ) }
-	options={ availableOptions }
-	value={ this.state.selectedOption }
-	onChange={ this.handleChange }
-/> */}
+

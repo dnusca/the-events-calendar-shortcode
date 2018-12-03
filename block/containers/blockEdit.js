@@ -10,6 +10,7 @@ class BlockEdit extends Component {
 
 		this.state = {
 			settings: [],
+			selectedOption: 'choose',
 		};
 	}
 
@@ -46,7 +47,7 @@ class BlockEdit extends Component {
 
 		// Loop through default or active settings
 		const settingsRender = settings.map( ( setting ) => {
-			const clickCallback = () => this.handleRemoveSetting( setting );;
+			const clickCallback = () => this.handleRemoveSetting( setting );
 
 			// Get the right component from our config
 			const SettingComponent = settingsConfig[ setting ].component;
@@ -60,38 +61,40 @@ class BlockEdit extends Component {
 
 			return (
 				<tr key={ setting }>
-					<td width={ '30%' }>
+					<td width={ '40%' }>
 						<SettingSelector
 							setting={ setting }
+							activeSettings={ this.state.settings }
+							settingsConfig={ settingsConfig }
 							{ ...this.props }
 						/>
 					</td>
-					<td width={ '60%' }>
+					<td width={ '55%' }>
 						<SettingComponent { ...this.props } />
 					</td>
-					<td width={ '10%' }>
+					<td width={ '5%' }>
 						{ removeComponent }
 					</td>
 				</tr>
 			);
 		} );
 
-		// // Add new setting table row
-		// settingsRender.push(
-		// 	<tr key={ 'new-setting' }>
-		// 		<td width={ '40%' }>
-		// 			<SettingSelector setting={ 'new-setting' } { ...this.props } />
-		// 		</td>
-		// 		<td width={ '40%' }>
-		// 			{ newSettingComponent }
-		// 		</td>
-		// 		<td width={ '20%' }>
-		// 			<IconButton
-		// 				icon={ 'no-alt' }
-		// 			/>
-		// 		</td>
-		// 	</tr>
-		// );
+		// Add new setting table row
+		settingsRender.push(
+			<tr key={ 'new-setting' }>
+				<td width={ '40%' }>
+					<SettingSelector
+						activeSettings={ this.state.settings }
+						settingsConfig={ settingsConfig }
+						{ ...this.props }
+					/>
+				</td>
+				<td width={ '55%' }>
+				</td>
+				<td width={ '5%' }>
+				</td>
+			</tr>
+		);
 
 		return (
 			<table>

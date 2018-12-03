@@ -637,17 +637,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Component = wp.element.Component;
 var __ = wp.i18n.__;
 var SelectControl = wp.components.SelectControl;
 /**
@@ -660,9 +660,23 @@ function (_Component) {
   _inherits(SettingSelector, _Component);
 
   function SettingSelector() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, SettingSelector);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SettingSelector).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SettingSelector)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "createNewSetting", function (setting) {
+      _this.props.setAttributes(_defineProperty({}, setting, ''));
+    });
+
+    return _this;
   }
 
   _createClass(SettingSelector, [{
@@ -672,18 +686,41 @@ function (_Component) {
     * @returns {ReactElement} Limit Setting
     */
     value: function render() {
-      // const selectOptions = [
-      // 	{ label: __( 'Choose a setting' ), value: 'choose' },
-      // 	{ label: __( 'Category' ), value: 'cat' },
-      // 	{ label: __( 'Month' ), value: 'month' },
-      // 	{ label: __( 'Past' ), value: 'past' },
-      // 	{ label: __( 'Other' ), value: 'other' },
-      // ];
-      // const availableOptions = selectOptions.filter( option => {
-      // 	return this.state.settings.indexOf( option.value ) < 0;
-      // } );
-      console.log(this.props);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, this.props.setting));
+      var _this$props = this.props,
+          settingsConfig = _this$props.settingsConfig,
+          setting = _this$props.setting,
+          disabled = _this$props.disabled;
+      var activeSettings = this.props.activeSettings;
+
+      if (typeof activeSettings === 'undefined') {
+        return null;
+      }
+
+      var selectOptions = Object.keys(settingsConfig).map(function (key) {
+        return {
+          value: key,
+          label: settingsConfig[key].label
+        };
+      });
+      selectOptions.push({
+        value: 'new-setting',
+        label: __('Choose an option')
+      });
+      activeSettings = setting ? activeSettings.filter(function (value) {
+        return value !== setting;
+      }) : activeSettings;
+      var availableOptions = selectOptions.filter(function (option) {
+        return activeSettings.indexOf(option.value) < 0;
+      });
+      var selectedValue = setting ? setting : 'new-setting';
+      var label = setting ? '' : __('Add new setting');
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SelectControl, {
+        label: label,
+        options: availableOptions,
+        value: selectedValue,
+        disabled: disabled,
+        onChange: this.createNewSetting
+      });
     }
   }]);
 
@@ -691,14 +728,6 @@ function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (SettingSelector);
-{
-  /* <SelectControl
-  label={ __( 'Choose an option' ) }
-  options={ availableOptions }
-  value={ this.state.selectedOption }
-  onChange={ this.handleChange }
-  /> */
-}
 
 /***/ }),
 
@@ -895,9 +924,8 @@ function (_Component) {
       var settingsRender = settings.map(function (setting) {
         var clickCallback = function clickCallback() {
           return _this.handleRemoveSetting(setting);
-        };
+        }; // Get the right component from our config
 
-        ; // Get the right component from our config
 
         var SettingComponent = settingsConfig[setting].component; // Add remove button if removable
 
@@ -908,31 +936,30 @@ function (_Component) {
         return React.createElement("tr", {
           key: setting
         }, React.createElement("td", {
-          width: '30%'
+          width: '40%'
         }, React.createElement(_components_settingSelector__WEBPACK_IMPORTED_MODULE_0__["default"], _extends({
-          setting: setting
+          setting: setting,
+          activeSettings: _this.state.settings,
+          settingsConfig: settingsConfig
         }, _this.props))), React.createElement("td", {
-          width: '60%'
+          width: '55%'
         }, React.createElement(SettingComponent, _this.props)), React.createElement("td", {
-          width: '10%'
+          width: '5%'
         }, removeComponent));
-      }); // // Add new setting table row
-      // settingsRender.push(
-      // 	<tr key={ 'new-setting' }>
-      // 		<td width={ '40%' }>
-      // 			<SettingSelector setting={ 'new-setting' } { ...this.props } />
-      // 		</td>
-      // 		<td width={ '40%' }>
-      // 			{ newSettingComponent }
-      // 		</td>
-      // 		<td width={ '20%' }>
-      // 			<IconButton
-      // 				icon={ 'no-alt' }
-      // 			/>
-      // 		</td>
-      // 	</tr>
-      // );
+      }); // Add new setting table row
 
+      settingsRender.push(React.createElement("tr", {
+        key: 'new-setting'
+      }, React.createElement("td", {
+        width: '40%'
+      }, React.createElement(_components_settingSelector__WEBPACK_IMPORTED_MODULE_0__["default"], _extends({
+        activeSettings: _this.state.settings,
+        settingsConfig: settingsConfig
+      }, _this.props))), React.createElement("td", {
+        width: '55%'
+      }), React.createElement("td", {
+        width: '5%'
+      })));
       return React.createElement("table", null, React.createElement("tbody", null, settingsRender));
     });
 
@@ -962,7 +989,8 @@ function (_Component) {
     });
 
     _this.state = {
-      settings: []
+      settings: [],
+      selectedOption: 'choose'
     };
     return _this;
   }
