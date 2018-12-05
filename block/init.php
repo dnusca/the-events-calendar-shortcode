@@ -32,8 +32,11 @@ function ecs_register_block() {
 				'type' 		=> 'string',
 				'default'	=> 'standard',
 			),
+			'limit'		=> array(
+				'type' => 'number',
+				'default' => 5,
+			),
 			'cat' 		=> array( 'type' => 'string' ),
-			'limit'		=> array( 'type' => 'number' ),
 			'month'		=> array( 'type' => 'string' ),
 			'past'		=> array( 'type' => 'string' ),
 			'keyValue'	=> array( 'type' => 'string' ),
