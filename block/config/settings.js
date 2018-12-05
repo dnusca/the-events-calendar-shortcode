@@ -3,6 +3,7 @@ import CategorySetting from '../components/categorySetting';
 import LimitSetting from '../components/limitSetting';
 import MonthSetting from '../components/monthSetting';
 import PastSetting from '../components/pastSetting';
+import KeyValueSetting from '../components/keyValueSetting';
 
 const { __ } = wp.i18n;
 
@@ -30,6 +31,11 @@ const config = {
 	past: {
 		component: PastSetting,
 		label: __( 'Past' ),
+		removable: true,
+	},
+	other: {
+		component: KeyValueSetting,
+		label: __( 'Other' ),
 		removable: true,
 	},
 };

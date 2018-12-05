@@ -21,16 +21,44 @@ class BlockEdit extends Component {
 		const { settings } = this.state;
 		const { attributes } = this.props;
 
-		const existingSettings = Object.keys( attributes );
+		// Pull in existing settings from attributes and merge to settings state
+		// We ignore undefined attributes
+		const existingSettings = Object.keys( attributes ).filter( setting => {
+			return typeof attributes[ setting ] !== 'undefined';
+		} );
 
 		this.setState( { settings: [ ...settings, ...existingSettings ] } );
 	}
 
+	/**
+	 * Handle addition of settings from settings table and attributes
+	 *
+	 * @param {String} setting The setting to remove
+	 */
 	handleAddSetting = ( setting ) => {
 		const { settings } = this.state;
 		settings.push( setting );
 		this.setState( { settings } );
 		this.props.setAttributes( { [ setting ]: '' } );
+	}
+
+	/**
+	 * Handle switching of settings from settings table and attributes
+	 *
+	 * @param {String} setting The setting to remove
+	 * @param {String} newSetting The setting to add
+	 */
+	handleSwitchSetting = ( setting, newSetting ) => {
+		const { settings } = this.state;
+
+		const newSettings = settings.filter( value => value !== setting );
+		newSettings.push( newSetting );
+
+		this.setState( { settings: newSettings } );
+		this.props.setAttributes( {
+			[ setting ]: undefined,
+			[ newSetting ]: '',
+		} );
 	}
 
 	/**
@@ -73,7 +101,7 @@ class BlockEdit extends Component {
 							setting={ setting }
 							activeSettings={ this.state.settings }
 							settingsConfig={ settingsConfig }
-							handleSelect={ this.handleAddSetting }
+							handleSwitch={ this.handleSwitchSetting }
 							{ ...this.props }
 						/>
 					</td>
