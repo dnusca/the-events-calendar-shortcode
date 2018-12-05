@@ -7,14 +7,6 @@ const { SelectControl } = wp.components;
 */
 class SettingSelector extends Component {
 	/**
-	 *
-	 *
-	 * @param {String} setting the chosen option
-	 */
-	createNewSetting = ( setting ) => {
-		this.props.setAttributes( { [ setting ]: '' } );
-	}
-	/**
 	* @returns {ReactElement} Limit Setting
 	*/
 	render() {
@@ -51,7 +43,7 @@ class SettingSelector extends Component {
 				options={ availableOptions }
 				value={ selectedValue }
 				disabled={ disabled }
-				onChange={ this.createNewSetting }
+				onChange={ this.props.handleSelect }
 			/>
 		);
 	}

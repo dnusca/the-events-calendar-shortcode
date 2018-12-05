@@ -29,7 +29,6 @@ registerBlockType( 'events-calendar-shortcode/block', {
 
 // Hook test
 // TODO: remove
-addFilter( 'ecs.settingsConfig', 'events-calendar-shortcode/block', ( settingsConfig ) => {
-	console.log( settingsConfig );
-	return settingsConfig;
-} );
+// addFilter( 'ecs.settingsConfig', 'events-calendar-shortcode/block', ( settingsConfig ) => {
+// 	return settingsConfig;
+// } );

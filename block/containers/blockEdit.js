@@ -26,6 +26,13 @@ class BlockEdit extends Component {
 		this.setState( { settings: [ ...settings, ...existingSettings ] } );
 	}
 
+	handleAddSetting = ( setting ) => {
+		const { settings } = this.state;
+		settings.push( setting );
+		this.setState( { settings } );
+		this.props.setAttributes( { [ setting ]: '' } );
+	}
+
 	/**
 	 * Handle removal of settings from settings table and attributes
 	 *
@@ -66,6 +73,7 @@ class BlockEdit extends Component {
 							setting={ setting }
 							activeSettings={ this.state.settings }
 							settingsConfig={ settingsConfig }
+							handleSelect={ this.handleAddSetting }
 							{ ...this.props }
 						/>
 					</td>
@@ -86,6 +94,7 @@ class BlockEdit extends Component {
 					<SettingSelector
 						activeSettings={ this.state.settings }
 						settingsConfig={ settingsConfig }
+						handleSelect={ this.handleAddSetting }
 						{ ...this.props }
 					/>
 				</td>
