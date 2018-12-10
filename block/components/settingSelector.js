@@ -1,22 +1,23 @@
+import Select from 'react-select';
+
 const { Component } = wp.element;
 const { __ } = wp.i18n;
-const { SelectControl } = wp.components;
 
 class SettingSelector extends Component {
 	handleChange = ( newSetting ) => {
 		const { setting, handleSelect, handleSwitch } = this.props;
 
-		if ( setting ) {
-			handleSwitch( setting, newSetting );
+		if ( setting !== 'new-setting' ) {
+			handleSwitch( setting, newSetting.value );
 		} else {
-			handleSelect( newSetting );
+			handleSelect( newSetting.value );
 		}
 	}
 	/**
 	* @returns {ReactElement} Limit Setting
 	*/
 	render() {
-		const { settingsConfig, setting, disabled } = this.props;
+		const { settingsConfig, setting } = this.props;
 		let { activeSettings } = this.props;
 
 		// Bail if no/still fetching activeSettings
@@ -46,17 +47,17 @@ class SettingSelector extends Component {
 			return activeSettings.indexOf( option.value ) < 0;
 		} );
 
-		const selectedValue = setting ? setting : 'new-setting';
-		const label = setting ? '' : __( 'Add new setting' );
+		// const selectedValue = setting ? setting : 'new-setting';
+		const selectedValue = selectOptions.filter( option => option.value === setting );
+		const label = setting ? '' : __( 'Add new setting' ); // TODO: Aria
 
 		return (
-			<SelectControl
-				label={ label }
+			<Select
 				options={ availableOptions }
 				value={ selectedValue }
-				disabled={ disabled }
 				onChange={ this.handleChange }
 			/>
+
 		);
 	}
 }

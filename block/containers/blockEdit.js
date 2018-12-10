@@ -84,6 +84,16 @@ class BlockEdit extends Component {
 		const settingsRender = settings.map( ( setting ) => {
 			const clickCallback = () => this.handleRemoveSetting( setting );
 
+			// Get the setting selector unless default setting
+			const selectorComponent = settingsConfig[ setting ].removable ?
+				<SettingSelector
+					setting={ setting }
+					activeSettings={ this.state.settings }
+					settingsConfig={ settingsConfig }
+					handleSwitch={ this.handleSwitchSetting }
+					{ ...this.props }
+				/> : <h4>{ setting }</h4>;
+
 			// Get the right component from our config
 			const SettingComponent = settingsConfig[ setting ].component;
 
@@ -97,13 +107,7 @@ class BlockEdit extends Component {
 			return (
 				<tr key={ setting }>
 					<td width={ '40%' }>
-						<SettingSelector
-							setting={ setting }
-							activeSettings={ this.state.settings }
-							settingsConfig={ settingsConfig }
-							handleSwitch={ this.handleSwitchSetting }
-							{ ...this.props }
-						/>
+						{ selectorComponent }
 					</td>
 					<td width={ '55%' }>
 						<SettingComponent { ...this.props } />
@@ -120,6 +124,7 @@ class BlockEdit extends Component {
 			<tr key={ 'new-setting' }>
 				<td width={ '40%' }>
 					<SettingSelector
+						setting={ 'new-setting' }
 						activeSettings={ this.state.settings }
 						settingsConfig={ settingsConfig }
 						handleSelect={ this.handleAddSetting }
