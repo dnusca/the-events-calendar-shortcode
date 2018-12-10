@@ -24,7 +24,8 @@ class BlockEdit extends Component {
 		// Pull in existing settings from attributes and merge to settings state
 		// We ignore undefined attributes
 		const existingSettings = Object.keys( attributes ).filter( setting => {
-			return typeof attributes[ setting ] !== 'undefined';
+			return ( setting !== 'settings' ||
+				typeof attributes[ setting ] !== 'undefined' );
 		} );
 
 		this.setState( { settings: [ ...settings, ...existingSettings ] } );
@@ -37,9 +38,14 @@ class BlockEdit extends Component {
 	 */
 	handleAddSetting = ( setting ) => {
 		const { settings } = this.state;
+		console.log( setting );
 		settings.push( setting );
 		this.setState( { settings } );
-		this.props.setAttributes( { [ setting ]: '' } );
+		console.log( settings );
+		this.props.setAttributes( {
+			[ setting ]: '',
+			settings: JSON.stringify( settings ),
+		} );
 	}
 
 	/**
@@ -58,6 +64,7 @@ class BlockEdit extends Component {
 		this.props.setAttributes( {
 			[ setting ]: undefined,
 			[ newSetting ]: '',
+			settings: JSON.stringify( newSettings ),
 		} );
 	}
 
@@ -70,16 +77,21 @@ class BlockEdit extends Component {
 		const newSettings = this.state.settings.filter( name => name !== setting );
 
 		this.setState( { settings: newSettings } );
-		this.props.setAttributes( { [ setting ]: undefined } );
+		this.props.setAttributes( {
+			[ setting ]: undefined,
+			settings: JSON.stringify( newSettings ),
+		} );
 	}
 
 	/**
 	 * @return {ReactElement} settingsRender The rendered settings
 	 */
 	renderSettingsTable = () => {
-		const { settings } = this.state;
+		// const { settings } = this.state;
 		const { settingsConfig } = this.props;
-
+		let { settings } = this.props.attributes;
+		settings = ( typeof settings === 'undefined' ) ? [ 'design', 'limit' ] : JSON.parse( settings );
+		console.log( settings );
 		// Loop through default or active settings
 		const settingsRender = settings.map( ( setting ) => {
 			const clickCallback = () => this.handleRemoveSetting( setting );

@@ -23,8 +23,6 @@ registerBlockType( 'events-calendar-shortcode/block', {
 	},
 
 	save: ( props ) => {
-		console.log('save!');
-		console.log(props);
 		return null;
 	},
 } );

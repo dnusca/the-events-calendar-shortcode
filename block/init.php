@@ -40,6 +40,7 @@ function ecs_register_block() {
 			'month'		=> array( 'type' => 'string' ),
 			'past'		=> array( 'type' => 'string' ),
 			'keyValue'	=> array( 'type' => 'string' ),
+			'settings'	=> array( 'type' => 'string' ),
 		)
 	) );
 }
@@ -57,7 +58,7 @@ function ecs_render_block( $attributes ) {
 	$attribute_str = '';
 
 	foreach ( $attributes as $key => $value ) {
-		if ( $key === 'keyValue' )
+		if ( $key === 'keyValue' || $key === 'settings' )
 			continue;
 
 		if ( isset( $attributes[ $key ] ) && ! empty( $attributes[ $key ] ) ) {
