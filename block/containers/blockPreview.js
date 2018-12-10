@@ -7,6 +7,7 @@ class BlockPreview extends Component {
 	*/
 	render() {
 		const { attributes } = this.props;
+
 		return (
 			<Fragment>
 				<ServerSideRender

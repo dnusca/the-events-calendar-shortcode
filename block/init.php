@@ -61,8 +61,17 @@ function ecs_render_block( $attributes ) {
 	$attribute_str = '';
 
 	foreach ( $attributes as $key => $value ) {
-		if ( $key === 'keyValue' || $key === 'settings' )
+		if ( $key === 'settings' )
 			continue;
+
+		if ( $key === 'keyValue' ) {
+			$kv_attributes = json_decode( $value );
+
+			foreach ( $kv_attributes as $kv_attribute ) {
+				$attribute_str .= " {$kv_attribute->key}=\"{$kv_attribute->value}\"";
+			}
+			continue;
+		}
 
 		if ( isset( $attributes[ $key ] ) && ! empty( $attributes[ $key ] ) ) {
 			$attribute_str .= " {$key}=\"{$value}\"";
@@ -70,6 +79,6 @@ function ecs_render_block( $attributes ) {
 	}
 
 	$shortcode_str = "[ecs-list-events{$attribute_str}]";
-
+	// return $shortcode_str;
 	return do_shortcode( $shortcode_str );
 }

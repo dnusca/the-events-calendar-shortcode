@@ -5,14 +5,27 @@ const { __ } = wp.i18n;
 
 class SettingSelector extends Component {
 	handleChange = ( newSetting ) => {
-		const { setting, handleSelect, handleSwitch } = this.props;
+		const { setting, uid, handleSelect, handleSwitch } = this.props;
 
-		if ( setting !== 'new-setting' ) {
+		// TODO: look at ways of refactoring this out to something more sane
+		if ( setting === 'new-setting' && newSetting.value === 'other' ) {
+			// handle new keyValue setting
+			handleSelect( newSetting.value, true );
+		} else if ( setting !== 'new-setting' && newSetting.value === 'other' ) {
+			// handle switching to a keyValue setting
+			handleSwitch( setting, newSetting.value, 'add' );
+		} else if ( setting !== 'new-setting' && setting === 'other' ) {
+			// handle switching from a keyValue setting
+			handleSwitch( setting, newSetting.value, uid );
+		} else if ( setting !== 'new-setting' ) {
+			// handle switch normal setting
 			handleSwitch( setting, newSetting.value );
 		} else {
+			// handle new normal setting
 			handleSelect( newSetting.value );
 		}
 	}
+
 	/**
 	* @returns {ReactElement} Limit Setting
 	*/
@@ -47,9 +60,8 @@ class SettingSelector extends Component {
 			return activeSettings.indexOf( option.value ) < 0;
 		} );
 
-		// const selectedValue = setting ? setting : 'new-setting';
 		const selectedValue = selectOptions.filter( option => option.value === setting );
-		const label = setting ? '' : __( 'Add new setting' ); // TODO: Aria
+		// const label = setting ? '' : __( 'Add new setting' ); // TODO: Aria
 
 		return (
 			<Select

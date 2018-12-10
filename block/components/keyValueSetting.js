@@ -6,15 +6,6 @@ const { TextControl } = wp.components;
 * Setting component for limit
 */
 class KeyValueSetting extends Component {
-	constructor( props ) {
-		super( props );
-
-		this.state = {
-			key: props.existing ? props.existing.key : '',
-			value: props.existing ? props.existing.value : '',
-		};
-	}
-
 	/**
 	 * @param {string} key The new key
 	 */
@@ -34,74 +25,34 @@ class KeyValueSetting extends Component {
 	 * @param {string} newValue the updated input for key or value
 	 */
 	updateKeyValueAttribute = ( type, newValue ) => {
+		const { uid } = this.props;
 		let { keyValue } = this.props.attributes;
-		let newArray = [];
 
-		keyValue = ( typeof keyValue === 'undefined' || keyValue === null ) ? [] : JSON.parse( keyValue );
+		keyValue = typeof keyValue === 'undefined' ? {} : JSON.parse( keyValue );
+		keyValue[ uid ] = { ...keyValue[ uid ], [ type ]: newValue };
 
-		if ( type === 'key' ) {
-			let exists = false;
-
-			newArray = keyValue.map( object => {
-				let returnObject;
-
-				if ( object.key === this.state.key ) {
-					exists = true;
-					returnObject = { key: newValue, value: object.value };
-				} else {
-					returnObject = object;
-				}
-
-				return returnObject;
-			} );
-
-			if ( ! exists ) {
-				newArray.push( { key: newValue, value: '' } );
-			}
-
-			this.setState( { key: newValue } );
-			this.props.setAttributes( { keyValue: JSON.stringify( newArray ) } );
-		}
-
-		if ( type === 'value' ) {
-			let exists = false;
-
-			newArray = keyValue.map( object => {
-				let returnObject;
-
-				if ( object.key === this.state.key ) {
-					exists = true;
-					returnObject = { key: this.state.key, value: newValue };
-				} else {
-					returnObject = object;
-				}
-
-				return returnObject;
-			} );
-
-			if ( ! exists ) {
-				newArray.push( { key: '', value: newValue } );
-			}
-
-			this.setState( { value: newValue } );
-			this.props.setAttributes( { keyValue: JSON.stringify( newArray ) } );
-		}
+		this.props.setAttributes( { keyValue: JSON.stringify( keyValue ) } );
 	}
 
 	/**
 	 * @returns {ReactElement} Key Value Repeater
 	 */
 	render() {
+		let { keyValue } = this.props.attributes;
+
+		keyValue = typeof keyValue === 'undefined' ? {} : JSON.parse( keyValue );
+		const item = keyValue[ this.props.uid ];
+
 		return (
 			<div className={ 'ecs-key-value' }>
 				<TextControl
 					label={ __( 'Key' ) }
-					value={ this.state.key }
+					value={ item.key }
 					onChange={ this.handleKeyChange }
 				/>
 				<TextControl
 					label={ __( 'Value' ) }
-					value={ this.state.value }
+					value={ item.value }
 					onChange={ this.handleValueChange }
 				/>
 			</div>

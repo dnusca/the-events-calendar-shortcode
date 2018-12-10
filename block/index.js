@@ -22,7 +22,7 @@ registerBlockType( 'events-calendar-shortcode/block', {
 		);
 	},
 
-	save: ( props ) => {
+	save: () => {
 		return null;
 	},
 } );

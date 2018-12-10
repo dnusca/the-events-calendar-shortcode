@@ -1,30 +1,28 @@
 import SettingSelector from '../components/settingSelector';
+import uuid from 'uuid/v4';
 
 const { Component, Fragment } = wp.element;
 const { IconButton } = wp.components;
 const { __ } = wp.i18n;
 
 class BlockEdit extends Component {
-	constructor( props ) {
-		super( props );
-
-		this.state = {
-			selectedOption: 'choose',
-		};
-	}
-
 	/**
 	 * Handle addition of settings from settings table and attributes
 	 *
 	 * @param {String} setting The setting to remove
+	 * @param {Boolean} keyValue Whether to create unique id for keyValue type setting
 	 */
-	handleAddSetting = ( setting ) => {
+	handleAddSetting = ( setting, keyValue ) => {
 		let { settings } = this.props.attributes;
 		settings = JSON.parse( settings );
+
+		if ( keyValue ) {
+			setting = this.handleAddKeyValue();
+		}
+
 		settings.push( setting );
 
 		this.props.setAttributes( {
-			[ setting ]: '',
 			settings: JSON.stringify( settings ),
 		} );
 	}
@@ -34,17 +32,25 @@ class BlockEdit extends Component {
 	 *
 	 * @param {String} setting The setting to remove
 	 * @param {String} newSetting The setting to add
+	 * @param {String|null} keyValue Whether to create unique id for keyValue type setting
 	 */
-	handleSwitchSetting = ( setting, newSetting ) => {
+	handleSwitchSetting = ( setting, newSetting, keyValue ) => {
 		let { settings } = this.props.attributes;
 		settings = JSON.parse( settings );
 
-		const newSettings = settings.filter( value => value !== setting );
-		newSettings.push( newSetting );
+		if ( keyValue === 'add' ) {
+			newSetting = this.handleAddKeyValue();
+		}
+
+		if ( keyValue && keyValue.substring( 0, 2 ) === 'kv' ) {
+			this.handleRemoveKeyValue( keyValue );
+			setting = keyValue;
+		}
+
+		const newSettings = settings.map( value => value === setting ? newSetting : value );
 
 		this.props.setAttributes( {
 			[ setting ]: undefined,
-			[ newSetting ]: '',
 			settings: JSON.stringify( newSettings ),
 		} );
 	}
@@ -53,16 +59,59 @@ class BlockEdit extends Component {
 	 * Handle removal of settings from settings table and attributes
 	 *
 	 * @param {String} setting The setting to remove
+	 * @param {String|null} uid key value setting unique id or null
 	 */
-	handleRemoveSetting = ( setting ) => {
+	handleRemoveSetting = ( setting, uid ) => {
 		let { settings } = this.props.attributes;
 		settings = JSON.parse( settings );
+
+		if ( uid ) {
+			this.handleRemoveKeyValue( uid );
+			setting = uid;
+		}
 
 		const newSettings = settings.filter( name => name !== setting );
 
 		this.props.setAttributes( {
 			[ setting ]: undefined,
 			settings: JSON.stringify( newSettings ),
+		} );
+	}
+
+	/**
+	 * Handle switching of settings from settings table and attributes
+	 *
+	 * @returns {String} generated unique id for key value setting
+	 */
+	handleAddKeyValue = () => {
+		let { keyValue } = this.props.attributes;
+		keyValue = typeof keyValue === 'undefined' ? {} : JSON.parse( keyValue );
+
+		const uid = `kv-${ uuid() }`;
+		const newKeyValue = { ...keyValue, [ uid ]: {
+			key: '',
+			value: '',
+		} };
+
+		this.props.setAttributes( {
+			keyValue: JSON.stringify( newKeyValue ),
+		} );
+
+		return uid;
+	}
+
+	/**
+	 * Handle removing setting from keyValue object
+	 *
+	 * @param {String} uid The unique id of the key value setting
+	 */
+	handleRemoveKeyValue = ( uid ) => {
+		let { keyValue } = this.props.attributes;
+		keyValue = typeof keyValue === 'undefined' ? {} : JSON.parse( keyValue );
+		delete keyValue[ uid ];
+
+		this.props.setAttributes( {
+			keyValue: JSON.stringify( keyValue ),
 		} );
 	}
 
@@ -76,12 +125,20 @@ class BlockEdit extends Component {
 
 		// Loop through default or active settings
 		const settingsRender = settings.map( ( setting ) => {
-			const clickCallback = () => this.handleRemoveSetting( setting );
+			// Check if Key Value setting
+			let uid = null;
+			if ( setting.substring( 0, 2 ) === 'kv' ) {
+				uid = setting;
+				setting = 'other';
+			}
+
+			const removeCallback = () => this.handleRemoveSetting( setting, uid );
 
 			// Get the setting selector unless default setting
 			const selectorComponent = settingsConfig[ setting ].removable ?
 				<SettingSelector
 					setting={ setting }
+					uid={ uid }
 					activeSettings={ settings }
 					settingsConfig={ settingsConfig }
 					handleSwitch={ this.handleSwitchSetting }
@@ -95,7 +152,7 @@ class BlockEdit extends Component {
 			const removeComponent = settingsConfig[ setting ].removable ?
 				<IconButton
 					icon={ 'no-alt' }
-					onClick={ clickCallback }
+					onClick={ removeCallback }
 				/> : null;
 
 			return (
@@ -104,7 +161,10 @@ class BlockEdit extends Component {
 						{ selectorComponent }
 					</td>
 					<td width={ '55%' }>
-						<SettingComponent { ...this.props } />
+						<SettingComponent
+							{ ...this.props }
+							uid={ uid }
+						/>
 					</td>
 					<td width={ '5%' }>
 						{ removeComponent }
