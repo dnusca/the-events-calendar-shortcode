@@ -9,26 +9,8 @@ class BlockEdit extends Component {
 		super( props );
 
 		this.state = {
-			settings: [],
 			selectedOption: 'choose',
 		};
-	}
-
-	/**
-	 * CDM - pull in existing settings to the top level from block attributes
-	 */
-	componentDidMount() {
-		const { settings } = this.state;
-		const { attributes } = this.props;
-
-		// Pull in existing settings from attributes and merge to settings state
-		// We ignore undefined attributes
-		const existingSettings = Object.keys( attributes ).filter( setting => {
-			return ( setting !== 'settings' ||
-				typeof attributes[ setting ] !== 'undefined' );
-		} );
-
-		this.setState( { settings: [ ...settings, ...existingSettings ] } );
 	}
 
 	/**
@@ -37,11 +19,10 @@ class BlockEdit extends Component {
 	 * @param {String} setting The setting to remove
 	 */
 	handleAddSetting = ( setting ) => {
-		const { settings } = this.state;
-		console.log( setting );
+		let { settings } = this.props.attributes;
+		settings = JSON.parse( settings );
 		settings.push( setting );
-		this.setState( { settings } );
-		console.log( settings );
+
 		this.props.setAttributes( {
 			[ setting ]: '',
 			settings: JSON.stringify( settings ),
@@ -55,12 +36,12 @@ class BlockEdit extends Component {
 	 * @param {String} newSetting The setting to add
 	 */
 	handleSwitchSetting = ( setting, newSetting ) => {
-		const { settings } = this.state;
+		let { settings } = this.props.attributes;
+		settings = JSON.parse( settings );
 
 		const newSettings = settings.filter( value => value !== setting );
 		newSettings.push( newSetting );
 
-		this.setState( { settings: newSettings } );
 		this.props.setAttributes( {
 			[ setting ]: undefined,
 			[ newSetting ]: '',
@@ -74,9 +55,11 @@ class BlockEdit extends Component {
 	 * @param {String} setting The setting to remove
 	 */
 	handleRemoveSetting = ( setting ) => {
-		const newSettings = this.state.settings.filter( name => name !== setting );
+		let { settings } = this.props.attributes;
+		settings = JSON.parse( settings );
 
-		this.setState( { settings: newSettings } );
+		const newSettings = settings.filter( name => name !== setting );
+
 		this.props.setAttributes( {
 			[ setting ]: undefined,
 			settings: JSON.stringify( newSettings ),
@@ -87,11 +70,10 @@ class BlockEdit extends Component {
 	 * @return {ReactElement} settingsRender The rendered settings
 	 */
 	renderSettingsTable = () => {
-		// const { settings } = this.state;
 		const { settingsConfig } = this.props;
 		let { settings } = this.props.attributes;
-		settings = ( typeof settings === 'undefined' ) ? [ 'design', 'limit' ] : JSON.parse( settings );
-		console.log( settings );
+		settings = JSON.parse( settings );
+
 		// Loop through default or active settings
 		const settingsRender = settings.map( ( setting ) => {
 			const clickCallback = () => this.handleRemoveSetting( setting );
@@ -100,7 +82,7 @@ class BlockEdit extends Component {
 			const selectorComponent = settingsConfig[ setting ].removable ?
 				<SettingSelector
 					setting={ setting }
-					activeSettings={ this.state.settings }
+					activeSettings={ settings }
 					settingsConfig={ settingsConfig }
 					handleSwitch={ this.handleSwitchSetting }
 					{ ...this.props }
@@ -137,7 +119,7 @@ class BlockEdit extends Component {
 				<td width={ '40%' }>
 					<SettingSelector
 						setting={ 'new-setting' }
-						activeSettings={ this.state.settings }
+						activeSettings={ settings }
 						settingsConfig={ settingsConfig }
 						handleSelect={ this.handleAddSetting }
 						{ ...this.props }
@@ -157,20 +139,6 @@ class BlockEdit extends Component {
 				</tbody>
 			</table>
 		);
-	}
-
-	addOtherSetting = () => {
-		const { settings, selectedOption } = this.state;
-
-		if ( selectedOption === 'other' ) {
-			let { keyValue } = this.props.attributes;
-			keyValue = ( typeof this.props.attributes.keyValue === 'undefined' ) ? [] : JSON.parse( keyValue );
-			keyValue.push( { key: '', value: '' } );
-			this.props.setAttributes( { keyValue: JSON.stringify( keyValue ) } );
-		} else {
-			settings.push( selectedOption );
-			this.setState( { settings } );
-		}
 	}
 
 	/**

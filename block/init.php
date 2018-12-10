@@ -40,7 +40,10 @@ function ecs_register_block() {
 			'month'		=> array( 'type' => 'string' ),
 			'past'		=> array( 'type' => 'string' ),
 			'keyValue'	=> array( 'type' => 'string' ),
-			'settings'	=> array( 'type' => 'string' ),
+			'settings'	=> array(
+				'type' => 'string',
+				'default' => json_encode( array( 'design', 'limit' ) ),
+			),
 		)
 	) );
 }

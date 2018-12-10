@@ -1025,14 +1025,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_settingSelector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/settingSelector */ "./block/components/settingSelector.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1075,15 +1067,9 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleAddSetting", function (setting) {
       var _this$props$setAttrib;
 
-      var settings = _this.state.settings;
-      console.log(setting);
+      var settings = _this.props.attributes.settings;
+      settings = JSON.parse(settings);
       settings.push(setting);
-
-      _this.setState({
-        settings: settings
-      });
-
-      console.log(settings);
 
       _this.props.setAttributes((_this$props$setAttrib = {}, _defineProperty(_this$props$setAttrib, setting, ''), _defineProperty(_this$props$setAttrib, "settings", JSON.stringify(settings)), _this$props$setAttrib));
     });
@@ -1091,15 +1077,12 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSwitchSetting", function (setting, newSetting) {
       var _this$props$setAttrib2;
 
-      var settings = _this.state.settings;
+      var settings = _this.props.attributes.settings;
+      settings = JSON.parse(settings);
       var newSettings = settings.filter(function (value) {
         return value !== setting;
       });
       newSettings.push(newSetting);
-
-      _this.setState({
-        settings: newSettings
-      });
 
       _this.props.setAttributes((_this$props$setAttrib2 = {}, _defineProperty(_this$props$setAttrib2, setting, undefined), _defineProperty(_this$props$setAttrib2, newSetting, ''), _defineProperty(_this$props$setAttrib2, "settings", JSON.stringify(newSettings)), _this$props$setAttrib2));
     });
@@ -1107,23 +1090,19 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleRemoveSetting", function (setting) {
       var _this$props$setAttrib3;
 
-      var newSettings = _this.state.settings.filter(function (name) {
+      var settings = _this.props.attributes.settings;
+      settings = JSON.parse(settings);
+      var newSettings = settings.filter(function (name) {
         return name !== setting;
-      });
-
-      _this.setState({
-        settings: newSettings
       });
 
       _this.props.setAttributes((_this$props$setAttrib3 = {}, _defineProperty(_this$props$setAttrib3, setting, undefined), _defineProperty(_this$props$setAttrib3, "settings", JSON.stringify(newSettings)), _this$props$setAttrib3));
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderSettingsTable", function () {
-      // const { settings } = this.state;
       var settingsConfig = _this.props.settingsConfig;
       var settings = _this.props.attributes.settings;
-      settings = typeof settings === 'undefined' ? ['design', 'limit'] : JSON.parse(settings);
-      console.log(settings); // Loop through default or active settings
+      settings = JSON.parse(settings); // Loop through default or active settings
 
       var settingsRender = settings.map(function (setting) {
         var clickCallback = function clickCallback() {
@@ -1133,7 +1112,7 @@ function (_Component) {
 
         var selectorComponent = settingsConfig[setting].removable ? React.createElement(_components_settingSelector__WEBPACK_IMPORTED_MODULE_0__["default"], _extends({
           setting: setting,
-          activeSettings: _this.state.settings,
+          activeSettings: settings,
           settingsConfig: settingsConfig,
           handleSwitch: _this.handleSwitchSetting
         }, _this.props)) : React.createElement("h4", null, setting); // Get the right component from our config
@@ -1161,7 +1140,7 @@ function (_Component) {
         width: '40%'
       }, React.createElement(_components_settingSelector__WEBPACK_IMPORTED_MODULE_0__["default"], _extends({
         setting: 'new-setting',
-        activeSettings: _this.state.settings,
+        activeSettings: settings,
         settingsConfig: settingsConfig,
         handleSelect: _this.handleAddSetting
       }, _this.props))), React.createElement("td", {
@@ -1172,63 +1151,19 @@ function (_Component) {
       return React.createElement("table", null, React.createElement("tbody", null, settingsRender));
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "addOtherSetting", function () {
-      var _this$state = _this.state,
-          settings = _this$state.settings,
-          selectedOption = _this$state.selectedOption;
-
-      if (selectedOption === 'other') {
-        var keyValue = _this.props.attributes.keyValue;
-        keyValue = typeof _this.props.attributes.keyValue === 'undefined' ? [] : JSON.parse(keyValue);
-        keyValue.push({
-          key: '',
-          value: ''
-        });
-
-        _this.props.setAttributes({
-          keyValue: JSON.stringify(keyValue)
-        });
-      } else {
-        settings.push(selectedOption);
-
-        _this.setState({
-          settings: settings
-        });
-      }
-    });
-
     _this.state = {
-      settings: [],
       selectedOption: 'choose'
     };
     return _this;
   }
   /**
-   * CDM - pull in existing settings to the top level from block attributes
+   * Handle addition of settings from settings table and attributes
+   *
+   * @param {String} setting The setting to remove
    */
 
 
   _createClass(BlockEdit, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var settings = this.state.settings;
-      var attributes = this.props.attributes; // Pull in existing settings from attributes and merge to settings state
-      // We ignore undefined attributes
-
-      var existingSettings = Object.keys(attributes).filter(function (setting) {
-        return setting !== 'settings' || typeof attributes[setting] !== 'undefined';
-      });
-      this.setState({
-        settings: _toConsumableArray(settings).concat(_toConsumableArray(existingSettings))
-      });
-    }
-    /**
-     * Handle addition of settings from settings table and attributes
-     *
-     * @param {String} setting The setting to remove
-     */
-
-  }, {
     key: "render",
 
     /**
@@ -1307,7 +1242,6 @@ function (_Component) {
     */
     value: function render() {
       var attributes = this.props.attributes;
-      console.log(attributes);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ServerSideRender, {
         block: 'events-calendar-shortcode/block',
         attributes: attributes
