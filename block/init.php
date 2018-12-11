@@ -21,30 +21,32 @@ function ecs_register_block() {
 		plugins_url( 'static/ecs-block.css', dirname( __FILE__ ) ),
 		array(),
 		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'static/ecs-block.css' )
-    );
+	);
+
+	$attributes = apply_filters( 'ecs_block_attributes', array(
+		'design' 	=> array(
+			'type' 		=> 'string',
+			'default'	=> 'standard',
+		),
+		'limit'		=> array(
+			'type' => 'number',
+			'default' => 5,
+		),
+		'settings'	=> array(
+			'type' => 'string',
+			'default' => json_encode( array( 'design', 'limit' ) ),
+		),
+		'cat' 		=> array( 'type' => 'string' ),
+		'month'		=> array( 'type' => 'string' ),
+		'past'		=> array( 'type' => 'string' ),
+		'keyValue'	=> array( 'type' => 'string' ),
+	) );
 
 	register_block_type( 'events-calendar-shortcode/block', array(
 		'style'             => 'ecs-block',
         'script'            => 'ecs-block',
 		'render_callback'   => 'ecs_render_block',
-		'attributes'		=> array(
-			'design' 	=> array(
-				'type' 		=> 'string',
-				'default'	=> 'standard',
-			),
-			'limit'		=> array(
-				'type' => 'number',
-				'default' => 5,
-			),
-			'cat' 		=> array( 'type' => 'string' ),
-			'month'		=> array( 'type' => 'string' ),
-			'past'		=> array( 'type' => 'string' ),
-			'keyValue'	=> array( 'type' => 'string' ),
-			'settings'	=> array(
-				'type' => 'string',
-				'default' => json_encode( array( 'design', 'limit' ) ),
-			),
-		)
+		'attributes'		=> $attributes,
 	) );
 }
 add_action( 'init', 'ecs_register_block' );
