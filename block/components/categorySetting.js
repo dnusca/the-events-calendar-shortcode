@@ -60,7 +60,7 @@ class CategorySetting extends Component {
 		return (
 			<Fragment>
 				<Select
-					className={ 'ecs-select' }
+					className={ 'ecs-select multi' }
 					classNamePrefix={ 'select' }
 					value={ this.state.selectedCats }
 					onChange={ this.handleChange }

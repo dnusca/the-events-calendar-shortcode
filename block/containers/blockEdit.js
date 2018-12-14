@@ -124,7 +124,7 @@ class BlockEdit extends Component {
 		let { settings } = this.props.attributes;
 		settings = JSON.parse( settings );
 
-		// Loop through default or active settings
+		// Loop through default or active settings and build the settings area
 		const settingsRender = settings.map( ( setting ) => {
 			// Check if Key Value setting
 			let uid = null;
@@ -144,7 +144,7 @@ class BlockEdit extends Component {
 					settingsConfig={ settingsConfig }
 					handleSwitch={ this.handleSwitchSetting }
 					{ ...this.props }
-				/> : <h4>{ setting }</h4>;
+				/> : <span>{ setting.charAt( 0 ).toUpperCase() + setting.slice( 1 ) }</span>;
 
 			// Get the right component from our config
 			const SettingComponent = settingsConfig[ setting ].component;
@@ -157,47 +157,38 @@ class BlockEdit extends Component {
 				/> : null;
 
 			return (
-				<tr key={ uid ? uid : setting }>
-					<td className={ 'ecs-selector-col' } width={ '40%' }>
+				<div className={ 'ecs-settings-row' } key={ uid ? uid : setting }>
+					<div className={ 'ecs-selector-col' }>
 						{ selectorComponent }
-					</td>
-					<td width={ '55%' }>
+					</div>
+					<div className={ 'ecs-setting-col' }>
 						<SettingComponent
 							{ ...this.props }
 							uid={ uid }
 						/>
-					</td>
-					<td width={ '5%' }>
+					</div>
+					<div className={ 'ecs-remove-col' }>
 						{ removeComponent }
-					</td>
-				</tr>
+					</div>
+				</div>
 			);
 		} );
 
-		// Add new setting table row
-		settingsRender.push(
-			<tr key={ 'new-setting' }>
-				<td className={ 'ecs-selector-col' } width={ '40%' }>
+		return (
+			<Fragment>
+				<div className={ 'ecs-settings-area' }>
+					{ settingsRender }
+				</div>
+				<div className={ 'ecs-setting-add' }>
 					<SettingSelector
 						activeSettings={ settings }
 						settingsConfig={ settingsConfig }
 						handleSelect={ this.handleAddSetting }
 						{ ...this.props }
 					/>
-				</td>
-				<td width={ '55%' }>
-				</td>
-				<td width={ '5%' }>
-				</td>
-			</tr>
-		);
-
-		return (
-			<table className={ 'ecs-settings-table' }>
-				<tbody>
-					{ settingsRender }
-				</tbody>
-			</table>
+					<div className={ 'ecs-flex-fill' }></div>
+				</div>
+			</Fragment>
 		);
 	}
 

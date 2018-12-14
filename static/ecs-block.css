@@ -1,1 +1,72 @@
-.ecs-settings-container,.ecs-values-container{flex:1;padding:10px 15px}.ecs-edit-block{display:flex;font-family:sans-serif;font-size:18px}.ecs-settings-table tr{height:70px}.ecs-settings-table h4{padding:0!important}.ecs-settings-table .ecs-selector-col{padding-right:6%;max-width:260px}.ecs-key-value{display:flex}.ecs-key-value :first-child{margin-right:10px}.ecs-key-value>div{flex:1}.ecs-select .select__control{max-height:30px;font-family:sans-serif;font-size:18px}.ecs-select .select__menu{opacity:1;margin-top:0;border-radius:0}.ecs-select .select__option{padding:1px 12px}
+.ecs-settings-container,
+.ecs-values-container {
+  flex: 1;
+  padding: 10px 15px; }
+
+.ecs-edit-block {
+  display: flex;
+  font-family: sans-serif;
+  font-size: 18px; }
+
+.ecs-settings-row {
+  display: flex;
+  padding: 18px 0;
+  border-bottom: 1px solid #e5e5e5; }
+  .ecs-settings-row > * {
+    padding: 0 10px; }
+  .ecs-settings-row .ecs-selector-col {
+    flex: 3;
+    display: flex;
+    align-items: center; }
+  .ecs-settings-row .ecs-setting-col {
+    flex: 4; }
+  .ecs-settings-row .ecs-remove-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
+
+.ecs-setting-add {
+  display: flex;
+  padding: 18px 0; }
+  .ecs-setting-add > .ecs-select {
+    flex: 3;
+    padding: 0 10px; }
+  .ecs-setting-add > .ecs-flex-fill {
+    flex: 5;
+    padding: 0 10px; }
+
+.ecs-key-value {
+  display: flex; }
+  .ecs-key-value :first-child {
+    margin-right: 10px; }
+  .ecs-key-value > div {
+    flex: 1; }
+
+.ecs-select {
+  flex-grow: 1; }
+  .ecs-select .select__control {
+    max-height: 30px;
+    font-family: sans-serif;
+    font-size: 18px; }
+  .ecs-select .select__menu {
+    opacity: 1;
+    margin-top: 0;
+    border-radius: 0; }
+  .ecs-select .select__option {
+    padding: 1px 12px; }
+  .ecs-select .select__multi-value {
+    background-color: #ebf5ff;
+    background-color: rgba(0, 126, 255, 0.08);
+    border-radius: 2px;
+    border: 1px solid #c2e0ff;
+    border: 1px solid rgba(0, 126, 255, 0.24);
+    color: #007eff;
+    font-size: .9em;
+    line-height: 1.4;
+    margin-left: 5px;
+    margin-top: 5px;
+    vertical-align: top; }
+
+
+/*# sourceMappingURL=ecs-block.css.map*/
