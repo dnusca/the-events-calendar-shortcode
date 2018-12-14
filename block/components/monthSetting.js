@@ -7,7 +7,8 @@ const { __ } = wp.i18n;
 class MonthSetting extends Component {
 	constructor( props ) {
 		super( props );
-		const { month } = props.attributes;
+		let { month } = props.attributes;
+		month = typeof month === 'undefined' ? '' : month;
 		const valid = ( month !== '' || month !== 'current' );
 
 		this.state = {
