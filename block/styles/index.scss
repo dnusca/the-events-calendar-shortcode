@@ -6,14 +6,51 @@
 
 .ecs-edit-block {
     display: flex;
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
+.ecs-settings-table {
+    tr {
+        height: 70px;
+    }
+
+    h4 {
+        padding: 0 !important;
+    }
+
+    .ecs-selector-col {
+        padding-right: 6%;
+        max-width: 260px;
+    }
 }
 
 .ecs-key-value {
     display: flex;
+
     :first-child {
         margin-right: 10px;
     }
+
     > div {
         flex: 1;
+    }
+}
+
+.ecs-select {
+    .select__control {
+        max-height: 30px;
+        font-family: sans-serif;
+        font-size: 18px;
+    }
+
+    .select__menu {
+        opacity: 1;
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    .select__option {
+        padding: 1px 12px;
     }
 }

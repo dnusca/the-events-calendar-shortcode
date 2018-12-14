@@ -8,12 +8,14 @@ const { __ } = wp.i18n;
 */
 class DesignSetting extends Component {
 	/**
-	 * @returns {ReactElement} Limit Setting
+	 * @return {ReactElement} Limit Setting
 	 */
 	render() {
 		return (
 			<Fragment>
 				<Select
+					className={ 'ecs-select' }
+					classNamePrefix={ 'select' }
 					options={ [
 						{ label: __( 'Standard' ), value: 'standard' },
 					] }

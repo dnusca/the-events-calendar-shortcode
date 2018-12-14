@@ -1,6 +1,5 @@
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
-const { BaseControl } = wp.components;
 
 /**
 * Setting component for limit
@@ -17,25 +16,20 @@ class PastSetting extends Component {
 	}
 
 	/**
-	 * @returns {ReactElement} Limit Setting
+	 * @return {ReactElement} Limit Setting
 	 */
 	render() {
 		const past = ( this.props.attributes.past === 'yes' ) ? true : false;
 
 		return (
 			<Fragment>
-				<BaseControl
+				<input
 					id={ 'ecs-setting-month-current' }
-					label={ __( 'Past' ) }
-					help={ __( 'Show past events.' ) }
-				>
-					<input
-						id={ 'ecs-setting-month-current' }
-						type={ 'checkbox' }
-						checked={ past }
-						onChange={ this.handleChange }
-					/>
-				</BaseControl>
+					type={ 'checkbox' }
+					checked={ past }
+					onChange={ this.handleChange }
+				/>
+				<span>{ __( 'Show only past events?' ) }</span>
 			</Fragment>
 		);
 	}

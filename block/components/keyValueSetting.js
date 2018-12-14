@@ -35,7 +35,7 @@ class KeyValueSetting extends Component {
 	}
 
 	/**
-	 * @returns {ReactElement} Key Value Repeater
+	 * @return {ReactElement} Key Value Repeater
 	 */
 	render() {
 		let { keyValue } = this.props.attributes;

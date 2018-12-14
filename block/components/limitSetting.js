@@ -1,6 +1,4 @@
 const { Component, Fragment } = wp.element;
-const { __ } = wp.i18n;
-const { BaseControl } = wp.components;
 
 /**
 * Setting component for limit
@@ -16,25 +14,19 @@ class LimitSetting extends Component {
 	}
 
 	/**
-	 * @returns {ReactElement} Limit Setting
+	 * @return {ReactElement} Limit Setting
 	 */
 	render() {
 		const { attributes } = this.props;
 
 		return (
 			<Fragment>
-				<BaseControl
+				<input
 					id={ 'ecs-setting-limit' }
-					label={ __( 'Limit' ) }
-					help={ __( 'The number of events to show.' ) }
-				>
-					<input
-						id={ 'ecs-setting-limit' }
-						type={ 'number' }
-						value={ attributes.limit }
-						onChange={ this.handleChange }
-					/>
-				</BaseControl>
+					type={ 'number' }
+					value={ attributes.limit }
+					onChange={ this.handleChange }
+				/>
 			</Fragment>
 		);
 	}

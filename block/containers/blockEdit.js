@@ -1,4 +1,6 @@
 import SettingSelector from '../components/settingSelector';
+import SettingSwitcher from '../components/settingSwitcher';
+
 import uuid from 'uuid/v4';
 
 const { Component, Fragment } = wp.element;
@@ -9,8 +11,8 @@ class BlockEdit extends Component {
 	/**
 	 * Handle addition of settings from settings table and attributes
 	 *
-	 * @param {String} setting The setting to remove
-	 * @param {Boolean} keyValue Whether to create unique id for keyValue type setting
+	 * @param {string} setting The setting to add
+	 * @param {boolean} keyValue Whether to create unique id for keyValue type setting
 	 */
 	handleAddSetting = ( setting, keyValue ) => {
 		let { settings } = this.props.attributes;
@@ -30,9 +32,9 @@ class BlockEdit extends Component {
 	/**
 	 * Handle switching of settings from settings table and attributes
 	 *
-	 * @param {String} setting The setting to remove
-	 * @param {String} newSetting The setting to add
-	 * @param {String|null} keyValue Whether to create unique id for keyValue type setting
+	 * @param {string} setting The setting to remove
+	 * @param {string} newSetting The setting to add
+	 * @param {string|null} keyValue Whether to create unique id for keyValue type setting
 	 */
 	handleSwitchSetting = ( setting, newSetting, keyValue ) => {
 		let { settings } = this.props.attributes;
@@ -47,7 +49,7 @@ class BlockEdit extends Component {
 			setting = keyValue;
 		}
 
-		const newSettings = settings.map( value => value === setting ? newSetting : value );
+		const newSettings = settings.map( ( value ) => value === setting ? newSetting : value );
 
 		this.props.setAttributes( {
 			[ setting ]: undefined,
@@ -58,8 +60,8 @@ class BlockEdit extends Component {
 	/**
 	 * Handle removal of settings from settings table and attributes
 	 *
-	 * @param {String} setting The setting to remove
-	 * @param {String|null} uid key value setting unique id or null
+	 * @param {string} setting The setting to remove
+	 * @param {string|null} uid key value setting unique id or null
 	 */
 	handleRemoveSetting = ( setting, uid ) => {
 		let { settings } = this.props.attributes;
@@ -70,8 +72,7 @@ class BlockEdit extends Component {
 			setting = uid;
 		}
 
-		const newSettings = settings.filter( name => name !== setting );
-
+		const newSettings = settings.filter( ( name ) => name !== setting );
 		this.props.setAttributes( {
 			[ setting ]: undefined,
 			settings: JSON.stringify( newSettings ),
@@ -81,7 +82,7 @@ class BlockEdit extends Component {
 	/**
 	 * Handle switching of settings from settings table and attributes
 	 *
-	 * @returns {String} generated unique id for key value setting
+	 * @return {string} generated unique id for key value setting
 	 */
 	handleAddKeyValue = () => {
 		let { keyValue } = this.props.attributes;
@@ -103,7 +104,7 @@ class BlockEdit extends Component {
 	/**
 	 * Handle removing setting from keyValue object
 	 *
-	 * @param {String} uid The unique id of the key value setting
+	 * @param {string} uid The unique id of the key value setting
 	 */
 	handleRemoveKeyValue = ( uid ) => {
 		let { keyValue } = this.props.attributes;
@@ -136,7 +137,7 @@ class BlockEdit extends Component {
 
 			// Get the setting selector unless default setting
 			const selectorComponent = settingsConfig[ setting ].removable ?
-				<SettingSelector
+				<SettingSwitcher
 					setting={ setting }
 					uid={ uid }
 					activeSettings={ settings }
@@ -156,8 +157,8 @@ class BlockEdit extends Component {
 				/> : null;
 
 			return (
-				<tr key={ setting }>
-					<td width={ '40%' }>
+				<tr key={ uid ? uid : setting }>
+					<td className={ 'ecs-selector-col' } width={ '40%' }>
 						{ selectorComponent }
 					</td>
 					<td width={ '55%' }>
@@ -176,9 +177,8 @@ class BlockEdit extends Component {
 		// Add new setting table row
 		settingsRender.push(
 			<tr key={ 'new-setting' }>
-				<td width={ '40%' }>
+				<td className={ 'ecs-selector-col' } width={ '40%' }>
 					<SettingSelector
-						setting={ 'new-setting' }
 						activeSettings={ settings }
 						settingsConfig={ settingsConfig }
 						handleSelect={ this.handleAddSetting }
@@ -193,7 +193,7 @@ class BlockEdit extends Component {
 		);
 
 		return (
-			<table>
+			<table className={ 'ecs-settings-table' }>
 				<tbody>
 					{ settingsRender }
 				</tbody>
@@ -202,7 +202,7 @@ class BlockEdit extends Component {
 	}
 
 	/**
-	 * @returns {ReactElement} The settings controls
+	 * @return {ReactElement} The settings controls
 	 */
 	render() {
 		return (

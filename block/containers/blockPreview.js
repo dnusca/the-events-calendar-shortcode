@@ -3,7 +3,7 @@ const { ServerSideRender } = wp.components;
 
 class BlockPreview extends Component {
 	/**
-	* @returns {ReactElement} The block preview
+	* @return {ReactElement} The block preview
 	*/
 	render() {
 		const { attributes } = this.props;
