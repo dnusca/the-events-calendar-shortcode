@@ -7,9 +7,15 @@ const { __ } = wp.i18n;
 class MonthSetting extends Component {
 	constructor( props ) {
 		super( props );
-		const valid = ( props.attributes.month === 'current' );
+		const { month } = props.attributes;
+		const valid = ( month !== '' || month !== 'current' );
 
-		this.state = { valid: valid };
+		this.state = {
+			year: valid ? month.slice( 0, 4 ) : '',
+			month: valid ? month.slice( 5 ) : '',
+			monthValid: valid,
+			yearValid: valid,
+		};
 	}
 	/**
 	* Handle current checkbox input change
@@ -27,8 +33,18 @@ class MonthSetting extends Component {
 	* @param {Object} event input onChange event
 	*/
 	handleYearChange = ( event ) => {
-		this.setState( { valid: event.target.validity.patternMismatch } );
-		this.props.setAttributes( { month: event.target.value } );
+		const { month, monthValid } = this.state;
+
+		if ( ! event.target.validity.patternMismatch && monthValid ) {
+			this.props.setAttributes( { month: `${ event.target.value }-${ month }` } );
+		} else {
+			this.props.setAttributes( { month: '' } );
+		}
+
+		this.setState( {
+			year: event.target.value,
+			yearValid: ! event.target.validity.patternMismatch,
+		} );
 	}
 
 	/**
@@ -37,8 +53,18 @@ class MonthSetting extends Component {
 	* @param {Object} event input onChange event
 	*/
 	handleMonthChange = ( event ) => {
-		this.setState( { valid: event.target.validity.patternMismatch } );
-		this.props.setAttributes( { month: event.target.value } );
+		const { year, yearValid } = this.state;
+
+		if ( ! event.target.validity.patternMismatch && yearValid ) {
+			this.props.setAttributes( { month: `${ year }-${ event.target.value }` } );
+		} else {
+			this.props.setAttributes( { month: '' } );
+		}
+
+		this.setState( {
+			month: event.target.value,
+			monthValid: ! event.target.validity.patternMismatch,
+		} );
 	}
 
 	/**
@@ -47,38 +73,57 @@ class MonthSetting extends Component {
 	render() {
 		const { month } = this.props.attributes;
 		const current = ( month === 'current' ) ? true : false;
-		const textValue = current ? '' : month;
 
 		return (
 			<Fragment>
-				<input
-					id={ 'ecs-setting-month-current' }
-					type={ 'checkbox' }
-					checked={ current }
-					onChange={ this.handleChange }
-				/><span>{ __( 'Current' ) }</span>
+				<div className={ 'ecs-current-month' }>
+					<input
+						id={ 'ecs-setting-month-current' }
+						type={ 'checkbox' }
+						checked={ current }
+						onChange={ this.handleChange }
+					/><label
+						className={ 'components-base-control__label' }
+						htmlFor={ 'ecs-setting-month-current' }
+					>{ __( 'Current Month Only?' ) }</label>
+				</div>
 
 				{ ! current ? <Fragment>
-					<input
-						id={ 'ecs-setting-year' }
-						style={ { borderColor: this.state.yearValid ? 'red' : 'inherit' } }
-						type={ 'text' }
-						label={ __( 'Year' ) }
-						placeholder={ 'YYYY' }
-						value={ textValue }
-						pattern={ '[0-9]{4}' }
-						onChange={ this.handleYearChange }
-					/>
-					<input
-						id={ 'ecs-setting-month' }
-						style={ { borderColor: this.state.monthValid ? 'red' : 'inherit' } }
-						type={ 'text' }
-						label={ __( 'Month' ) }
-						placeholder={ 'MM' }
-						value={ textValue }
-						pattern={ '(0[1-9]|1[012])' }
-						onChange={ this.handleMonthChange }
-					/>
+					<div className={ 'components-base-control' }>
+
+						<div className={ 'components-base-control__field' }>
+							<label
+								className={ 'components-base-control__label' }
+								htmlFor={ 'ecs-setting-year' }
+							>Year</label>
+							<input
+								id={ 'ecs-setting-year' }
+								style={ { borderColor: this.state.yearValid ? 'inherit' : 'red' } }
+								type={ 'text' }
+								label={ __( 'Year' ) }
+								placeholder={ 'YYYY' }
+								value={ this.state.year }
+								pattern={ '[0-9]{4}' }
+								onChange={ this.handleYearChange }
+							/>
+						</div>
+
+						<div className={ 'components-base-control__field' }>
+							<label
+								className={ 'components-base-control__label' }
+								htmlFor={ 'ecs-setting-month' }
+							>Month</label>
+							<input
+								id={ 'ecs-setting-month' }
+								style={ { borderColor: this.state.monthValid ? 'inherit' : 'red' } }
+								type={ 'text' }
+								placeholder={ 'MM' }
+								value={ this.state.month }
+								pattern={ '(0[1-9]|1[012])' }
+								onChange={ this.handleMonthChange }
+							/>
+						</div>
+					</div>
 				</Fragment> : null }
 			</Fragment>
 		);
