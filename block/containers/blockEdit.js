@@ -198,15 +198,13 @@ class BlockEdit extends Component {
 	render() {
 		return (
 			<Fragment>
-				<div className={ 'ecs-block-preview-header' }>
+				<div className={ 'ecs-block-header' }>
 					<h3>{ __( 'The Events Calendar Block' ) }</h3>
 				</div>
 
-				<div className={ 'ecs-edit-block' }>
-					<div className={ 'ecs-settings-container' }>
-						<h4>{ __( 'Configure your settings' ) }</h4>
-						{ this.renderSettingsTable() }
-					</div>
+				<div className={ 'ecs-block-edit' }>
+					<h4>{ __( 'Configure your settings' ) }</h4>
+					{ this.renderSettingsTable() }
 				</div>
 			</Fragment>
 		);

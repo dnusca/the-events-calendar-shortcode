@@ -26,7 +26,17 @@ class MonthSetting extends Component {
 	*
 	* @param {Object} event input onChange event
 	*/
-	handleTextChange = ( event ) => {
+	handleYearChange = ( event ) => {
+		this.setState( { valid: event.target.validity.patternMismatch } );
+		this.props.setAttributes( { month: event.target.value } );
+	}
+
+	/**
+	* Handle current checkbox input change
+	*
+	* @param {Object} event input onChange event
+	*/
+	handleMonthChange = ( event ) => {
 		this.setState( { valid: event.target.validity.patternMismatch } );
 		this.props.setAttributes( { month: event.target.value } );
 	}
@@ -48,15 +58,28 @@ class MonthSetting extends Component {
 					onChange={ this.handleChange }
 				/><span>{ __( 'Current' ) }</span>
 
-				{ ! current ? <input
-					id={ 'ecs-setting-month' }
-					style={ { borderColor: this.state.valid ? 'red' : 'inherit' } }
-					type={ 'text' }
-					placeholder={ 'YYYY-MM' }
-					value={ textValue }
-					pattern={ '[0-9]{4}-(0[1-9]|1[012])' }
-					onChange={ this.handleTextChange }
-				/> : null }
+				{ ! current ? <Fragment>
+					<input
+						id={ 'ecs-setting-year' }
+						style={ { borderColor: this.state.yearValid ? 'red' : 'inherit' } }
+						type={ 'text' }
+						label={ __( 'Year' ) }
+						placeholder={ 'YYYY' }
+						value={ textValue }
+						pattern={ '[0-9]{4}' }
+						onChange={ this.handleYearChange }
+					/>
+					<input
+						id={ 'ecs-setting-month' }
+						style={ { borderColor: this.state.monthValid ? 'red' : 'inherit' } }
+						type={ 'text' }
+						label={ __( 'Month' ) }
+						placeholder={ 'MM' }
+						value={ textValue }
+						pattern={ '(0[1-9]|1[012])' }
+						onChange={ this.handleMonthChange }
+					/>
+				</Fragment> : null }
 			</Fragment>
 		);
 	}
