@@ -24,6 +24,7 @@ class LimitSetting extends Component {
 				<input
 					id={ 'ecs-setting-limit' }
 					type={ 'number' }
+					min={ 1 }
 					value={ attributes.limit }
 					onChange={ this.handleChange }
 				/>
