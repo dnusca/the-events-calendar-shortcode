@@ -5,18 +5,18 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --progress --colors --watch --mode=development",
-    "build": "webpack --progress --colors -p --config webpack.config.js --mode=production && rm static/*.map"
+    "build": "webpack --progress --colors -p --config webpack.config.js --mode=production && rm static/ecs-block.css.map"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://dnusca@github.com/dnusca/the-events-calendar-shortcode.git"
+    "url": "git+https://github.com/brianhogg/the-events-calendar-shortcode"
   },
   "author": "Event Calendar Newsletter",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/dnusca/the-events-calendar-shortcode/issues"
+    "url": "https://github.com/brianhogg/the-events-calendar-shortcode/issues"
   },
-  "homepage": "https://github.com/dnusca/the-events-calendar-shortcode#readme",
+  "homepage": "https://github.com/brianhogg/the-events-calendar-shortcode#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",

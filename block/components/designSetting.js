@@ -26,7 +26,7 @@ class DesignSetting extends Component {
 				<span>
 					<a
 						href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }
-						target={ '_blank'}
+						target={ '_blank' }
 					>{ __( 'Upgrade', textDomain ) }</a>
 					{ __( ' to Pro for more designs!', textDomain ) }
 				</span>

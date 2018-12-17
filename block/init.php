@@ -14,7 +14,9 @@ function ecs_register_block() {
 		plugins_url( 'static/block.js', dirname( __FILE__ ) ),
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
 		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'static/block.js' )
-    );
+	);
+
+	wp_set_script_translations( 'ecs-block', 'the-events-calendar-shortcode' );
 
 	wp_register_style(
 		'ecs-block',
@@ -81,6 +83,6 @@ function ecs_render_block( $attributes ) {
 	}
 
 	$shortcode_str = "[ecs-list-events{$attribute_str}]";
-	// return $shortcode_str;
+
 	return do_shortcode( $shortcode_str );
 }
