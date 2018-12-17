@@ -167,24 +167,3 @@
         border-bottom: 1px solid black;
     }
 }
-
-.ecs-settings-description {
-    display: flex;
-
-    .ecs-setting-desc {
-        margin-right: 18px;
-    }
-}
-
-.ecs-settings-design-details {
-    display: flex;
-    align-items: center;
-
-    > div {
-        margin-right: 18px;
-    }
-
-    div:last-of-type {
-        margin-right: 0;
-    }
-}
