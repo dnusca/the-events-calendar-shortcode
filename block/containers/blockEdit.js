@@ -2,6 +2,7 @@ import SettingSelector from '../components/settingSelector';
 import SettingSwitcher from '../components/settingSwitcher';
 
 import uuid from 'uuid/v4';
+import { withContentRect } from 'react-measure';
 
 const { Component, Fragment } = wp.element;
 const { IconButton } = wp.components;
@@ -120,7 +121,7 @@ class BlockEdit extends Component {
 	 * @return {ReactElement} settingsRender The rendered settings
 	 */
 	renderSettingsTable = () => {
-		const { settingsConfig } = this.props;
+		const { settingsConfig, contentRect } = this.props;
 		let { settings } = this.props.attributes;
 		settings = JSON.parse( settings );
 
@@ -131,6 +132,11 @@ class BlockEdit extends Component {
 			if ( setting.substring( 0, 2 ) === 'kv' ) {
 				uid = setting;
 				setting = 'other';
+			}
+
+			// bail if no config
+			if ( typeof settingsConfig[ setting ] === 'undefined' ) {
+				return;
 			}
 
 			const removeCallback = () => this.handleRemoveSetting( setting, uid );
@@ -156,8 +162,10 @@ class BlockEdit extends Component {
 					onClick={ removeCallback }
 				/> : null;
 
+			const rowClassName = contentRect.bounds.width < 530 ? 'ecs-settings-row mobile' : 'ecs-settings-row';
+
 			return (
-				<div className={ 'ecs-settings-row' } key={ uid ? uid : setting }>
+				<div className={ rowClassName } key={ uid ? uid : setting }>
 					<div className={ 'ecs-selector-col' }>
 						{ selectorComponent }
 					</div>
@@ -174,12 +182,14 @@ class BlockEdit extends Component {
 			);
 		} );
 
+		const addClassName = contentRect.bounds.width < 530 ? 'ecs-setting-add mobile' : 'ecs-setting-add';
+
 		return (
 			<Fragment>
 				<div className={ 'ecs-settings-area' }>
 					{ settingsRender }
 				</div>
-				<div className={ 'ecs-setting-add' }>
+				<div className={ addClassName }>
 					<SettingSelector
 						activeSettings={ settings }
 						settingsConfig={ settingsConfig }
@@ -202,7 +212,9 @@ class BlockEdit extends Component {
 					<h3>{ __( 'The Events Calendar Block' ) }</h3>
 				</div>
 
-				<div className={ 'ecs-block-edit' }>
+				<div
+					className={ 'ecs-block-edit' }
+					ref={ this.props.measureRef }>
 					<h4>{ __( 'Configure your settings' ) }</h4>
 					{ this.renderSettingsTable() }
 				</div>
@@ -211,4 +223,4 @@ class BlockEdit extends Component {
 	}
 }
 
-export default BlockEdit;
+export default withContentRect( 'bounds' )( BlockEdit );

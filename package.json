@@ -46,6 +46,7 @@
     "webpack-fix-style-only-entries": "0.0.5"
   },
   "dependencies": {
+    "react-measure": "^2.2.1",
     "react-select": "^2.1.1",
     "uuid": "^3.3.2"
   },

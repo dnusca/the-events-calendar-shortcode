@@ -5,7 +5,7 @@ const { Component } = wp.element;
 
 class Block extends Component {
 	/**
-	* @returns {ReactElement} The block preview
+	* @return {ReactElement} The block preview
 	*/
 	render() {
 		const { isSelected } = this.props;

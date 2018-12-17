@@ -76,57 +76,56 @@ class MonthSetting extends Component {
 		const current = ( month === 'current' ) ? true : false;
 
 		return (
-			<Fragment>
-				<div className={ 'ecs-current-month' }>
+			<div className={ 'ecs-settings-month' }>
+				<div className={ 'ecs-setting-current' }>
 					<input
-						id={ 'ecs-setting-month-current' }
+						id={ 'ecs-setting-current' }
 						type={ 'checkbox' }
 						checked={ current }
 						onChange={ this.handleChange }
 					/><label
 						className={ 'components-base-control__label' }
-						htmlFor={ 'ecs-setting-month-current' }
+						htmlFor={ 'ecs-setting-current' }
 					>{ __( 'Current Month Only?' ) }</label>
 				</div>
 
 				{ ! current ? <Fragment>
-					<div className={ 'components-base-control' }>
+					<div className={ 'ecs-setting-text-field' }>
+						<label
+							className={ 'ecs-setting-label' }
+							htmlFor={ 'ecs-setting-year' }
+						>{ __( 'Year' ) }</label>
+						<input
+							id={ 'ecs-setting-year' }
+							style={ { borderColor: this.state.yearValid ? 'inherit' : 'red' } }
+							type={ 'text' }
+							label={ __( 'Year' ) }
+							placeholder={ 'YYYY' }
+							value={ this.state.year }
+							pattern={ '[0-9]{4}' }
+							onChange={ this.handleYearChange }
+						/>
+					</div>
 
-						<div className={ 'components-base-control__field' }>
-							<label
-								className={ 'components-base-control__label' }
-								htmlFor={ 'ecs-setting-year' }
-							>Year</label>
-							<input
-								id={ 'ecs-setting-year' }
-								style={ { borderColor: this.state.yearValid ? 'inherit' : 'red' } }
-								type={ 'text' }
-								label={ __( 'Year' ) }
-								placeholder={ 'YYYY' }
-								value={ this.state.year }
-								pattern={ '[0-9]{4}' }
-								onChange={ this.handleYearChange }
-							/>
-						</div>
+					<div className={ 'ecs-month-divider' } />
 
-						<div className={ 'components-base-control__field' }>
-							<label
-								className={ 'components-base-control__label' }
-								htmlFor={ 'ecs-setting-month' }
-							>Month</label>
-							<input
-								id={ 'ecs-setting-month' }
-								style={ { borderColor: this.state.monthValid ? 'inherit' : 'red' } }
-								type={ 'text' }
-								placeholder={ 'MM' }
-								value={ this.state.month }
-								pattern={ '(0[1-9]|1[012])' }
-								onChange={ this.handleMonthChange }
-							/>
-						</div>
+					<div className={ 'ecs-setting-text-field' }>
+						<label
+							className={ 'ecs-setting-label' }
+							htmlFor={ 'ecs-setting-month' }
+						>{ __( 'Month' ) }</label>
+						<input
+							id={ 'ecs-setting-month' }
+							style={ { borderColor: this.state.monthValid ? 'inherit' : 'red' } }
+							type={ 'text' }
+							placeholder={ 'MM' }
+							value={ this.state.month }
+							pattern={ '(0[1-9]|1[012])' }
+							onChange={ this.handleMonthChange }
+						/>
 					</div>
 				</Fragment> : null }
-			</Fragment>
+			</div>
 		);
 	}
 }

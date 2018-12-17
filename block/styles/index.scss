@@ -24,6 +24,19 @@
     padding: 18px 0;
     border-bottom: 1px solid #e5e5e5;
 
+    &.mobile {
+        flex-direction: column;
+
+        > * {
+            margin-bottom: 8px;
+        }
+
+        .ecs-remove-col {
+            align-self: center;
+            margin-bottom: 0;
+        }
+    }
+
     > * {
         padding: 0 10px;
     }
@@ -59,6 +72,21 @@
         flex: 5;
         padding: 0 10px;
     }
+
+    &.mobile {
+        > .ecs-flex-fill {
+            display: none;
+        }
+    }
+}
+
+.ecs-setting-text-field {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-size: 13px;
+    }
 }
 
 .ecs-key-value {
@@ -86,6 +114,10 @@
         font-size: 18px;
     }
 
+    .select__value-container {
+        padding: 0 8px;
+    }
+
     .select__menu {
         opacity: 1;
         z-index: 99999;
@@ -95,6 +127,10 @@
 
     .select__option {
         padding: 1px 12px;
+    }
+
+    .select__option--is-disabled.select__option--is-selected {
+        display: none;
     }
 
     .select__multi-value {
@@ -109,5 +145,46 @@
         margin-left: 5px;
         margin-top: 5px;
         vertical-align: top;
+    }
+}
+
+.ecs-settings-month {
+    display: flex;
+    align-items: center;
+
+    .ecs-setting-current {
+        flex: 3;
+    }
+
+    .ecs-setting-text-field input {
+        width: 60px;
+    }
+
+    .ecs-month-divider {
+        width: 10px;
+        height: 19px;
+        margin: 0 10px;
+        border-bottom: 1px solid black;
+    }
+}
+
+.ecs-settings-description {
+    display: flex;
+
+    .ecs-setting-desc {
+        margin-right: 18px;
+    }
+}
+
+.ecs-settings-design-details {
+    display: flex;
+    align-items: center;
+
+    > div {
+        margin-right: 18px;
+    }
+
+    div:last-of-type {
+        margin-right: 0;
     }
 }
