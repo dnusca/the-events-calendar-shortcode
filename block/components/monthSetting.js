@@ -9,7 +9,7 @@ class MonthSetting extends Component {
 		super( props );
 		let { month } = props.attributes;
 		month = typeof month === 'undefined' ? '' : month;
-		const valid = ( month !== '' || month !== 'current' );
+		const valid = ( month !== '' && month !== 'current' );
 
 		this.state = {
 			year: valid ? month.slice( 0, 4 ) : '',

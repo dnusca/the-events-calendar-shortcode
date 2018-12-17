@@ -134,12 +134,10 @@ class BlockEdit extends Component {
 				setting = 'other';
 			}
 
-			// bail if no config
+			// bail if no config for this setting
 			if ( typeof settingsConfig[ setting ] === 'undefined' ) {
 				return;
 			}
-
-			const removeCallback = () => this.handleRemoveSetting( setting, uid );
 
 			// Get the setting selector unless default setting
 			const selectorComponent = settingsConfig[ setting ].removable ?
@@ -150,12 +148,13 @@ class BlockEdit extends Component {
 					settingsConfig={ settingsConfig }
 					handleSwitch={ this.handleSwitchSetting }
 					{ ...this.props }
-				/> : <span>{ setting.charAt( 0 ).toUpperCase() + setting.slice( 1 ) }</span>;
+				/> : <span>{ settingsConfig[ setting ].label }</span>;
 
 			// Get the right component from our config
 			const SettingComponent = settingsConfig[ setting ].component;
 
 			// Add remove button if removable
+			const removeCallback = () => this.handleRemoveSetting( setting, uid );
 			const removeComponent = settingsConfig[ setting ].removable ?
 				<IconButton
 					icon={ 'no-alt' }
