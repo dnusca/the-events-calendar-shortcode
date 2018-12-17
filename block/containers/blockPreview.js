@@ -1,5 +1,5 @@
 const { Component, Fragment } = wp.element;
-const { ServerSideRender } = wp.components;
+const { ServerSideRender, withFilters } = wp.components;
 
 class BlockPreview extends Component {
 	/**
@@ -19,4 +19,4 @@ class BlockPreview extends Component {
 	}
 }
 
-export default BlockPreview;
+export default withFilters( 'ecs.blockPreview' )( BlockPreview );
