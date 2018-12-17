@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 
 class BlockEdit extends Component {
 	/**
-	 * Handle addition of settings from settings table and attributes
+	 * Handle addition of settings from settings list and attributes
 	 *
 	 * @param {string} setting The setting to add
 	 * @param {boolean} keyValue Whether to create unique id for keyValue type setting
@@ -31,7 +31,7 @@ class BlockEdit extends Component {
 	}
 
 	/**
-	 * Handle switching of settings from settings table and attributes
+	 * Handle switching of settings from settings list and attributes
 	 *
 	 * @param {string} setting The setting to remove
 	 * @param {string} newSetting The setting to add
@@ -48,36 +48,47 @@ class BlockEdit extends Component {
 		if ( keyValue && keyValue.substring( 0, 2 ) === 'kv' ) {
 			this.handleRemoveKeyValue( keyValue );
 			setting = keyValue;
+		} else {
+			this.deleteAttributes( setting );
 		}
 
-		let delAttributes = [ setting ];
-		if ( this.props.settingsConfig[ setting ].hasOwnProperty( 'delAttributes' ) ) {
-			delAttributes = this.props.settingsConfig[ setting ].delAttributes;
-		}
-
-		delAttributes.forEach( ( attribute ) => {
-			this.props.setAttributes( { [ attribute ]: undefined } );
-		} );
-
+		// swap old setting with new setting
 		const newSettings = settings.map( ( value ) => value === setting ? newSetting : value );
+
 		this.props.setAttributes( { settings: JSON.stringify( newSettings ) } );
 	}
 
 	/**
-	 * Handle removal of settings from settings table and attributes
+	 * Handle removal of settings from settings list and attributes
 	 *
 	 * @param {string} setting The setting to remove
 	 * @param {string|null} uid key value setting unique id or null
 	 */
 	handleRemoveSetting = ( setting, uid ) => {
-		const { settingsConfig, setAttributes } = this.props;
 		let { settings } = this.props.attributes;
 		settings = JSON.parse( settings );
 
 		if ( uid ) {
 			this.handleRemoveKeyValue( uid );
 			setting = uid;
+		} else {
+			this.deleteAttributes( setting );
 		}
+
+		// remove setting
+		const newSettings = settings.filter( ( name ) => name !== setting );
+
+		this.props.setAttributes( {
+			settings: JSON.stringify( newSettings ),
+		} );
+	}
+	/**
+	 * Utility function to delete one or more attributes
+	 *
+	 * @param {string} setting The setting to process
+	 */
+	deleteAttributes = ( setting ) => {
+		const { settingsConfig, setAttributes } = this.props;
 
 		let delAttributes = [ setting ];
 		if ( settingsConfig[ setting ].hasOwnProperty( 'delAttributes' ) ) {
@@ -86,11 +97,6 @@ class BlockEdit extends Component {
 
 		delAttributes.forEach( ( attribute ) => {
 			setAttributes( { [ attribute ]: undefined } );
-		} );
-
-		const newSettings = settings.filter( ( name ) => name !== setting );
-		setAttributes( {
-			settings: JSON.stringify( newSettings ),
 		} );
 	}
 
@@ -109,9 +115,7 @@ class BlockEdit extends Component {
 			value: '',
 		} };
 
-		this.props.setAttributes( {
-			keyValue: JSON.stringify( newKeyValue ),
-		} );
+		this.props.setAttributes( { keyValue: JSON.stringify( newKeyValue ) } );
 
 		return uid;
 	}
@@ -126,9 +130,7 @@ class BlockEdit extends Component {
 		keyValue = typeof keyValue === 'undefined' ? {} : JSON.parse( keyValue );
 		delete keyValue[ uid ];
 
-		this.props.setAttributes( {
-			keyValue: JSON.stringify( keyValue ),
-		} );
+		this.props.setAttributes( { keyValue: JSON.stringify( keyValue ) } );
 	}
 
 	/**
@@ -195,7 +197,7 @@ class BlockEdit extends Component {
 			);
 		} );
 
-		const addClassName = contentRect.bounds.width < 530 ? 'ecs-setting-add mobile' : 'ecs-setting-add';
+		const addClassName = contentRect.bounds.width < 680 ? 'ecs-setting-add mobile' : 'ecs-setting-add';
 
 		return (
 			<Fragment>
@@ -222,13 +224,13 @@ class BlockEdit extends Component {
 		return (
 			<Fragment>
 				<div className={ 'ecs-block-header' }>
-					<h3>{ __( 'The Events Calendar Block' ) }</h3>
+					<h3>{ __( 'The Events Calendar Block', 'the-events-calendar-shortcode' ) }</h3>
 				</div>
 
 				<div
 					className={ 'ecs-block-edit' }
 					ref={ this.props.measureRef }>
-					<h4>{ __( 'Configure your settings' ) }</h4>
+					<h4>{ __( 'Configure your settings', 'the-events-calendar-shortcode' ) }</h4>
 					{ this.renderSettingsTable() }
 				</div>
 			</Fragment>

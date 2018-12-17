@@ -4,26 +4,31 @@ const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 
 /**
-* Setting component for limit
+* Setting component for design
 */
 class DesignSetting extends Component {
 	/**
-	 * @return {ReactElement} Limit Setting
+	 * @return {ReactElement} Design Setting
 	 */
 	render() {
+		const textDomain = 'the-events-calendar-shortcode';
+
 		return (
 			<Fragment>
 				<Select
 					className={ 'ecs-select' }
 					classNamePrefix={ 'select' }
 					options={ [
-						{ label: __( 'Standard' ), value: 'standard' },
+						{ label: __( 'Standard', textDomain ), value: 'standard' },
 					] }
-					value={ { label: __( 'Standard' ), value: 'standard' } }
+					value={ { label: __( 'Standard', textDomain ), value: 'standard' } }
 				/>
 				<span>
-					<a href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }>{ __( 'Upgrade' ) }</a>
-					{ __( ' to Pro for more designs!' ) }
+					<a
+						href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }
+						target={ '_blank'}
+					>{ __( 'Upgrade', textDomain ) }</a>
+					{ __( ' to Pro for more designs!', textDomain ) }
 				</span>
 			</Fragment>
 		);

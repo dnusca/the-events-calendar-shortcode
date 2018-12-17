@@ -29,7 +29,7 @@ class MonthSetting extends Component {
 	}
 
 	/**
-	* Handle current checkbox input change
+	* Handle year input change
 	*
 	* @param {Object} event input onChange event
 	*/
@@ -49,7 +49,7 @@ class MonthSetting extends Component {
 	}
 
 	/**
-	* Handle current checkbox input change
+	* Handle month input change
 	*
 	* @param {Object} event input onChange event
 	*/
@@ -86,7 +86,7 @@ class MonthSetting extends Component {
 					/><label
 						className={ 'components-base-control__label' }
 						htmlFor={ 'ecs-setting-current' }
-					>{ __( 'Current Month Only?' ) }</label>
+					>{ __( 'Current Month Only?', 'the-events-calendar-shortcode' ) }</label>
 				</div>
 
 				{ ! current ? <Fragment>
@@ -94,7 +94,7 @@ class MonthSetting extends Component {
 						<label
 							className={ 'ecs-setting-label' }
 							htmlFor={ 'ecs-setting-year' }
-						>{ __( 'Year' ) }</label>
+						>{ __( 'Year', 'the-events-calendar-shortcode' ) }</label>
 						<input
 							id={ 'ecs-setting-year' }
 							style={ { borderColor: this.state.yearValid ? 'inherit' : 'red' } }
@@ -113,7 +113,7 @@ class MonthSetting extends Component {
 						<label
 							className={ 'ecs-setting-label' }
 							htmlFor={ 'ecs-setting-month' }
-						>{ __( 'Month' ) }</label>
+						>{ __( 'Month', 'the-events-calendar-shortcode' ) }</label>
 						<input
 							id={ 'ecs-setting-month' }
 							style={ { borderColor: this.state.monthValid ? 'inherit' : 'red' } }

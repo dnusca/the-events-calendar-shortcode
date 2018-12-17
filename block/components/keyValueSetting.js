@@ -3,7 +3,7 @@ const { __ } = wp.i18n;
 const { TextControl } = wp.components;
 
 /**
-* Setting component for limit
+* Setting component for key/value
 */
 class KeyValueSetting extends Component {
 	/**
@@ -46,12 +46,12 @@ class KeyValueSetting extends Component {
 		return (
 			<div className={ 'ecs-key-value' }>
 				<TextControl
-					label={ __( 'Key' ) }
+					label={ __( 'Key', 'the-events-calendar-shortcode' ) }
 					value={ item.key }
 					onChange={ this.handleKeyChange }
 				/>
 				<TextControl
-					label={ __( 'Value' ) }
+					label={ __( 'Value', 'the-events-calendar-shortcode' ) }
 					value={ item.value }
 					onChange={ this.handleValueChange }
 				/>

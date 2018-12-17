@@ -20,7 +20,7 @@ class SettingSelector extends Component {
 	}
 
 	/**
-	* @return {ReactElement} Limit Setting
+	* @return {ReactElement} Setting Selector
 	*/
 	render() {
 		const { settingsConfig, activeSettings } = this.props;
@@ -36,7 +36,7 @@ class SettingSelector extends Component {
 		// add default option
 		selectOptions.push( {
 			value: 'new-setting',
-			label: __( 'Choose another option' ),
+			label: __( 'Choose another option', 'the-events-calendar-shortcode' ),
 			isDisabled: true,
 		} );
 
@@ -52,7 +52,7 @@ class SettingSelector extends Component {
 				options={ availableOptions }
 				value={ {
 					value: 'new-setting',
-					label: __( 'Choose another option' ),
+					label: __( 'Choose another option', 'the-events-calendar-shortcode' ),
 				} }
 				onChange={ this.handleChange }
 			/>

@@ -22,7 +22,7 @@ class SettingSwitcher extends Component {
 	}
 
 	/**
-	* @return {ReactElement} Limit Setting
+	* @return {ReactElement} Setting Switcher
 	*/
 	render() {
 		const { settingsConfig, setting } = this.props;

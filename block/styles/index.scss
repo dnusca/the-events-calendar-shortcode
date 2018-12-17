@@ -1,5 +1,5 @@
 
-
+// Header
 .ecs-block-header {
     text-align: center;
 
@@ -8,6 +8,7 @@
     }
 }
 
+// Block Container
 .ecs-block-edit {
     padding: 10px 15px;
 
@@ -19,6 +20,7 @@
     }
 }
 
+// Settings Row
 .ecs-settings-row {
     display: flex;
     padding: 18px 0;
@@ -59,6 +61,7 @@
     }
 }
 
+// Setting Selector
 .ecs-setting-add {
     display: flex;
     padding: 18px 0;
@@ -80,6 +83,7 @@
     }
 }
 
+// General Setting Input Text
 .ecs-setting-text-field {
     display: flex;
     flex-direction: column;
@@ -89,6 +93,7 @@
     }
 }
 
+// Key Value Setting
 .ecs-key-value {
     display: flex;
 
@@ -101,6 +106,7 @@
     }
 }
 
+// React Select Overrides
 .ecs-select {
     flex-grow: 1;
 
@@ -148,6 +154,7 @@
     }
 }
 
+// Month Setting
 .ecs-settings-month {
     display: flex;
     align-items: center;

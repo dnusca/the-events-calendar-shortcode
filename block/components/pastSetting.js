@@ -2,11 +2,11 @@ const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 
 /**
-* Setting component for limit
+* Setting component for past
 */
 class PastSetting extends Component {
 	/**
-	* Handle current checkbox input change
+	* Handle past checkbox input change
 	*
 	* @param {Object} event input onChange event
 	*/
@@ -16,7 +16,7 @@ class PastSetting extends Component {
 	}
 
 	/**
-	 * @return {ReactElement} Limit Setting
+	 * @return {ReactElement} Past Setting
 	 */
 	render() {
 		const past = ( this.props.attributes.past === 'yes' ) ? true : false;
@@ -29,7 +29,7 @@ class PastSetting extends Component {
 					checked={ past }
 					onChange={ this.handleChange }
 				/>
-				<span>{ __( 'Show only past events?' ) }</span>
+				<span>{ __( 'Show only past events?', 'the-events-calendar-shortcode' ) }</span>
 			</Fragment>
 		);
 	}
