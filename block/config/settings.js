@@ -6,37 +6,36 @@ import PastSetting from '../components/pastSetting';
 import KeyValueSetting from '../components/keyValueSetting';
 
 const { __ } = wp.i18n;
-const textDomain = 'the-events-calendar-shortcode';
 
 const config = {
 	design: {
 		component: DesignSetting,
-		label: __( 'Design', textDomain ),
+		label: __( 'Design', 'the-events-calendar-shortcode' ),
 		removable: false,
 	},
 	limit: {
 		component: LimitSetting,
-		label: __( 'Limit', textDomain ),
+		label: __( 'Limit', 'the-events-calendar-shortcode' ),
 		removable: false,
 	},
 	cat: {
 		component: CategorySetting,
-		label: __( 'Category', textDomain ),
+		label: __( 'Category', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
 	month: {
 		component: MonthSetting,
-		label: __( 'Month', textDomain ),
+		label: __( 'Month', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
 	past: {
 		component: PastSetting,
-		label: __( 'Past', textDomain ),
+		label: __( 'Past', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
 	other: {
 		component: KeyValueSetting,
-		label: __( 'Other', textDomain ),
+		label: __( 'Other', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
 };

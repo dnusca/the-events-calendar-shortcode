@@ -11,24 +11,22 @@ class DesignSetting extends Component {
 	 * @return {ReactElement} Design Setting
 	 */
 	render() {
-		const textDomain = 'the-events-calendar-shortcode';
-
 		return (
 			<Fragment>
 				<Select
 					className={ 'ecs-select' }
 					classNamePrefix={ 'select' }
 					options={ [
-						{ label: __( 'Standard', textDomain ), value: 'standard' },
+						{ label: __( 'Standard', 'the-events-calendar-shortcode' ), value: 'standard' },
 					] }
-					value={ { label: __( 'Standard', textDomain ), value: 'standard' } }
+					value={ { label: __( 'Standard', 'the-events-calendar-shortcode' ), value: 'standard' } }
 				/>
 				<span>
 					<a
 						href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }
 						target={ '_blank' }
-					>{ __( 'Upgrade', textDomain ) }</a>
-					{ __( ' to Pro for more designs!', textDomain ) }
+					>{ __( 'Upgrade', 'the-events-calendar-shortcode' ) }</a>
+					{ __( ' to Pro for more designs!', 'the-events-calendar-shortcode' ) }
 				</span>
 			</Fragment>
 		);
