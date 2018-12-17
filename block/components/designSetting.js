@@ -22,7 +22,7 @@ class DesignSetting extends Component {
 					value={ { label: __( 'Standard' ), value: 'standard' } }
 				/>
 				<span>
-					<a href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }>{ 'Upgrade' }</a>
+					<a href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }>{ __( 'Upgrade' ) }</a>
 					{ __( ' to Pro for more designs!' ) }
 				</span>
 			</Fragment>

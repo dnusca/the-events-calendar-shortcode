@@ -50,12 +50,17 @@ class BlockEdit extends Component {
 			setting = keyValue;
 		}
 
-		const newSettings = settings.map( ( value ) => value === setting ? newSetting : value );
+		let delAttributes = [ setting ];
+		if ( this.props.settingsConfig[ setting ].hasOwnProperty( 'delAttributes' ) ) {
+			delAttributes = this.props.settingsConfig[ setting ].delAttributes;
+		}
 
-		this.props.setAttributes( {
-			[ setting ]: undefined,
-			settings: JSON.stringify( newSettings ),
+		delAttributes.forEach( ( attribute ) => {
+			this.props.setAttributes( { [ attribute ]: undefined } );
 		} );
+
+		const newSettings = settings.map( ( value ) => value === setting ? newSetting : value );
+		this.props.setAttributes( { settings: JSON.stringify( newSettings ) } );
 	}
 
 	/**
@@ -65,6 +70,7 @@ class BlockEdit extends Component {
 	 * @param {string|null} uid key value setting unique id or null
 	 */
 	handleRemoveSetting = ( setting, uid ) => {
+		const { settingsConfig, setAttributes } = this.props;
 		let { settings } = this.props.attributes;
 		settings = JSON.parse( settings );
 
@@ -73,9 +79,17 @@ class BlockEdit extends Component {
 			setting = uid;
 		}
 
+		let delAttributes = [ setting ];
+		if ( settingsConfig[ setting ].hasOwnProperty( 'delAttributes' ) ) {
+			delAttributes = settingsConfig[ setting ].delAttributes;
+		}
+
+		delAttributes.forEach( ( attribute ) => {
+			setAttributes( { [ attribute ]: undefined } );
+		} );
+
 		const newSettings = settings.filter( ( name ) => name !== setting );
-		this.props.setAttributes( {
-			[ setting ]: undefined,
+		setAttributes( {
 			settings: JSON.stringify( newSettings ),
 		} );
 	}
