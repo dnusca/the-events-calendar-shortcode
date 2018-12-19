@@ -76,13 +76,15 @@
                         <blockquote>[ecs-list-events orderby='title']</blockquote>
 					<?php do_action( 'ecs_admin_page_options_after' ); ?>
 
-                    <div id="ecs-link-display">
-                        <?php wp_nonce_field( 'ecs-link-nonce', 'ecs-link-nonce' ) ?>
-                        <h2>We hope this plugin is helping you out!</h2>
-                        <p>Would you like to show your thanks for the plugin? Add a small link underneath your events pointing to The Events Calendar Shortcode project.</p>
-                        <p><label><input type="checkbox" value="1" id="show-ecs-link"<?php echo ( get_option( 'ecs-show-link' ) ? ' checked' : '' ) ?>> Show small link to The Events Calendar Shortcode</label></p>
-                        <p class="small toggle-message" style="display:none;">Value saved</p>
-                    </div>
+                    <?php if ( apply_filters( 'ecs_show_upgrades', true ) ): ?>
+                        <div id="ecs-link-display">
+                            <?php wp_nonce_field( 'ecs-link-nonce', 'ecs-link-nonce' ) ?>
+                            <h2>We hope this plugin is helping you out!</h2>
+                            <p>Would you like to show your thanks for the plugin? Add a small link underneath your events pointing to The Events Calendar Shortcode project.</p>
+                            <p><label><input type="checkbox" value="1" id="show-ecs-link"<?php echo ( get_option( 'ecs-show-link' ) ? ' checked' : '' ) ?>> Show small link to The Events Calendar Shortcode</label></p>
+                            <p class="small toggle-message" style="display:none;">Value saved</p>
+                        </div>
+                    <?php endif; ?>
 				</div>
 
 			</td>

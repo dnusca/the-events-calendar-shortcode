@@ -395,6 +395,9 @@ class Events_Calendar_Shortcode
 	}
 
 	public function add_ecs_link( $output, $posts, $atts ) {
+        if ( ! apply_filters( 'ecs_show_upgrades', true ) ) {
+            return $output;
+        }
 		$output .= "<!--\n Event listing powered by The Events Calendar Shortcode\n https://eventcalendarnewsletter.com/the-events-calendar-shortcode/ \n-->";
 		if ( ! get_option( 'ecs-show-link', false ) ) {
 			return $output;
