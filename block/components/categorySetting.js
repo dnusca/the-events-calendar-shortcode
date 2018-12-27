@@ -13,6 +13,7 @@ class CategorySetting extends Component {
 		this.state = {
 			selectOptions: [],
 			selectedCats: [],
+			isLoading: true,
 		};
 	}
 
@@ -37,6 +38,7 @@ class CategorySetting extends Component {
 			this.setState( {
 				selectOptions,
 				selectedCats,
+				isLoading: false,
 			} );
 		} );
 	}
@@ -69,6 +71,7 @@ class CategorySetting extends Component {
 					onChange={ this.handleChange }
 					options={ this.state.selectOptions }
 					isMulti={ 'true' }
+					isLoading={ this.state.isLoading }
 				/>
 			</Fragment>
 		);

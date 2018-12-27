@@ -157,20 +157,21 @@
 // Month Setting
 .ecs-settings-month {
     display: flex;
-    align-items: center;
+    flex-direction: column;
 
-    .ecs-setting-current {
-        flex: 3;
-    }
+    .ecs-setting-year-month {
+        display: flex;
+        align-items: center;
 
-    .ecs-setting-text-field input {
-        width: 60px;
-    }
-
-    .ecs-month-divider {
-        width: 10px;
-        height: 19px;
-        margin: 0 10px;
-        border-bottom: 1px solid black;
+        .ecs-setting-text-field input {
+            width: 60px;
+        }
+    
+        .ecs-month-divider {
+            width: 10px;
+            height: 19px;
+            margin: 0 10px;
+            border-bottom: 1px solid black;
+        }
     }
 }

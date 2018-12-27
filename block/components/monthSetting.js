@@ -1,4 +1,4 @@
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 const { __ } = wp.i18n;
 
 /**
@@ -89,7 +89,7 @@ class MonthSetting extends Component {
 					>{ __( 'Current Month Only?', 'the-events-calendar-shortcode' ) }</label>
 				</div>
 
-				{ ! current ? <Fragment>
+				{ ! current ? <div className={ 'ecs-setting-year-month' }>
 					<div className={ 'ecs-setting-text-field' }>
 						<label
 							className={ 'ecs-setting-label' }
@@ -124,7 +124,7 @@ class MonthSetting extends Component {
 							onChange={ this.handleMonthChange }
 						/>
 					</div>
-				</Fragment> : null }
+				</div> : null }
 			</div>
 		);
 	}

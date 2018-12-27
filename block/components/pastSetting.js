@@ -24,12 +24,15 @@ class PastSetting extends Component {
 		return (
 			<Fragment>
 				<input
-					id={ 'ecs-setting-month-current' }
+					id={ 'ecs-setting-past' }
 					type={ 'checkbox' }
 					checked={ past }
 					onChange={ this.handleChange }
 				/>
-				<span>{ __( 'Show only past events?', 'the-events-calendar-shortcode' ) }</span>
+				<label
+					className={ 'components-base-control__label' }
+					htmlFor={ 'ecs-setting-past' }
+				>{ __( 'Show only past events?', 'the-events-calendar-shortcode' ) }</label>
 			</Fragment>
 		);
 	}
