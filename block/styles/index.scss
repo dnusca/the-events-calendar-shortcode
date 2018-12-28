@@ -1,0 +1,177 @@
+
+// Header
+.ecs-block-header {
+    text-align: center;
+
+    h3 {
+        margin: 0;
+    }
+}
+
+// Block Container
+.ecs-block-edit {
+    padding: 10px 15px;
+
+    font-family: sans-serif;
+    font-size: 18px;
+
+    h4 {
+        margin: 0;
+    }
+}
+
+// Settings Row
+.ecs-settings-row {
+    display: flex;
+    padding: 18px 0;
+    border-bottom: 1px solid #e5e5e5;
+
+    &.mobile {
+        flex-direction: column;
+
+        > * {
+            margin-bottom: 8px;
+        }
+
+        .ecs-remove-col {
+            align-self: center;
+            margin-bottom: 0;
+        }
+    }
+
+    > * {
+        padding: 0 10px;
+    }
+
+    .ecs-selector-col {
+        flex: 3;
+        display: flex;
+        align-items: center;
+    }
+
+    .ecs-setting-col {
+        flex: 4;
+    }
+
+    .ecs-remove-col {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+// Setting Selector
+.ecs-setting-add {
+    display: flex;
+    padding: 18px 0;
+
+    > .ecs-select {
+        flex: 3;
+        padding: 0 10px;
+    }
+
+    > .ecs-flex-fill {
+        flex: 5;
+        padding: 0 10px;
+    }
+
+    &.mobile {
+        > .ecs-flex-fill {
+            display: none;
+        }
+    }
+}
+
+// General Setting Input Text
+.ecs-setting-text-field {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-size: 13px;
+    }
+}
+
+// Key Value Setting
+.ecs-key-value {
+    display: flex;
+
+    :first-child {
+        margin-right: 10px;
+    }
+
+    > div {
+        flex: 1;
+    }
+}
+
+// React Select Overrides
+.ecs-select {
+    flex-grow: 1;
+
+    &.multi .select__control{
+        max-height: none;
+    }
+
+    .select__control {
+        max-height: 30px;
+        font-family: sans-serif;
+        font-size: 18px;
+    }
+
+    .select__value-container {
+        padding: 0 8px;
+    }
+
+    .select__menu {
+        opacity: 1;
+        z-index: 99999;
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    .select__option {
+        padding: 1px 12px;
+    }
+
+    .select__option--is-disabled.select__option--is-selected {
+        display: none;
+    }
+
+    .select__multi-value {
+        background-color: #ebf5ff;
+        background-color: rgba(0,126,255,.08);
+        border-radius: 2px;
+        border: 1px solid #c2e0ff;
+        border: 1px solid rgba(0,126,255,.24);
+        color: #007eff;
+        font-size: .9em;
+        line-height: 1.4;
+        margin-left: 5px;
+        margin-top: 5px;
+        vertical-align: top;
+    }
+}
+
+// Month Setting
+.ecs-settings-month {
+    display: flex;
+    flex-direction: column;
+
+    .ecs-setting-year-month {
+        display: flex;
+        align-items: center;
+
+        .ecs-setting-text-field input {
+            width: 60px;
+        }
+    
+        .ecs-month-divider {
+            width: 10px;
+            height: 19px;
+            margin: 0 10px;
+            border-bottom: 1px solid black;
+        }
+    }
+}
