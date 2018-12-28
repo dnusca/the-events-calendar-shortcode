@@ -7,7 +7,7 @@ const { applyFilters } = wp.hooks;
 const {	registerBlockType } = wp.blocks;
 
 registerBlockType( 'events-calendar-shortcode/block', {
-	title: __( 'Events Calendar Block', 'events-calendar-shortcode' ),
+	title: __( 'The Events Calendar Block', 'events-calendar-shortcode' ),
 	icon: logo,
 	category: 'common',
 	supports: {
