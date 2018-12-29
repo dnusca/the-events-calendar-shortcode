@@ -13,7 +13,7 @@ function ecs_register_block() {
 		'ecs-block',
 		plugins_url( 'static/block.js', dirname( __FILE__ ) ),
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
-		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'static/block.js' )
+		Events_Calendar_Shortcode::VERSION
 	);
 
 	wp_set_script_translations( 'ecs-block', 'the-events-calendar-shortcode' );
@@ -22,8 +22,8 @@ function ecs_register_block() {
 		'ecs-block',
 		plugins_url( 'static/ecs-block.css', dirname( __FILE__ ) ),
 		array(),
-		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'static/ecs-block.css' )
-	);
+        Events_Calendar_Shortcode::VERSION
+    );
 
 	$attributes = apply_filters( 'ecs_block_attributes', array(
 		'design' 	=> array(
