@@ -8,7 +8,7 @@ function ecs_register_block() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
-	
+
 	wp_register_script(
 		'ecs-block',
 		plugins_url( 'static/block.js', dirname( __FILE__ ) ),

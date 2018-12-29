@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --progress --colors --watch --mode=development",
-    "build": "webpack --progress --colors -p --config webpack.config.js --mode=production && rm static/ecs-block.css.map"
+    "build": "webpack --progress --colors -p --config webpack.config.js --mode=production && rm -f static/ecs-block.css.map"
   },
   "repository": {
     "type": "git",
