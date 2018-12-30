@@ -23,10 +23,10 @@ class DesignSetting extends Component {
 				/>
 				<span>
 					<a
-						href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/' }
+						href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/#designs' }
 						target={ '_blank' }
-					>{ __( 'Upgrade', 'the-events-calendar-shortcode' ) }</a>
-					{ __( ' to Pro for more designs!', 'the-events-calendar-shortcode' ) }
+					>{ __( 'Upgrade to Pro', 'the-events-calendar-shortcode' ) }</a>
+					{ __( ' for more designs!', 'the-events-calendar-shortcode' ) }
 				</span>
 			</Fragment>
 		);

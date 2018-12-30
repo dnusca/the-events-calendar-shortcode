@@ -41,6 +41,10 @@ function ecs_register_block() {
 		'cat' 		=> array( 'type' => 'string' ),
 		'month'		=> array( 'type' => 'string' ),
 		'past'		=> array( 'type' => 'string' ),
+		'excerpt'   => array(
+		    'type' => 'string',
+            'default' => 'false',
+        ),
 		'keyValue'	=> array( 'type' => 'string' ),
 	) );
 

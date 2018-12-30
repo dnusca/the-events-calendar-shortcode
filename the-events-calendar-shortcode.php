@@ -12,7 +12,6 @@
  Text Domain: the-events-calendar-shortcode
 */
 
-
 // Avoid direct calls to this file
 if ( !defined( 'ABSPATH' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -340,7 +339,7 @@ class Events_Calendar_Shortcode
 
 						case 'excerpt':
 							if ( self::isValid( $atts['excerpt'] ) ) {
-								$excerptLength = is_numeric($atts['excerpt']) ? $atts['excerpt'] : 100;
+								$excerptLength = is_numeric( $atts['excerpt'] ) ? intval( $atts['excerpt'] ) : 100;
 								$event_output .= apply_filters( 'ecs_event_excerpt_tag_start', '<p class="ecs-excerpt">', $atts, $post ) .
 								           apply_filters( 'ecs_event_excerpt', self::get_excerpt( $excerptLength ), $atts, $post, $excerptLength ) .
 								           apply_filters( 'ecs_event_excerpt_tag_end', '</p>', $atts, $post );

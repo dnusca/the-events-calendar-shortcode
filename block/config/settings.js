@@ -2,6 +2,7 @@ import DesignSetting from '../components/designSetting';
 import CategorySetting from '../components/categorySetting';
 import LimitSetting from '../components/limitSetting';
 import MonthSetting from '../components/monthSetting';
+import ExcerptSetting from '../components/excerptSetting';
 import PastSetting from '../components/pastSetting';
 import KeyValueSetting from '../components/keyValueSetting';
 
@@ -15,7 +16,7 @@ const config = {
 	},
 	limit: {
 		component: LimitSetting,
-		label: __( 'Limit', 'the-events-calendar-shortcode' ),
+		label: __( 'Number of Events', 'the-events-calendar-shortcode' ),
 		removable: false,
 	},
 	cat: {
@@ -28,9 +29,14 @@ const config = {
 		label: __( 'Month', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
+	excerpt: {
+		component: ExcerptSetting,
+		label: __( 'Excerpt (Short Description)', 'the-events-calendar-shortcode' ),
+		removable: true,
+	},
 	past: {
 		component: PastSetting,
-		label: __( 'Past', 'the-events-calendar-shortcode' ),
+		label: __( 'Past Events', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
 	other: {
