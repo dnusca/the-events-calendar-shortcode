@@ -1,4 +1,4 @@
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { TextControl } = wp.components;
 
@@ -44,18 +44,27 @@ class KeyValueSetting extends Component {
 		const item = keyValue[ this.props.uid ];
 
 		return (
-			<div className={ 'ecs-key-value' }>
-				<TextControl
-					label={ __( 'Key', 'the-events-calendar-shortcode' ) }
-					value={ item.key }
-					onChange={ this.handleKeyChange }
-				/>
-				<TextControl
-					label={ __( 'Value', 'the-events-calendar-shortcode' ) }
-					value={ item.value }
-					onChange={ this.handleValueChange }
-				/>
-			</div>
+			<Fragment>
+				<div className={ 'ecs-key-value' }>
+					<TextControl
+						label={ __( 'Key', 'the-events-calendar-shortcode' ) }
+						value={ item.key }
+						onChange={ this.handleKeyChange }
+					/>
+					<TextControl
+						label={ __( 'Value', 'the-events-calendar-shortcode' ) }
+						value={ item.value }
+						onChange={ this.handleValueChange }
+					/>
+				</div>
+                <div className={ 'ecs-setting-help' }>
+                    <a
+                        href={ 'https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=plugin&utm_medium=link&utm_campaign=block-advanced-help&utm_content=description' }
+                        target={ '_blank' }
+                    >{ __( 'View documentation on available options', 'the-events-calendar-shortcode' ) }</a>
+                    { __( ' where key="value" in the shortcode can be entered in the boxes above', 'the-events-calendar-shortcode' ) }
+				</div>
+			</Fragment>
 		);
 	}
 }

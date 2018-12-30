@@ -41,7 +41,7 @@ const config = {
 	},
 	other: {
 		component: KeyValueSetting,
-		label: __( 'Other', 'the-events-calendar-shortcode' ),
+		label: __( 'Advanced/Other', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
 };
