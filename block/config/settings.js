@@ -5,6 +5,7 @@ import MonthSetting from '../components/monthSetting';
 import ExcerptSetting from '../components/excerptSetting';
 import PastSetting from '../components/pastSetting';
 import OrderBySetting from '../components/orderBySetting';
+import OrderSetting from '../components/orderSetting';
 import KeyValueSetting from '../components/keyValueSetting';
 
 const { __ } = wp.i18n;
@@ -43,6 +44,11 @@ const config = {
 	orderby: {
 		component: OrderBySetting,
 		label: __( 'Order By', 'the-events-calendar-shortcode' ),
+		removable: true,
+	},
+	order: {
+		component: OrderSetting,
+		label: __( 'Order', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
 	other: {

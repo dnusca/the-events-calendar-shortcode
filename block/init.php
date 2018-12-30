@@ -45,6 +45,10 @@ function ecs_register_block() {
 		    'type' => 'string',
             'default' => 'startdate',
         ),
+		'order'     => array(
+		    'type' => 'string',
+            'default' => 'ASC',
+        ),
 		'excerpt'   => array(
 		    'type' => 'string',
             'default' => 'false',

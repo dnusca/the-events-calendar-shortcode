@@ -7,15 +7,14 @@ class OrderBySetting extends Component {
 	/**
 	 * Handle selection change
 	 *
-	 * @param {Array} selectedCats the selected categories
+	 * @param {Array} selectedOrderBy the selected option
 	 */
 	handleChange = ( selectedOrderBy ) => {
-		console.log(selectedOrderBy);
 		this.props.setAttributes( { orderby: selectedOrderBy.value } );
 	}
 
 	/**
-	 * @return {ReactElement} Category Setting
+	 * @return {ReactElement} OrderBy Setting
 	 */
 	render() {
 		const { orderby } = this.props.attributes;
