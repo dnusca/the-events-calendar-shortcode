@@ -5,16 +5,6 @@ const { __ } = wp.i18n;
 * Setting component for the excerpt
 */
 class ExcerptSetting extends Component {
-	constructor( props ) {
-		super( props );
-		let { excerpt } = props.attributes;
-		excerpt = typeof excerpt === 'undefined' ? '' : excerpt;
-
-        this.state = {
-            length: ( this.isValid() && ! isNaN( parseInt( excerpt ) ) ) ? parseInt( excerpt ) : 100,
-        };
-    }
-
 	isValid = ( excerpt ) => {
 		return ( excerpt !== 'false' );
 	}
@@ -40,14 +30,10 @@ class ExcerptSetting extends Component {
 		} else {
 			this.props.setAttributes( { excerpt: '100' } );
 		}
-
-		this.setState( {
-			length: parseInt( event.target.value ),
-		} );
 	}
 
 	/**
-	 * @return {ReactElement} Month Setting
+	 * @return {ReactElement} Excerpt Setting
 	 */
 	render() {
 		const { excerpt } = this.props.attributes;
@@ -77,7 +63,7 @@ class ExcerptSetting extends Component {
 							style={ { borderColor: ! isNaN( parseInt( excerpt ) ) ? 'inherit' : 'red' } }
 							type={ 'text' }
 							label={ __( 'Excerpt Length' ) }
-							value={ this.state.length }
+							value={ excerpt }
 							pattern={ '[0-9]*' }
 							onChange={ this.handleLengthChange }
 						/>
