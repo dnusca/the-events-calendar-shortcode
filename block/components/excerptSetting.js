@@ -69,6 +69,13 @@ class ExcerptSetting extends Component {
 						/>
 					</div>
 				</div> : null }
+				<div className={ 'ecs-setting-help' }>
+					{ __( 'Want to show the full description of events or HTML from your excerpt? ', 'the-events-calendar-shortcode' )}
+                    <a
+                        href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin&utm_medium=link&utm_campaign=block-excerpt-help&utm_content=description' }
+                        target={ '_blank' }
+                    >{ __( 'Upgrade to Pro', 'the-events-calendar-shortcode' ) }</a>
+				</div>
 			</div>
 		);
 	}

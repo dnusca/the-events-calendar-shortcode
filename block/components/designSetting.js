@@ -21,13 +21,13 @@ class DesignSetting extends Component {
 					] }
 					value={ { label: __( 'Standard', 'the-events-calendar-shortcode' ), value: 'standard' } }
 				/>
-				<span>
+				<div className={ 'ecs-setting-help' }>
 					<a
-						href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/#designs' }
+						href={ 'https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=plugin&utm_medium=link&utm_campaign=block-design-help&utm_content=description#designs' }
 						target={ '_blank' }
 					>{ __( 'Upgrade to Pro', 'the-events-calendar-shortcode' ) }</a>
 					{ __( ' for more designs!', 'the-events-calendar-shortcode' ) }
-				</span>
+				</div>
 			</Fragment>
 		);
 	}
