@@ -3,23 +3,23 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 5.0
-Stable tag: 1.10.1
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds shortcode functionality to The Events Calendar Plugin (Free Version) by Modern Tribe, so you can list your events anywhere.
+Adds shortcode and block functionality to The Events Calendar Plugin (Free Version) by Modern Tribe, so you can list your events anywhere.
 
 == Description ==
 
-This plugin adds a shortcode for use with The Events Calendar Plugin (by Modern Tribe).
+This plugin adds a shortcode and a block for use with The Events Calendar Plugin (by Modern Tribe).
 
-With this plugin, just add the shortcode on a page to display a list of your events. For example to show next 8 events in the category festival:
+With this plugin, either add the block in the new editor, or just add the shortcode on a page to display a list of your events. For example to show next 8 events in the category festival:
 
 `[ecs-list-events cat="festival" limit="8"]`
 
 [youtube https://www.youtube.com/watch?v=0okrUs-xOq4]
 
-= Shortcode Options: =
+= Shortcode and Block Options: =
 * Basic shortcode: `[ecs-list-events]`
 * cat - Represents single event category. `[ecs-list-events cat='festival']`  Use commas when you want multiple categories `[ecs-list-events cat='festival, workshops']`
 * limit - Total number of events to show. Default is 5. `[ecs-list-events limit='3']`
@@ -72,12 +72,11 @@ This plugin is not developed by or affiliated with The Events Calendar or Modern
 
 3. If you don't already have The Events Calendar (the calendar you add your events to) you will be prompted to install it
 
-You can then add the `[ecs-list-events]` shortcode to the page or post you want to list events on.  [Full list of options available in the documentation](https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-install-docs&utm_content=description).
-
+You can then add The Events Calendar Block or `[ecs-list-events]` shortcode to the page or post you want to list events on.  [Full list of options available in the documentation](https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-install-docs&utm_content=description).
 
 == Frequently Asked Questions ==
 
-= What are the shortcode options? =
+= What are the shortcode and block options? =
 
 * Basic shortcode: `[ecs-list-events]`
 * cat - Show events from an event category `[ecs-list-events cat='festival']` or specify multiple categories `[ecs-list-events cat='festival, workshops']`
@@ -118,13 +117,11 @@ With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the
 * filter bar - Allow the user to filter the events shown in the full calendar design (ie. by category, state/province, country, venue, etc)
 * hiderecurring - To only show the first instance of a recurring event, set to 'true'
 
-[Get The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options-bottom&utm_content=description)
+[Get The Events Calendar Shortcode & Block PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options-bottom&utm_content=description)
 
 = How do I use this shortcode in a widget? =
 
-You can put the shortcode in a text widget, though not all themes support use of a shortcode in a widget.
-
-If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
+You can put the shortcode in a text widget (as of WordPress 4.7). If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
 
 = What are the classes for styling the list of events? =
 
@@ -138,25 +135,29 @@ By default the plugin does not include styling. Events are listed in ul li tags 
 * span .ecs-all-events
 * p .ecs-excerpt
 
-Want a better looking design without knowing any CSS?  Check out [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-design&utm_content=description)
+Want a better looking design without knowing any CSS?  Check out [The Events Calendar Shortcode & Block PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-design&utm_content=description)
 
 = How do I include a list of events in a page template? =
 
-`include echo do_shortcode("[ecs-list-events]");`
+`<?php echo do_shortcode("[ecs-list-events]"); ?>`
 
 Put this in the template where you want the events list to display.
 
 = How do I include a monthly calendar view instead of a list? =
 
-The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-calendar&utm_content=description) has the option to put `design="calendar"` in the shortcode to show a calendar view of the events you want.
+The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-calendar&utm_content=description) has the option to put `design="calendar"` in the shortcode (or pick Calendar as the design with the block) to show a calendar view of the events you want.
 
 == Screenshots ==
 
-1. After adding the plugin, add the shortcode where you want the list of events to appear in the page
-2. Events will appear in a list
-3. Many settings you can use in the shortcode to change what details appear in the events listing
+1. Add a block in the page or post where you want your events to appear (new WordPress 5.0 editor or Gutenberg plugin)
+2. After adding the plugin, add the shortcode where you want the list of events to appear in the page
+3. Events will appear in a list
+4. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
+
+= 2.0 =
+* Adds a block in addition to the shortcode that can be used with the new WordPress editor (as of version 5.0)
 
 = 1.10.1 =
 * Fixing error with very old versions of PHP

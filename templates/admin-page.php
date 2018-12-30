@@ -1,7 +1,7 @@
 <div class="wrap">
-	<h2><?php _e( 'The Events Calendar Shortcode' ); ?></h2>
+	<h2><?php _e( 'The Events Calendar Shortcode & Block', 'the-events-calendar-shortcode' ); ?></h2>
 
-	<p><?php echo sprintf( esc_html__( 'The shortcode displays lists of your events. For example the shortcode to show next 8 events in the category "%s" in ASC order with date showing:', 'the-events-calendar-shortcode' ), 'festival' ); ?></p>
+	<p><?php echo sprintf( esc_html__( 'The shortcode and block displays lists of your events wherever you want them to appear on your site. For example the shortcode to show next 8 events in the category "%s" in ASC order with date showing:', 'the-events-calendar-shortcode' ), 'festival' ); ?></p>
 
 	<p class="shortcode">[ecs-list-events cat='festival' limit='8']</p>
 
@@ -110,7 +110,7 @@
 					<div id="ecs-pro-description">
 
 						<h3><?php echo esc_html__( 'Want a better looking design without adding any CSS?', 'the-events-calendar-shortcode' ) ?></h3>
-						<p><?php echo sprintf( esc_html__( 'Check out %sThe Events Calendar Shortcode PRO%s. Some examples of the designs:', 'the-events-calendar-shortcode' ), '<a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design&utm_content=description">', '</a>' ); ?></p>
+						<p><?php echo sprintf( esc_html__( 'Check out %sThe Events Calendar Shortcode & Block PRO%s. Some examples of the designs:', 'the-events-calendar-shortcode' ), '<a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design&utm_content=description">', '</a>' ); ?></p>
 						<div id="ecs-pro-designs">
 							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/shortcode-default-design-2.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version default design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
 							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version compact design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
@@ -147,7 +147,7 @@
 						<p><?php echo esc_html__( 'Use the new default or compact designs, or create your own using one or more templates in your theme folder', 'the-events-calendar-shortcode' ) ?></p>
                         <h4><?php echo esc_html__( 'Filter Bar', 'the-events-calendar-shortcode' ) ?></h4>
                         <p><?php echo esc_html__( 'Allow visitors to change what events are displayed wherever you put a calendar view on your site', 'the-events-calendar-shortcode' ) ?></p>
-                        <p><?php echo sprintf( esc_html__( '%sGet The Events Calendar Shortcode PRO%s', 'the-events-calendar-shortcode' ), '<a class="ecs-button" target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-after-options&utm_content=description">', '</a>' ); ?> or <a href="https://demo.eventcalendarnewsletter.com/the-events-calendar-shortcode/">see it in action</p>
+                        <p><?php echo sprintf( esc_html__( '%sGet The Events Calendar Shortcode & Block PRO%s', 'the-events-calendar-shortcode' ), '<a class="ecs-button" target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-after-options&utm_content=description">', '</a>' ); ?> or <a href="https://demo.eventcalendarnewsletter.com/the-events-calendar-shortcode/">see it in action</p>
 					</div>
 				<?php endif; ?>
 			</td>

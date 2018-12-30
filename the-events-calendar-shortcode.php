@@ -1,9 +1,9 @@
 <?php
 /***
- Plugin Name: The Events Calendar Shortcode
+ Plugin Name: The Events Calendar Shortcode & Block
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
- Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin by Modern Tribe</a>.
- Version: 1.10.1
+ Description: An addon to add shortcode and new editor block functionality for The Events Calendar Plugin by Modern Tribe.
+ Version: 2.0
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode
  Contributors: brianhogg
@@ -11,6 +11,7 @@
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain: the-events-calendar-shortcode
 */
+
 
 // Avoid direct calls to this file
 if ( !defined( 'ABSPATH' ) ) {
@@ -56,7 +57,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.10.1';
+	const VERSION = '2.0';
 
 	private $admin_page = null;
 
@@ -105,8 +106,7 @@ class Events_Calendar_Shortcode
 			return;
 		}
 
-		$page_title = esc_html__( 'Shortcode', 'the-events-calendar-shortcode' );
-		$menu_title = esc_html__( 'Shortcode', 'tribe-common' );
+		$page_title = $menu_title = esc_html__( 'Shortcode & Block', 'the-events-calendar-shortcode' );
 		$capability = apply_filters( 'ecs_admin_page_capability', 'install_plugins' );
 
 		$where = Tribe__Settings::instance()->get_parent_slug();
