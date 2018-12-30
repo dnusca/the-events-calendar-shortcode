@@ -4,6 +4,7 @@ import LimitSetting from '../components/limitSetting';
 import MonthSetting from '../components/monthSetting';
 import ExcerptSetting from '../components/excerptSetting';
 import PastSetting from '../components/pastSetting';
+import OrderBySetting from '../components/orderBySetting';
 import KeyValueSetting from '../components/keyValueSetting';
 
 const { __ } = wp.i18n;
@@ -37,6 +38,11 @@ const config = {
 	past: {
 		component: PastSetting,
 		label: __( 'Past Events', 'the-events-calendar-shortcode' ),
+		removable: true,
+	},
+	orderby: {
+		component: OrderBySetting,
+		label: __( 'Order By', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
 	other: {
