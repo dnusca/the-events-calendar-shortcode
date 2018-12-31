@@ -53,6 +53,10 @@ function ecs_register_block() {
 		    'type' => 'string',
            'default' => '150',
         ),
+		'venue' => array(
+		    'type' => 'string',
+            'default' => 'false',
+        ),
 		'past'		=> array( 'type' => 'string' ),
 		'orderby'   => array(
 		    'type' => 'string',

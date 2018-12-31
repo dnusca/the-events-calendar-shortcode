@@ -8,6 +8,7 @@ import ThumbnailSetting from '../components/thumbnailSetting';
 import OrderBySetting from '../components/orderBySetting';
 import OrderSetting from '../components/orderSetting';
 import KeyValueSetting from '../components/keyValueSetting';
+import VenueSetting from "../components/venueSetting";
 
 const { __ } = wp.i18n;
 
@@ -42,6 +43,11 @@ const config = {
         label: __( 'Thumbnail', 'the-events-calendar-shortcode' ),
         removable: true,
     },
+	venue: {
+		component: VenueSetting,
+		label: __( 'Venue', 'the-events-calendar-shortcode' ),
+		removable: true,
+	},
 	past: {
 		component: PastSetting,
 		label: __( 'Past Events', 'the-events-calendar-shortcode' ),
