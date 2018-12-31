@@ -4,6 +4,7 @@ import LimitSetting from '../components/limitSetting';
 import MonthSetting from '../components/monthSetting';
 import ExcerptSetting from '../components/excerptSetting';
 import PastSetting from '../components/pastSetting';
+import ThumbnailSetting from '../components/thumbnailSetting';
 import OrderBySetting from '../components/orderBySetting';
 import OrderSetting from '../components/orderSetting';
 import KeyValueSetting from '../components/keyValueSetting';
@@ -36,6 +37,11 @@ const config = {
 		label: __( 'Excerpt (Short Description)', 'the-events-calendar-shortcode' ),
 		removable: true,
 	},
+    thumb: {
+        component: ThumbnailSetting,
+        label: __( 'Thumbnail', 'the-events-calendar-shortcode' ),
+        removable: true,
+    },
 	past: {
 		component: PastSetting,
 		label: __( 'Past Events', 'the-events-calendar-shortcode' ),

@@ -181,3 +181,37 @@
         }
     }
 }
+
+// Thumbnail
+.ecs-settings-thumb {
+    display: flex;
+    flex-direction: column;
+
+    .ecs-settings-thumb-width-height {
+        display: flex;
+        align-items: center;
+
+        .ecs-setting-text-field input {
+            width: 60px;
+        }
+
+        .ecs-thumb-divider {
+            width: 10px;
+            height: 19px;
+            margin: 0 10px;
+
+            em {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .ecs-settings-thumb-size {
+        margin-top: 5px;
+    }
+
+    .ecs-setting-help {
+        margin-top: 5px;
+    }
+}
+

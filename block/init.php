@@ -40,6 +40,19 @@ function ecs_register_block() {
 		),
 		'cat' 		=> array( 'type' => 'string' ),
 		'month'		=> array( 'type' => 'string' ),
+        'thumb'   => array(
+            'type' => 'string',
+            'default' => 'false',
+        ),
+		'thumbsize' => array( 'type' => 'string' ),
+		'thumbwidth' => array(
+		    'type' => 'string',
+           'default' => '150',
+        ),
+		'thumbheight' => array(
+		    'type' => 'string',
+           'default' => '150',
+        ),
 		'past'		=> array( 'type' => 'string' ),
 		'orderby'   => array(
 		    'type' => 'string',
