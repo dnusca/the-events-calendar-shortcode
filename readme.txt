@@ -13,7 +13,7 @@ Adds shortcode and block functionality to The Events Calendar Plugin (Free Versi
 
 This plugin adds a shortcode and a block for use with The Events Calendar Plugin (by Modern Tribe).
 
-With this plugin, either add the block in the new editor, or just add the shortcode on a page to display a list of your events. For example to show next 8 events in the category festival:
+With this plugin either add the block in the new editor, or just add the shortcode on a page to display a list of your events. For example to show next 8 events in the category festival:
 
 `[ecs-list-events cat="festival" limit="8"]`
 
