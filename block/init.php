@@ -32,7 +32,6 @@ function ecs_register_block() {
 		),
 		'limit'		=> array(
 			'type' => 'number',
-			'default' => 5,
 		),
 		'settings'	=> array(
 			'type' => 'string',
