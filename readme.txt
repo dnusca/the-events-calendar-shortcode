@@ -119,6 +119,10 @@ With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the
 
 [Get The Events Calendar Shortcode & Block PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options-bottom&utm_content=description)
 
+= Can I use this plugin to list my events using the new WordPress 5.0 editor (Gutenberg)? =
+
+Yes! There is now a block to list your events anywhere in a page or post, just click "+" in the top-left and search for The Events Calendar Block (under Common).
+
 = How do I use this shortcode in a widget? =
 
 You can put the shortcode in a text widget (as of WordPress 4.7). If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
