@@ -258,6 +258,9 @@ Fix missing ul
 
 == Changelog ==
 
+= 2.0 =
+* Adds a block in addition to the shortcode that can be used with the new WordPress editor (as of version 5.0) or Gutenberg plugin
+
 = 1.10.1 =
 * Fixing error with very old versions of PHP
 
