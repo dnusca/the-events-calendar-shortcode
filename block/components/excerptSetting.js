@@ -6,7 +6,7 @@ const { __ } = wp.i18n;
 */
 class ExcerptSetting extends Component {
 	isValid = ( excerpt ) => {
-		return ( excerpt !== 'false' );
+		return ( typeof excerpt !== 'undefined' && excerpt !== 'false' );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class ExcerptSetting extends Component {
 					<input
 						id={ 'ecs-setting-excerpt' }
 						type={ 'checkbox' }
-						checked={ excerpt !== 'false' }
+						checked={ this.isValid( excerpt ) }
 						onChange={ this.handleChange }
 					/><label
 						className={ 'components-base-control__label' }

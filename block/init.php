@@ -42,33 +42,26 @@ function ecs_register_block() {
 		'month'		=> array( 'type' => 'string' ),
         'thumb'   => array(
             'type' => 'string',
-            'default' => 'false',
         ),
 		'thumbsize' => array( 'type' => 'string' ),
 		'thumbwidth' => array(
 		    'type' => 'string',
-           'default' => '150',
         ),
 		'thumbheight' => array(
 		    'type' => 'string',
-           'default' => '150',
         ),
 		'venue' => array(
 		    'type' => 'string',
-            'default' => 'false',
         ),
 		'past'		=> array( 'type' => 'string' ),
 		'orderby'   => array(
 		    'type' => 'string',
-            'default' => 'startdate',
         ),
 		'order'     => array(
 		    'type' => 'string',
-            'default' => 'ASC',
         ),
 		'excerpt'   => array(
 		    'type' => 'string',
-            'default' => 'false',
         ),
 		'keyValue'	=> array( 'type' => 'string' ),
 	) );

@@ -36,6 +36,8 @@ class ThumbnailSetting extends Component {
 	 */
 	render() {
 		const { thumb, thumbwidth, thumbheight, thumbsize } = this.props.attributes;
+		const valid = typeof thumb !== 'undefined' && thumb !== 'false';
+		this.props.setAttributes( { 'thumb': valid ? 'true' : 'false' } );
 
 		return (
 			<div className={ 'ecs-settings-thumb' }>
@@ -51,7 +53,7 @@ class ThumbnailSetting extends Component {
 					>{ __( 'Show thumbnail image', 'the-events-calendar-shortcode' ) }</label>
 				</div>
 
-				{ thumb !== 'false' ? <Fragment>
+				{ valid ? <Fragment>
 					<div className={ 'ecs-settings-thumb-width-height' }>
 						<div className={ 'ecs-setting-text-field' }>
 							<label
