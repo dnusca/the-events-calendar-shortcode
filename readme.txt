@@ -150,14 +150,14 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 == Screenshots ==
 
 1. Add a block in the page or post where you want your events to appear (new WordPress 5.0 editor or Gutenberg plugin)
-2. After adding the plugin, add the shortcode where you want the list of events to appear in the page
+2. You can also add the shortcode where you want the list of events to appear in the page
 3. Events will appear in a list
 4. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
 
 = 2.0 =
-* Adds a block in addition to the shortcode that can be used with the new WordPress editor (as of version 5.0)
+* Adds a block in addition to the shortcode that can be used with the new WordPress editor (as of version 5.0) or Gutenberg plugin
 
 = 1.10.1 =
 * Fixing error with very old versions of PHP
