@@ -1,4 +1,4 @@
-=== The Events Calendar Shortcode ===
+=== The Events Calendar Shortcode & Block ===
 Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
