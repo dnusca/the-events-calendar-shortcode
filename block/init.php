@@ -16,7 +16,9 @@ function ecs_register_block() {
 		Events_Calendar_Shortcode::VERSION
 	);
 
-	wp_set_script_translations( 'ecs-block', 'the-events-calendar-shortcode' );
+	if ( function_exists( 'wp_set_script_translations' ) ) {
+        wp_set_script_translations( 'ecs-block', 'the-events-calendar-shortcode' );
+    }
 
 	wp_register_style(
 		'ecs-block',
