@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 5.0
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -160,6 +160,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 2.0.2 =
+* Additional check if wp_set_script_translations exists (not with the Gutenberg plugin)
+
 = 2.0.1 =
 * Tweaks to handling of default values in the block
 
@@ -264,6 +267,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 2.0.2 =
+* Additional check if wp_set_script_translations exists (not with the Gutenberg plugin)
 
 = 2.0.1 =
 * Tweaks to handling of default values in the block
