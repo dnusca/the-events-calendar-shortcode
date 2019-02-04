@@ -17,7 +17,7 @@ With this plugin either add the block in the new editor, or just add the shortco
 
 `[ecs-list-events cat="festival" limit="8"]`
 
-[youtube https://www.youtube.com/watch?v=0okrUs-xOq4]
+[youtube https://www.youtube.com/watch?v=_hpfuoa6MZM]
 
 = Shortcode and Block Options: =
 * Basic shortcode: `[ecs-list-events]`
