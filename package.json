@@ -19,11 +19,8 @@
   "homepage": "https://github.com/brianhogg/the-events-calendar-shortcode#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-transform-react-jsx": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "@wordpress/babel-plugin-import-jsx-pragma": "^1.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@wordpress/babel-preset-default": "^3.0.2",
     "@wordpress/browserslist-config": "^2.2.2",
     "@wordpress/eslint-plugin": "^1.0.0",
     "autoprefixer": "^9.3.1",

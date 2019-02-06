@@ -8,7 +8,12 @@ function ecs_register_block() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
-	
+
+	// Avoid loading if the cornerstone page builder plugin is installed due to conflicts
+    if ( class_exists( 'Cornerstone_Plugin' ) ) {
+        return;
+    }
+
 	wp_register_script(
 		'ecs-block',
 		plugins_url( 'static/block.js', dirname( __FILE__ ) ),
