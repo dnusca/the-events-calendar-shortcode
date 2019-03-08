@@ -14,8 +14,13 @@ function ecs_register_block() {
         return;
     }
 
-	wp_register_script(
-		'ecs-block',
+    // Avoid loading if Divi (or other elegant themes) are activated due to core JS conflicts
+    if ( defined( 'ET_CORE_PATH' ) || function_exists( 'et_setup_theme' ) ) {
+        return;
+    }
+
+    wp_register_script(
+		'ecs-block-js',
 		plugins_url( 'static/block.js', dirname( __FILE__ ) ),
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
 		Events_Calendar_Shortcode::VERSION
@@ -26,7 +31,7 @@ function ecs_register_block() {
     }
 
 	wp_register_style(
-		'ecs-block',
+		'ecs-block-css',
 		plugins_url( 'static/ecs-block.css', dirname( __FILE__ ) ),
 		array(),
         Events_Calendar_Shortcode::VERSION
@@ -73,8 +78,8 @@ function ecs_register_block() {
 	) );
 
 	register_block_type( 'events-calendar-shortcode/block', array(
-		'style'             => 'ecs-block',
-        'script'            => 'ecs-block',
+		'editor_style' => 'ecs-block-css',
+        'editor_script' => 'ecs-block-js',
 		'render_callback'   => 'ecs_render_block',
 		'attributes'		=> $attributes,
 	) );
