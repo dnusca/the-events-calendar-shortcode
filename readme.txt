@@ -2,67 +2,83 @@
 Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
+Requires PHP: 5.3
 Tested up to: 5.1
 Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds shortcode and block functionality to The Events Calendar Plugin (Free Version) by Modern Tribe, so you can list your events anywhere.
+Adds shortcode and block functionality to The Events Calendar Plugin (free version) by Modern Tribe, so you can easily list your events anywhere.
 
 == Description ==
 
-This plugin adds a shortcode and a block for use with The Events Calendar Plugin (by Modern Tribe).
+**Get your events displayed in a customizable list wherever you need them, with The Events Calendar Shortcode and Block!** This plugin fully integrates with The Events Calendar Plugin (free version) by Modern Tribe.
 
-With this plugin either add the block in the new editor, or just add the shortcode on a page to display a list of your events. For example to show next 8 events in the category festival:
+This plugin adds a shortcode and a WordPress block for use with The Events Calendar WordPress Plugin (by Modern Tribe).
 
-`[ecs-list-events cat="festival" limit="8"]`
+Display a list of your events by either adding a block in the new editor, or adding a shortcode to any post, page, or widget.
+
+Here’s a quick video showing you what you can do:
 
 [youtube https://www.youtube.com/watch?v=_hpfuoa6MZM]
 
-= Shortcode and Block Options: =
-* Basic shortcode: `[ecs-list-events]`
-* cat - Represents single event category. `[ecs-list-events cat='festival']`  Use commas when you want multiple categories `[ecs-list-events cat='festival, workshops']`
-* limit - Total number of events to show. Default is 5. `[ecs-list-events limit='3']`
-* order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. `[ecs-list-events order='DESC']`
-* date - To show or hide date. Value can be 'true' or 'false'. Default is true. `[ecs-list-events eventdetails='false']`
-* venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. `[ecs-list-events venue='true']`
-* excerpt - To show or hide the excerpt and set excerpt length. Default is false. 
-  * `[ecs-list-events excerpt='true']` //displays excerpt with length 100
-  * `[ecs-list-events excerpt='300']` //displays excerpt with length 300
-* thumb - To show or hide thumbnail image. Default is false. `[ecs-list-events thumb='true']` //displays post thumbnail in default thumbnail dimension from media settings.
-* You can use thumbwidth and thumbheight to customize the thumbnail size `[ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']` or thumbsize for a registered WordPress size `[ecs-list-events thumb='true' thumbsize='large']`
-* message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
-* viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']`
-* contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
-* month - Show only specific Month. Type `'current'` for displaying current month only or `'next'` for next month `[ecs-list-events cat='festival' month='2015-06']`
-* past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
-* key - Hide the event when the start date/time has passed `[ecs-list-events cat='festival' key='start date']`
-* orderby - Order by end date `[ecs-list-events orderby='enddate']`
-
 <blockquote>
-<h4>Additional options and benefits in the pro version</h4>
-<ul>
-<li>design - Shows <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-design&utm_content=description#designs" target="_blank">improved design by default</a>, 'compact' for a more compact listing, 'calendar' for a monthly calendar view, 'columns' to show events horizontally in columns, or 'grouped' to group events by day</li>
-<li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
-<li>date - Show only events for a specific day [ecs-list-events date='2017-04-16']</li>
-<li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
-<li>city, state, country - Display events by location.</li>
-<li>featured only - Show only events marked as "featured"</li>
-<li>id - Show a single event, useful for displaying details of the event on a blog post or page</li>
-<li>description - Use the full description instead of the excerpt of an event in the listing</li>
-<li>raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description</li>
-<li>raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt</li>
-<li>year - Show only events for a specific year</li>
-<li>date range - Show only events between certain days</li>
-<li>timeonly - To show just the start time of the event. [ecs-list-events timeonly='true']</li>
-<li>offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns</li>
-<li>custom design - Create one or more of your own templates for use with the shortcode</li>
-<li>hiderecurring - To only show the first instance of a recurring event, set to 'true'</li>
-</ul>
-<p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">View more Pro features</a></p>
+If you need extra design and functionality, <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">Get The Events Calendar Shortcode Pro</a>! The Pro version offers seven designs, additional filtering options, and full control over how your events display.
+
+You get the same full integration with The Events Calendar, plus premium support, show multiple shortcodes on one page, and it works with any WordPress theme.
+
+<a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">Check out the Pro version today</a>
 </blockquote>
 
-This plugin is not developed by or affiliated with The Events Calendar or Modern Tribe in any way.
+Trusted by 20,000+ WordPress sites and a 4.5 star rating on WordPress.org, The Events Calendar Shortcode and Block is the solution you’ve been after :)
+
+**How to use The Events Calendar Shortcode**
+
+You can use the shortcode or block to add a list of your events, filtered by various options. Here’s an example of how you’d show the next 8 events in the category festival:
+
+`[ecs-list-events cat="festival" limit="8"]`
+
+You can also filter the shortcode to choose from the following options:
+
+* Category: show events from specific categories.
+* Number of events: choose the number of events to show.
+* Event order: Order in which your events are shown (latest first or last).
+* Event dates: Show or hide the date.
+* Event venue: Show or hide the venue.
+* Event excerpt: Show or hide the event excerpt, and set an excerpt length.
+* Thumbnail: Show or hide a thumbnail image.
+* View all events link: Choose whether to include a “view all events” link or not.
+* Events from a specific month: show only events from specific months (including current or next month).
+* Previous events: Show previous events.
+* Hide started events: Hide events when their start time passes.
+
+This gives you full control over how your events are displayed, and is perfect for non-profits, charities, businesses, conferences, and anyone with a WordPress website showing events.
+
+You’ll find a full list of how to use these options in the shortcode below in the plugin’s FAQs.
+
+<blockquote>
+<h3>With Pro, choose your design and get even more control</h3>
+
+<a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">The Events Calendar Shortcode Pro</a> adds extra designs, including a true calendar view, compact and column-based designs, and advanced features like events grouped by day.
+
+Plus, get advanced control over how your events display:
+
+<ul>
+<li><strong>Events in the next week:</strong> Show events happening in the next X days, for example tomorrow, next week, or next month.</li>
+<li><strong>Only specific days:</strong> Show only events on specific days.</li>
+<li><strong>Display events by location:</strong> Choose to show events by city, state, or country!</li>
+<li><strong>Only featured events:</strong> Show only events you mark as featured.</li>
+<li><strong>Full event description:</strong> Show the full event description, instead of just a short excerpt.</li>
+<li><strong>Only show start time:</strong> Just show the start time of your event.</li>
+<li><strong>Hide recurring events:</strong> Only show the first instance of a recurring event.</li>
+<li><strong>Custom design:</strong> Create your own templates, or use one of the seven built-in options.</li>
+<li><strong>Plus much more:</strong> <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">check out The Events Calendar Shortcode Pro details here</a>.</li>
+</ul>
+
+<a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">The Events Calendar Shortcode Pro</a> is ideal for non-profits, charities, businesses, conferences, developers, and WordPress agencies who need the extra control and support straight from the plugin developer. <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">Check it out here</a>.
+</blockquote>
+
+This plugin is not developed by or affiliated with The Events Calendar WordPress plugin or Modern Tribe in any way.
 
 == Installation ==
 
@@ -76,7 +92,9 @@ You can then add The Events Calendar Block or `[ecs-list-events]` shortcode to t
 
 == Frequently Asked Questions ==
 
-= What are the shortcode and block options? =
+= What are the shortcode and block options for customizing my events? =
+
+Here’s the full list of shortcode and block options you can use to customize how your events display:
 
 * Basic shortcode: `[ecs-list-events]`
 * cat - Show events from an event category `[ecs-list-events cat='festival']` or specify multiple categories `[ecs-list-events cat='festival, workshops']`
@@ -153,9 +171,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Screenshots ==
 
-1. Add a block in the page or post where you want your events to appear (new WordPress 5.0 editor or Gutenberg plugin)
-2. You can also add the shortcode where you want the list of events to appear in the page
-3. Events will appear in a list
+1. Show your events from The Events Calendar (by Modern Tribe) in a list, and customize specifically which events you’re displaying
+2. Add a block in the page or post where you want your events to appear, and select the display options you want (new WordPress 5.0 editor or Gutenberg plugin)
+3. You can also add the shortcode where you want the list of events to appear on any WordPress post, page, or widget
 4. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
