@@ -1,0 +1,13 @@
+{
+  "name": "events-calendar-shortcode/block",
+  "title": "The Events Calendar Block",
+  "category": "common",
+  "icon": {
+    "slug": "the-events-calendar-block",
+    "src": "./config/svg.js",
+    "foreground": "#000000",
+    "background": "#FFFFFF"
+  },
+  "description": "Display your events from The Events Calendar",
+  "keywords": [ "event", "events", "calendar", "shortcode", "modern tribe" ]
+}
