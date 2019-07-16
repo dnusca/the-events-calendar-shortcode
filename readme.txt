@@ -4,7 +4,7 @@ Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Requires PHP: 5.3
 Tested up to: 5.2
-Stable tag: 2.2
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,12 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 2.2.1 =
+* Adds block description
+
+= 2.2 =
+* Compatibility fixes with Divi
+
 = 2.1 =
 * Disables the new WP editor block if Cornerstone page builder is active due to incompatibilities
 
@@ -288,6 +294,12 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 2.2.1 =
+* Adds block description
+
+= 2.2 =
+* Compatibility fixes with Divi
 
 = 2.1 =
 * Disables the new WP editor block if Cornerstone page builder is active due to incompatibilities
