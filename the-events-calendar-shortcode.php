@@ -283,12 +283,14 @@ class Events_Calendar_Shortcode
             'hide_upcoming' => true,
             'posts_per_page' => $atts['limit'],
             'tax_query'=> $atts['event_tax'],
+            // Likely want to revamp this logic and separate the ordering from the date filtering
             'meta_key' => ( ( trim( $atts['orderby'] ) and 'title' != $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
-            'orderby' => ( $atts['orderby'] == 'title' ? 'title' : 'meta_value' ),
+            'orderby' => ( $atts['orderby'] == 'title' ? 'title' : 'event_date' ),
             'author' => $atts['author'],
             'order' => $atts['order'],
             'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
         ), $atts, $meta_date_date, $meta_date_compare );
+
 		$posts = tribe_get_events( $args );
         $posts = apply_filters( 'ecs_filter_events_after_get', $posts, $atts );
 
