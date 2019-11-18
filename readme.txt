@@ -4,7 +4,7 @@ Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Requires PHP: 5.3
 Tested up to: 5.3
-Stable tag: 2.2.1
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 2.3 =
+* Fix for using order='DESC' to order events in descending order by event date, with the latest version of The Events Calendar (by Modern Tribe)
+
 = 2.2.1 =
 * Adds block description
 
@@ -294,6 +297,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 2.3 =
+* Fix for using order='DESC' to order events in descending order by event date, with the latest version of The Events Calendar (by Modern Tribe)
 
 = 2.2.1 =
 * Adds block description
