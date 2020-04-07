@@ -5,8 +5,8 @@
 
 	<p class="shortcode">[ecs-list-events cat='festival' limit='8']</p>
 
-    <p><a href="https://youtu.be/0okrUs-xOq4" target="_blank"><?php echo esc_html( __( 'Watch a Short Walk Through Video', 'the-events-calendar-shortcode' ) ) ?></a></p>
-
+    <p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode-short-walk-through-video/?utm_source=plugin&utm_medium=link&utm_campaign=full-documentation&utm_content=top" target="_blank"><?php echo esc_html( __( 'Watch a Short Walk Through Video', 'the-events-calendar-shortcode' ) ) ?></a></p>
+    <p><a href="https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=plugin&utm_medium=link&utm_campaign=full-documentation&utm_content=top" target="_blank"><?php echo esc_html( __( 'View Full Documentation', 'the-events-calendar-shortcode' ) ) ?></a></p>
 	<table>
 		<tbody>
 		<tr valign="top">

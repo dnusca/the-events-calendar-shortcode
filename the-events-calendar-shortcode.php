@@ -296,7 +296,7 @@ class Events_Calendar_Shortcode
 
 		if ( $posts or apply_filters( 'ecs_always_show', false, $atts ) ) {
 			$output = apply_filters( 'ecs_beginning_output', $output, $posts, $atts );
-			$output .= apply_filters( 'ecs_start_tag', '<ul class="ecs-event-list">', $atts );
+			$output .= apply_filters( 'ecs_start_tag', '<ul class="ecs-event-list">', $atts, count( (array) $posts ) );
 			$atts['contentorder'] = explode( ',', $atts['contentorder'] );
 
 			foreach( (array) $posts as $post_index => $post ) {
