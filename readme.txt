@@ -4,7 +4,7 @@ Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Requires PHP: 5.3
 Tested up to: 5.4
-Stable tag: 2.3
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,125 +178,14 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
-= 2.3 =
-* Fix for using order='DESC' to order events in descending order by event date, with the latest version of The Events Calendar (by Modern Tribe)
-
-= 2.2.1 =
-* Adds block description
-
-= 2.2 =
-* Compatibility fixes with Divi
-
-= 2.1 =
-* Disables the new WP editor block if Cornerstone page builder is active due to incompatibilities
-
-= 2.0.2 =
-* Additional check if wp_set_script_translations exists (not with the Gutenberg plugin)
-
-= 2.0.1 =
-* Tweaks to handling of default values in the block
-
-= 2.0 =
-* Adds a block in addition to the shortcode that can be used with the new WordPress editor (as of version 5.0) or Gutenberg plugin
-
-= 1.10.1 =
-* Fixing error with very old versions of PHP
-
-= 1.10 =
-* Fix for multi-word category names not working with the "cat" option
-* Option to show "powered by" link
-
-= 1.9 =
-* Adds check for minimum WordPress and PHP version
-* Adds a link to a short tutorial video
-* Changes first example shortcode so it's easier to copy/paste
-
-= 1.8 =
-* Adds new orderby='title' option
-* Fixes resetting the WordPress global query instead of just the post data
-
-= 1.7.3 =
-* Hide the "at" when using venue='true' and an event has no venue
-* Adds additional WordPress filters to hide certain events
-
-= 1.7.2 =
-* Adds the ability to use schema='false' in the shortcode to hide the schema output
-
-= 1.7.1 =
-* Fix for month option where there's an all-day event the first day of the next month
-* Fix for "There are no events" string not being translated automatically into other languages
-
-= 1.7 =
-* Adds structured data to the shortcode output (great for SEO and people finding your events)
-
-= 1.6.1 =
-* Added ecs-featured-event class if event is featured
-* Internal changes to filtering by one or more categories
-
-= 1.6 =
-* Changes default ordering by the start date, use orderby="enddate" for previous default ordering
-
-= 1.5.3 =
-* Fixes translation of the "View all events" link into other languages
-* Adds orderby parameter to order by start date, but still show events until the end date has passed
-
-= 1.5.2 =
-* Adds 'next' option for showing the next month of events
-
-= 1.5.1 =
-* Adds thumbsize option (ie. medium, large, thumbnail, full)
-
-= 1.5 =
-* Adds ability to translate the plugin into local languages
-* Additional description of options
-
-= 1.4.2 =
-* Additional filter for changing the link for an event
-* Adds category CSS classes for each event, so you can format each category differently
-
-= 1.4.1 =
-* Additional filters for formatting a single event
-
-= 1.4 =
-* Checks for whether The Events Calendar is installed
-* Additional filters
-* Improved design of shortcode help page
-
-= 1.3 =
-* Fixes issue with "viewall" showing the events twice
-* Fixes time zone issue by using current_time() instead of date()
-* Hides events that are marked 'hide from listing'
-* Switches to tribe_get_events() to get the events
-* Removes the ... from the end of the excerpt if less than the excerpt length
-* Adds date_thumb option
-* Adds additional filters
-
-= 1.2 =
-* Updates author/description (Event Calendar Newsletter / Brian Hogg Consulting)
-
-= 1.0.11 =
-Add Link to Thumbnail
-merge pull request from d4mation -Replaced extracted variables with $atts as using extract was deprecated
-=1.0.10 =
-Minor Error Change - fix  name and slug 
-= 1.0.9 =
-Minor Error Change - Multiple Categories
-= 1.0.8 =
-Add options : multi-categories - Thanks to sujin2f
-= 1.0.7 =
-Add options : contentorder, month, past, key  - Thanks to sujin2f
-= 1.0.6 =
-Fix missing ul
-= 1.0.5 =
-* Add excerpt and thumbnail - Thanks to ankitpokhrel
-= 1.0.2 =
-* Add venue to shortcode - Thanks to ankitpokhrel
-= 1.0.1 =
-* Fix Firefox browser compatibility issue
-= 1 =
-* Initial Release
+= 2.3.1 =
+Adds link to full documentation
 
 == Changelog ==
+
+= 2.3.1 =
+* Adds link to full documentation and short walk-through video
+* Developers: Adds additional param to the ecs_start_tag filter with the number of events
 
 = 2.3 =
 * Fix for using order='DESC' to order events in descending order by event date, with the latest version of The Events Calendar (by Modern Tribe)
