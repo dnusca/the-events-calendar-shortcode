@@ -1,6 +1,6 @@
-import { Component, Fragment } from "@wordpress/element"
-import { __ } from "@wordpress/i18n";
-import { TextControl } from "@wordpress/components";
+import { Component, Fragment } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+import { TextControl } from '@wordpress/components';
 
 /**
 * Setting component for month

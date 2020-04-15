@@ -1,6 +1,6 @@
 import Select from 'react-select';
 
-import { Component } from "@wordpress/element";
+import { Component } from '@wordpress/element';
 
 class SettingSwitcher extends Component {
 	/**

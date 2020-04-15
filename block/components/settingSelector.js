@@ -1,7 +1,7 @@
 import Select from 'react-select';
 
-import { Component } from "@wordpress/element";
-import { __ } from "@wordpress/i18n";
+import { Component } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 class SettingSelector extends Component {
 	/**

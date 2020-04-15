@@ -4,9 +4,9 @@ import SettingSwitcher from '../components/settingSwitcher';
 import uuid from 'uuid/v4';
 import { withContentRect } from 'react-measure';
 
-import { Component, Fragment } from "@wordpress/element";
-import { Button } from "@wordpress/components";
-import { __ } from "@wordpress/i18n";
+import { Component, Fragment } from '@wordpress/element';
+import { Button } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 class BlockEdit extends Component {
 	/**

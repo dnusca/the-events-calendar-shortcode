@@ -1,7 +1,7 @@
 import BlockEdit from './blockEdit';
 import BlockPreview from './blockPreview';
 
-import { Component } from "@wordpress/element";
+import { Component } from '@wordpress/element';
 
 class Block extends Component {
 	/**

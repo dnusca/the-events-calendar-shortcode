@@ -8,9 +8,9 @@ import ThumbnailSetting from '../components/thumbnailSetting';
 import OrderBySetting from '../components/orderBySetting';
 import OrderSetting from '../components/orderSetting';
 import KeyValueSetting from '../components/keyValueSetting';
-import VenueSetting from "../components/venueSetting";
+import VenueSetting from '../components/venueSetting';
 
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 const config = {
 	design: {

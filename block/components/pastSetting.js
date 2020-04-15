@@ -1,5 +1,5 @@
-import { Component, Fragment } from "@wordpress/element"
-import { __ } from "@wordpress/i18n";
+import { Component, Fragment } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 /**
 * Setting component for past
