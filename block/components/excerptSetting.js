@@ -1,5 +1,5 @@
 const { Component } = wp.element;
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 
 /**
 * Setting component for the excerpt

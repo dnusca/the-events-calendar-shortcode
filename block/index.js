@@ -2,7 +2,7 @@ import settingsConfig from './config/settings';
 import logo from './config/svg';
 import Block from './containers/block';
 
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 const { applyFilters } = wp.hooks;
 const {	registerBlockType } = wp.blocks;
 

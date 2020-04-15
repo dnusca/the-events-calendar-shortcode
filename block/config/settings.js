@@ -10,7 +10,7 @@ import OrderSetting from '../components/orderSetting';
 import KeyValueSetting from '../components/keyValueSetting';
 import VenueSetting from "../components/venueSetting";
 
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 
 const config = {
 	design: {
