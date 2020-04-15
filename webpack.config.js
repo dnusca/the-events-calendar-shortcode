@@ -25,9 +25,8 @@ const camelCaseDash = string => string.replace(
  */
 const wpExternals = [
 	'blocks',
-	'data',
+	'hooks',
 	'components',
-	'block-editor',
 	'serverSideRender',
 	'element',
 	'i18n',
