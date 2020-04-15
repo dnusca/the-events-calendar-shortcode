@@ -1,5 +1,5 @@
 const path = require( 'path' );
-const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const OptimizeCSSAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' ); // Temporary until Webpack 5.0 resolves this
@@ -37,6 +37,9 @@ const wpExternals = [
 	wp: 'wp',
 } );
 
+/**
+ * The Webpack Config!
+ */
 module.exports = ( env, argv ) => {
 	const production = argv.mode === 'production';
 
@@ -58,12 +61,9 @@ module.exports = ( env, argv ) => {
 		},
 
 		optimization: {
+			minimize: true,
 			minimizer: [
-				new UglifyJsPlugin( {
-					cache: true,
-					parallel: true,
-					sourceMap: false,
-				} ),
+				new TerserPlugin(),
 				new OptimizeCSSAssetsPlugin( {} ),
 			],
 		},
