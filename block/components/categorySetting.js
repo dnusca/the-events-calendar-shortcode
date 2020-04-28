@@ -1,7 +1,7 @@
 import Select from 'react-select';
 
-const { Component, Fragment } = wp.element;
-const { apiFetch } = wp;
+import { Component, Fragment } from '@wordpress/element';
+import { apiFetch } from 'wp';
 
 /**
 * Setting component for event categories

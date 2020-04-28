@@ -4,9 +4,9 @@ import SettingSwitcher from '../components/settingSwitcher';
 import uuid from 'uuid/v4';
 import { withContentRect } from 'react-measure';
 
-const { Component, Fragment } = wp.element;
-const { IconButton } = wp.components;
-const { __ } = wp.i18n;
+import { Component, Fragment } from '@wordpress/element';
+import { Button } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 class BlockEdit extends Component {
 	/**
@@ -172,7 +172,7 @@ class BlockEdit extends Component {
 			// Add remove button if removable
 			const removeCallback = () => this.handleRemoveSetting( setting, uid );
 			const removeComponent = settingsConfig[ setting ].removable ?
-				<IconButton
+				<Button
 					icon={ 'no-alt' }
 					onClick={ removeCallback }
 				/> : null;

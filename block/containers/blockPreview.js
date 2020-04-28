@@ -1,5 +1,6 @@
-const { Component, Fragment } = wp.element;
-const { ServerSideRender, withFilters } = wp.components;
+import { Component, Fragment } from '@wordpress/element';
+import { withFilters } from '@wordpress/components';
+import ServerSideRender from '@wordpress/serverSideRender';
 
 class BlockPreview extends Component {
 	/**

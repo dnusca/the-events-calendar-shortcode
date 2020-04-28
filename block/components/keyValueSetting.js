@@ -1,6 +1,6 @@
-const { Component, Fragment } = wp.element;
-const { __ } = wp.i18n;
-const { TextControl } = wp.components;
+import { Component, Fragment } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+import { TextControl } from '@wordpress/components';
 
 /**
 * Setting component for key/value

@@ -2,9 +2,9 @@ import settingsConfig from './config/settings';
 import logo from './config/svg';
 import Block from './containers/block';
 
-const { __ } = wp.i18n;
-const { applyFilters } = wp.hooks;
-const {	registerBlockType } = wp.blocks;
+import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
+import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType( 'events-calendar-shortcode/block', {
 	title: __( 'The Events Calendar Block', 'the-events-calendar-shortcode' ),

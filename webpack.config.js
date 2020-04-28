@@ -1,11 +1,45 @@
 const path = require( 'path' );
-const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const OptimizeCSSAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' ); // Temporary until Webpack 5.0 resolves this
 const WebpackBuildNotifierPlugin = require( 'webpack-build-notifier' );
 const autoprefixer = require( 'autoprefixer' );
 
+/**
+ * Given a string, returns a new string with dash separators converted to
+ * camel-case equivalent. This is not as aggressive as `_.camelCase`, which
+ * which would also upper-case letters following numbers.
+ *
+ * @param {string} string Input dash-delimited string.
+ *
+ * @return {string} Camel-cased string.
+ */
+const camelCaseDash = string => string.replace(
+	/-([a-z])/g,
+	( match, letter ) => letter.toUpperCase()
+);
+
+/**
+ * Define externals to load components through the wp global.
+ */
+const wpExternals = [
+	'blocks',
+	'hooks',
+	'components',
+	'serverSideRender',
+	'element',
+	'i18n',
+].reduce( ( externals, name ) => ( {
+	...externals,
+	[ `@wordpress/${ name }` ]: `wp.${ camelCaseDash( name ) }`,
+} ), {
+	wp: 'wp',
+} );
+
+/**
+ * The Webpack Config!
+ */
 module.exports = ( env, argv ) => {
 	const production = argv.mode === 'production';
 
@@ -23,15 +57,13 @@ module.exports = ( env, argv ) => {
 		externals: {
 			react: 'React',
 			'react-dom': 'ReactDOM',
+			...wpExternals
 		},
 
 		optimization: {
+			minimize: true,
 			minimizer: [
-				new UglifyJsPlugin( {
-					cache: true,
-					parallel: true,
-					sourceMap: false,
-				} ),
+				new TerserPlugin(),
 				new OptimizeCSSAssetsPlugin( {} ),
 			],
 		},
